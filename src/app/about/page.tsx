@@ -19,9 +19,13 @@ const leaders = [
   { name: 'Usman Ali', role: 'CTO', description: 'Technical architect specializing in enterprise networking and security.', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&auto=format' },
 ];
 
-const clients = [
-  'Bank Alfalah', 'careem', 'Olpak', 'Dolmen Group', 'Hashoo Group', 'Ghandhara',
-  'Pakland Cement', 'Packages Ltd', 'Dawood Hercules', 'Engro Corp',
+const clientLogos = [
+  { name: 'Client 1', url: 'https://inspired.com.pk/img/clients_img1.jpg' },
+  { name: 'Client 2', url: 'https://inspired.com.pk/img/clients_img2.jpg' },
+  { name: 'Client 3', url: 'https://inspired.com.pk/img/clients_img3.jpg' },
+  { name: 'Client 4', url: 'https://inspired.com.pk/img/clients_img4.png' },
+  { name: 'Client 5', url: 'https://inspired.com.pk/img/clients_img5.png' },
+  { name: 'Client 6', url: 'https://inspired.com.pk/img/clients_img6.png' },
 ];
 
 const stats = [
@@ -230,17 +234,22 @@ export default function AboutPage() {
             <h2 id="clients-heading" className="text-2xl md:text-3xl font-bold text-[#e8e8e8]">Our clients</h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-            {clients.map((client, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center opacity-60">
+            {clientLogos.map((logo, index) => (
               <motion.div
-                key={client}
+                key={logo.name}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.04, ease: [0.32, 0.72, 0, 1] }}
-                className="bg-[#121212] border border-[#2a2a2a] rounded-xl p-5 flex items-center justify-center hover:border-[#6366f1]/30 transition-colors duration-300 h-20"
+                className="bg-[#121212] border border-[#2a2a2a] rounded-xl p-4 flex items-center justify-center hover:border-[#6366f1]/30 transition-colors duration-300 h-20"
               >
-                <span className="text-[#636363] text-xs font-medium text-center">{client}</span>
+                <img
+                  src={logo.url}
+                  alt={`${logo.name} logo`}
+                  className="h-10 object-contain"
+                  loading="lazy"
+                />
               </motion.div>
             ))}
           </div>

@@ -64,18 +64,12 @@ const anchorLinks = [
 ];
 
 const clientLogos = [
-  { name: 'Cisco', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/200px-Cisco_logo_blue_2016.svg.png' },
-  { name: 'Microsoft', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/200px-Microsoft_logo.svg.png' },
-  { name: 'Google', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png' },
-  { name: 'Amazon', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png' },
-  { name: 'IBM', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/200px-IBM_logo.svg.png' },
-  { name: 'Oracle', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/200px-Oracle_logo.svg.png' },
-  { name: 'Salesforce', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/200px-Salesforce.com_logo.svg.png' },
-  { name: 'SAP', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/SAP_2011_logo.svg/200px-SAP_2011_logo.svg.png' },
-  { name: 'Intel', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Intel_logo_%282020%2C_light_blue%29.svg/200px-Intel_logo_%282020%2C_light_blue%29.svg.png' },
-  { name: 'Dell', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Dell_logo_2016_stacked.svg/200px-Dell_logo_2016_stacked.svg.png' },
-  { name: 'HP', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/200px-HP_logo_2012.svg.png' },
-  { name: 'VMware', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/VMware_logo.svg/200px-VMware_logo.svg.png' },
+  { name: 'Client 1', url: 'https://inspired.com.pk/img/clients_img1.jpg' },
+  { name: 'Client 2', url: 'https://inspired.com.pk/img/clients_img2.jpg' },
+  { name: 'Client 3', url: 'https://inspired.com.pk/img/clients_img3.jpg' },
+  { name: 'Client 4', url: 'https://inspired.com.pk/img/clients_img4.png' },
+  { name: 'Client 5', url: 'https://inspired.com.pk/img/clients_img5.png' },
+  { name: 'Client 6', url: 'https://inspired.com.pk/img/clients_img6.png' },
 ];
 
 const caseStudies = [
@@ -461,13 +455,13 @@ export default function Home() {
       <section id="clients" className="py-20 relative z-10" aria-label="Trusted by leading enterprises">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[#e8e8e8]">Trusted by leading global enterprises</h2>
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-40">
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center justify-items-center opacity-50">
             {clientLogos.map((logo) => (
               <img
                 key={logo.name}
                 src={logo.url}
                 alt={`${logo.name} logo`}
-                className="h-8 md:h-10 object-contain filter invert"
+                className="h-12 md:h-14 object-contain"
                 loading="lazy"
               />
             ))}

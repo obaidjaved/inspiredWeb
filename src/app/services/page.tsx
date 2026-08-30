@@ -108,7 +108,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
             <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// WHAT WE DO</span>
-            <h1 id="services-hero-heading" className="text-4xl md:text-6xl font-bold mb-5 text-white">
+            <h1 id="services-hero-heading" className="text-4xl md:text-6xl font-bold mb-5 text-[#e8e8e8]">
               Our services
             </h1>
             <p className="text-[#9a9a9a] text-base md:text-lg max-w-2xl leading-relaxed">
