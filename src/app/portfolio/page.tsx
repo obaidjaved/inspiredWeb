@@ -5,14 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { caseStudies, CaseStudy } from '@/data/case-studies';
+import ProjectMockup from '@/components/ProjectMockup';
+import { caseStudies } from '@/data/case-studies';
 
 const categories = [
   'All Work',
-  'Web Apps',
-  'ERP & Enterprise',
   'AI & Automation',
+  'ERP & Enterprise',
   'E-Commerce',
+  'Web Apps',
   'HealthTech',
   'EdTech',
 ];
@@ -38,7 +39,7 @@ const testimonials = [
     quote:
       'Their ZATCA Phase 2 ERPNext implementation saved us hundreds of thousands in licensing fees while ensuring 100% compliance with Saudi tax authorities on day one.',
     author: 'Head of Supply Chain & Finance',
-    organization: 'Saudi Logistics Group',
+    organization: 'Khadamat Facilities Management',
     rating: 5,
   },
   {
@@ -51,10 +52,10 @@ const testimonials = [
 ];
 
 const stats = [
-  { value: '500+', label: 'Delivered Projects' },
-  { value: '99.4%', label: 'SLA Fulfillment' },
-  { value: '15+', label: 'Years Experience' },
-  { value: '50M+', label: 'End Users Impacted' },
+  { value: '14+', label: 'Featured Client Case Studies' },
+  { value: '500+', label: 'Delivered Projects Globally' },
+  { value: '99.4%', label: 'SLA Fulfillment Rate' },
+  { value: '15+', label: 'Years Engineering Track Record' },
 ];
 
 export default function PortfolioPage() {
@@ -66,7 +67,7 @@ export default function PortfolioPage() {
       : caseStudies.filter((c) => c.category === activeCategory);
 
   const featuredProject = filteredStudies[0];
-  const remainingProjects = filteredStudies.slice(1);
+  const gridProjects = filteredStudies.slice(1);
 
   return (
     <main id="main-content">
@@ -74,7 +75,7 @@ export default function PortfolioPage() {
 
       {/* Hero Section (Dark, Cubix-Inspired) */}
       <section className="pt-32 pb-20 bg-[#0a0a0a] relative overflow-hidden" aria-labelledby="work-hero-heading">
-        {/* Subtle glowing ambient grid */}
+        {/* Ambient Grid Pattern */}
         <div className="absolute inset-0 opacity-15" aria-hidden="true">
           <div
             className="absolute inset-0"
@@ -102,7 +103,7 @@ export default function PortfolioPage() {
             >
               <span className="inline-flex items-center gap-2 bg-[#6366f1]/15 border border-[#6366f1]/30 text-[#d0d1fb] text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-[#6366f1] animate-pulse" />
-                Proven Engineering Track Record
+                Featured Client Portfolio ({caseStudies.length} Real-World Implementations)
               </span>
 
               <h1
@@ -113,7 +114,7 @@ export default function PortfolioPage() {
               </h1>
 
               <p className="text-[#9a9a9a] text-base md:text-lg max-w-2xl leading-relaxed">
-                Explore our portfolio of high-concurrency web applications, ZATCA-compliant ERPNext ecosystems, autonomous AI agent pipelines, and high-conversion commerce flagships built for global enterprises.
+                Explore our comprehensive showcase of custom web applications, ZATCA-compliant ERPNext ecosystems, AI drone analytics, and high-conversion e-commerce storefronts built for industry leaders worldwide.
               </p>
             </motion.div>
 
@@ -125,7 +126,7 @@ export default function PortfolioPage() {
             >
               <div className="p-6 rounded-2xl bg-[#121212] border border-[#2a2a2a] shadow-xl">
                 <div className="text-xs font-bold uppercase tracking-wider text-[#818cf8] mb-4">
-                  // GLOBAL IMPACT IN NUMBERS
+                  // PROVEN GLOBAL RESULTS
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   {stats.map((s) => (
@@ -143,30 +144,34 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Sticky Interactive Filter Bar (Dark Accent) */}
+      {/* Sticky Interactive Filter Bar */}
       <section className="sticky top-[72px] z-30 bg-black/90 backdrop-blur-xl border-y border-[#1f1f1f] py-4" aria-label="Filter case studies">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-2">
             {categories.map((cat) => {
               const isActive = activeCategory === cat;
+              const count = cat === 'All Work' ? caseStudies.length : caseStudies.filter((c) => c.category === cat).length;
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  className={`px-4 py-2.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex items-center gap-2 ${
                     isActive
                       ? 'bg-[#6366f1] text-white shadow-[0_0_20px_rgba(99,102,241,0.4)]'
                       : 'bg-[#121212] text-[#9a9a9a] border border-[#2a2a2a] hover:text-white hover:border-[#444]'
                   }`}
                 >
-                  {cat}
+                  <span>{cat}</span>
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-white/20 text-white' : 'bg-[#1f1f1f] text-[#636363]'}`}>
+                    {count}
+                  </span>
                 </button>
               );
             })}
           </div>
 
           <div className="text-xs text-[#636363] font-medium hidden md:block shrink-0">
-            Showing <span className="text-white font-bold">{filteredStudies.length}</span> verified case studies
+            Showing <span className="text-white font-bold">{filteredStudies.length}</span> live client projects
           </div>
         </div>
       </section>
@@ -183,32 +188,24 @@ export default function PortfolioPage() {
               transition={{ duration: 0.35 }}
               className="space-y-12"
             >
-              {/* 1. Featured Spotlight Project Card (Full Bleed Hero Card) */}
+              {/* 1. Featured Spotlight Project Card (with Live Website Mockup) */}
               {featuredProject && (
-                <div className="client-logo-card p-0 rounded-3xl bg-white border border-[#e5e7eb] overflow-hidden hover:border-[#6366f1]/50 group shadow-md transition-all">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                    <div className="lg:col-span-7 relative h-72 lg:h-[460px] overflow-hidden bg-[#0d0d0d]">
-                      <img
-                        src={featuredProject.featuredImage}
-                        alt={featuredProject.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                <div className="client-logo-card p-0 rounded-3xl bg-white border border-[#e5e7eb] overflow-hidden hover:border-[#6366f1]/50 group shadow-lg transition-all">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+                    {/* Left Mockup View */}
+                    <div className="lg:col-span-7 p-6 lg:p-10 bg-[#0d0d0d] flex items-center justify-center">
+                      <ProjectMockup
+                        image={featuredProject.featuredImage}
+                        title={featuredProject.title}
+                        url={featuredProject.url}
+                        type={featuredProject.mockupType || 'desktop'}
+                        accentColor={featuredProject.color}
+                        className="w-full"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                      <div className="absolute top-6 left-6 flex items-center gap-2">
-                        <span className="text-[10px] uppercase font-bold tracking-wider px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md text-white border border-white/20">
-                          {featuredProject.category}
-                        </span>
-                        <span className="text-[10px] uppercase font-bold tracking-wider px-3 py-1.5 rounded-full bg-[#6366f1] text-white">
-                          Featured Case Study
-                        </span>
-                      </div>
-                      <div className="absolute bottom-6 left-6 right-6 text-white lg:hidden">
-                        <h3 className="text-xl font-bold mb-1">{featuredProject.title}</h3>
-                        <p className="text-white/70 text-xs line-clamp-2">{featuredProject.summary}</p>
-                      </div>
                     </div>
 
-                    <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-between bg-white">
+                    {/* Right Content */}
+                    <div className="lg:col-span-5 p-8 lg:p-10 flex flex-col justify-between bg-white">
                       <div>
                         <div className="flex items-center gap-2 text-xs font-bold text-[#6366f1] uppercase tracking-wider mb-2">
                           <span>{featuredProject.client}</span>
@@ -242,23 +239,36 @@ export default function PortfolioPage() {
                         </div>
                       </div>
 
-                      <Link
-                        href={`/portfolio/${featuredProject.slug}`}
-                        className="inline-flex items-center justify-between w-full bg-[#0d0d0d] text-white px-6 py-4 rounded-2xl text-sm font-semibold hover:bg-[#6366f1] transition-all group/btn"
-                      >
-                        <span>Explore Full Case Study &amp; Architecture</span>
-                        <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </Link>
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <Link
+                          href={`/portfolio/${featuredProject.slug}`}
+                          className="flex-1 bg-[#0d0d0d] text-white px-6 py-3.5 rounded-xl text-xs font-bold hover:bg-[#6366f1] transition-all flex items-center justify-between text-center"
+                        >
+                          <span>View Full Case Study</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </Link>
+                        <a
+                          href={`https://${featuredProject.url}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="border border-[#e5e7eb] text-[#374151] px-5 py-3.5 rounded-xl text-xs font-bold hover:bg-[#f8f9fa] transition-all flex items-center justify-center gap-1.5"
+                        >
+                          <span>Visit Live</span>
+                          <svg className="w-3.5 h-3.5 text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* 2. Grid of Remaining Projects (Cubix 2 & 3 Column Style) */}
+              {/* 2. Grid of Remaining Projects (2 & 3 Columns with Browser Mockups) */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {remainingProjects.map((study, index) => (
+                {gridProjects.map((study, index) => (
                   <motion.article
                     key={study.slug}
                     initial={{ opacity: 0, y: 20 }}
@@ -268,41 +278,41 @@ export default function PortfolioPage() {
                     className="client-logo-card p-0 rounded-2xl bg-white border border-[#e5e7eb] overflow-hidden hover:border-[#6366f1]/50 group shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
                   >
                     <div>
-                      {/* Image Container with Gradient */}
-                      <div className="relative h-60 w-full overflow-hidden bg-[#0d0d0d]">
-                        <img
-                          src={study.featuredImage}
-                          alt={study.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-                          loading="lazy"
+                      {/* Browser Mockup Header Area */}
+                      <div className="p-4 bg-[#0d0d0d]">
+                        <ProjectMockup
+                          image={study.featuredImage}
+                          title={study.title}
+                          url={study.url}
+                          type={study.mockupType || 'desktop'}
+                          accentColor={study.color}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                        <div className="absolute top-4 left-4">
-                          <span className="text-[10px] uppercase font-bold tracking-wider px-3 py-1 bg-black/70 backdrop-blur-md border border-white/20 rounded-full text-white">
-                            {study.category}
-                          </span>
-                        </div>
-                        <div className="absolute bottom-4 left-4 right-4 text-white">
-                          <div className="text-[11px] font-bold text-[#818cf8] uppercase tracking-wider mb-1">
-                            {study.client}
-                          </div>
-                          <h3 className="text-lg font-bold leading-snug group-hover:text-[#d0d1fb] transition-colors line-clamp-1">
-                            {study.title}
-                          </h3>
-                        </div>
                       </div>
 
                       {/* Card Content */}
                       <div className="p-6">
-                        <p className="text-[#6b7280] text-xs leading-relaxed line-clamp-3 mb-6">
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-[#f3f4f6] text-[#4b5563]">
+                            {study.category}
+                          </span>
+                          <span className="text-[11px] font-bold text-[#6366f1] truncate">
+                            {study.client}
+                          </span>
+                        </div>
+
+                        <h3 className="text-base font-bold text-[#0d0d0d] mb-2 leading-snug group-hover:text-[#6366f1] transition-colors line-clamp-2">
+                          {study.title}
+                        </h3>
+
+                        <p className="text-[#6b7280] text-xs leading-relaxed line-clamp-3 mb-5">
                           {study.summary}
                         </p>
 
                         {/* Metrics Bar */}
-                        <div className="grid grid-cols-2 gap-3 py-3 border-t border-[#f0f0f0] mb-5">
+                        <div className="grid grid-cols-2 gap-3 py-3 border-t border-[#f0f0f0] mb-4">
                           {study.metrics.slice(0, 2).map((metric) => (
                             <div key={metric.label}>
-                              <div className="text-lg font-bold text-[#0d0d0d]">{metric.value}</div>
+                              <div className="text-base font-bold text-[#0d0d0d]">{metric.value}</div>
                               <div className="text-[10px] text-[#9ca3af] font-medium leading-tight">{metric.label}</div>
                             </div>
                           ))}
@@ -311,7 +321,7 @@ export default function PortfolioPage() {
                         {/* Tech Tags */}
                         <div className="flex flex-wrap gap-1 mb-2">
                           {study.technologies.slice(0, 3).map((t) => (
-                            <span key={t} className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[#f3f4f6] text-[#4b5563]">
+                            <span key={t} className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[#f8f9fa] text-[#4b5563] border border-[#f0f0f0]">
                               {t}
                             </span>
                           ))}
@@ -319,17 +329,29 @@ export default function PortfolioPage() {
                       </div>
                     </div>
 
-                    {/* Bottom Action */}
-                    <div className="p-6 pt-0 w-full">
+                    {/* Bottom Action Bar */}
+                    <div className="p-6 pt-0 w-full flex items-center gap-2">
                       <Link
                         href={`/portfolio/${study.slug}`}
-                        className="w-full py-3 px-4 rounded-xl text-center text-xs font-bold text-[#0d0d0d] bg-[#f8f9fa] border border-[#e5e7eb] hover:bg-[#6366f1] hover:text-white hover:border-[#6366f1] transition-all flex items-center justify-between"
+                        className="flex-1 py-2.5 px-3 rounded-xl text-center text-xs font-bold text-[#0d0d0d] bg-[#f8f9fa] border border-[#e5e7eb] hover:bg-[#6366f1] hover:text-white hover:border-[#6366f1] transition-all flex items-center justify-between"
                       >
-                        <span>View Detailed Case Study</span>
+                        <span>Case Study</span>
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                       </Link>
+                      <a
+                        href={`https://${study.url}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-2.5 px-3 rounded-xl text-xs font-bold text-[#6366f1] bg-indigo-50 hover:bg-indigo-100 transition-all flex items-center justify-center gap-1 shrink-0"
+                        title="Visit Live Site"
+                      >
+                        <span>Live</span>
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
                     </div>
                   </motion.article>
                 ))}
@@ -343,7 +365,7 @@ export default function PortfolioPage() {
       <section className="section-light-gray py-24 relative z-10" aria-labelledby="testimonials-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="badge-light mb-4">Client Feedback</span>
+            <span className="badge-light mb-4">Verified Client Reviews</span>
             <h2 id="testimonials-heading" className="text-3xl md:text-4xl font-bold mt-3 text-[#0d0d0d]">
               What Enterprise Leaders Say About Inspired
             </h2>

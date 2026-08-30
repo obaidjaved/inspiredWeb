@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation';
 import { useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ProjectMockup from '@/components/ProjectMockup';
 import { caseStudies } from '@/data/case-studies';
 
 export default function CaseStudyPage() {
@@ -76,6 +77,18 @@ export default function CaseStudyPage() {
               {study.category}
             </span>
             <span className="text-[#9a9a9a] text-xs font-medium">{study.industry}</span>
+            <span className="text-[#454545] text-xs">•</span>
+            <a
+              href={`https://${study.url}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6366f1] text-xs font-bold hover:underline inline-flex items-center gap-1"
+            >
+              <span>https://{study.url}</span>
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
           </div>
 
           <motion.h1
@@ -110,15 +123,17 @@ export default function CaseStudyPage() {
         </motion.div>
       </section>
 
-      {/* Project Image Banner (Light Section Container) */}
+      {/* Project Mockup Display Section (Light Section) */}
       <section className="section-light py-16 relative z-10" aria-label="Project visual overview">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="rounded-3xl overflow-hidden shadow-2xl border border-[#e5e7eb] bg-[#0d0d0d] mb-16">
-            <img
-              src={study.featuredImage}
-              alt={`${study.title} full preview`}
-              className="w-full h-80 md:h-[520px] object-cover"
-              loading="lazy"
+          {/* High-Fidelity Interactive Mockup */}
+          <div className="mb-16">
+            <ProjectMockup
+              image={study.featuredImage}
+              title={study.title}
+              url={study.url}
+              type={study.mockupType || 'desktop'}
+              accentColor={study.color}
             />
           </div>
 
@@ -129,7 +144,7 @@ export default function CaseStudyPage() {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <span className="text-3xl font-bold text-[#6366f1] opacity-30">01</span>
-                  <h2 className="text-2xl font-bold text-[#0d0d0d]">The Challenge &amp; Constraints</h2>
+                  <h2 className="text-2xl font-bold text-[#0d0d0d]">The Challenge &amp; Business Constraints</h2>
                 </div>
                 <div className="space-y-4">
                   {study.challenge.map((item, i) => (
@@ -150,7 +165,7 @@ export default function CaseStudyPage() {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <span className="text-3xl font-bold text-[#6366f1] opacity-30">02</span>
-                  <h2 className="text-2xl font-bold text-[#0d0d0d]">Engineered Solution &amp; Architecture</h2>
+                  <h2 className="text-2xl font-bold text-[#0d0d0d]">Engineered Solution &amp; Technical Architecture</h2>
                 </div>
                 <div className="space-y-4">
                   {study.solution.map((item, i) => (
@@ -171,7 +186,7 @@ export default function CaseStudyPage() {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <span className="text-3xl font-bold text-[#6366f1] opacity-30">03</span>
-                  <h2 className="text-2xl font-bold text-[#0d0d0d]">Key Business Outcomes &amp; Impact</h2>
+                  <h2 className="text-2xl font-bold text-[#0d0d0d]">Measurable Business Outcomes</h2>
                 </div>
                 <div className="space-y-4">
                   {study.outcomes.map((item, i) => (
@@ -189,10 +204,10 @@ export default function CaseStudyPage() {
               </div>
             </div>
 
-            {/* Sidebar Specifications (Light Sticky Box) */}
+            {/* Sidebar Specifications (Sticky Light Card) */}
             <div className="lg:col-span-4 space-y-6">
               <div className="bg-[#f8f9fa] border border-[#e5e7eb] rounded-3xl p-8 sticky top-28 shadow-sm">
-                <h3 className="text-xs font-bold text-[#6366f1] uppercase tracking-wider mb-4">Technologies Used</h3>
+                <h3 className="text-xs font-bold text-[#6366f1] uppercase tracking-wider mb-4">Technologies &amp; Tools</h3>
                 <div className="flex flex-wrap gap-1.5 mb-8">
                   {study.technologies.map((tech) => (
                     <span
@@ -214,8 +229,22 @@ export default function CaseStudyPage() {
                     <span className="text-sm font-bold text-[#0d0d0d]">{study.industry}</span>
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold text-[#9ca3af] uppercase tracking-wider block mb-0.5">Core Practice</span>
+                    <span className="text-[11px] font-bold text-[#9ca3af] uppercase tracking-wider block mb-0.5">Category</span>
                     <span className="text-sm font-bold text-[#0d0d0d]">{study.category}</span>
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-[#9ca3af] uppercase tracking-wider block mb-0.5">Live URL</span>
+                    <a
+                      href={`https://${study.url}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-bold text-[#6366f1] hover:underline inline-flex items-center gap-1"
+                    >
+                      <span>{study.url}</span>
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
                   </div>
                 </div>
 
