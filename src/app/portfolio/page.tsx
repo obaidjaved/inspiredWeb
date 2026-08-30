@@ -24,8 +24,9 @@ const industries = ['All', 'Telecom', 'Finance', 'Healthcare', 'Manufacturing', 
 
 const stats = [
   { value: '500+', label: 'Clients Served' },
-  { value: '1000+', label: 'Projects Completed' },
-  { value: '98%', label: 'Client Satisfaction' },
+  { value: '1,000+', label: 'Projects Completed' },
+  { value: '99.4%', label: 'SLA Fulfillment' },
+  { value: '15+', label: 'Years Experience' },
 ];
 
 export default function PortfolioPage() {
@@ -39,35 +40,48 @@ export default function PortfolioPage() {
     <main id="main-content">
       <Navbar />
 
-      {/* Dark Hero */}
-      <section className="pt-28 pb-20 bg-[#0a0a0a] relative overflow-hidden" aria-labelledby="portfolio-hero-heading">
-        <div className="absolute inset-0 opacity-10" aria-hidden="true">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(rgba(99,102,241,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.3) 1px, transparent 1px)',
-            backgroundSize: '80px 80px',
-          }} />
+      {/* Hero (Dark) */}
+      <section className="pt-32 pb-24 bg-[#0a0a0a] relative overflow-hidden" aria-labelledby="portfolio-hero-heading">
+        <div className="absolute inset-0 opacity-15" aria-hidden="true">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: 'radial-gradient(rgba(99,102,241,0.2) 1px, transparent 1px)',
+              backgroundSize: '32px 32px',
+            }}
+          />
         </div>
+
         <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div className="flex flex-wrap items-center gap-2 mb-6">
+            <Link href="/" className="text-[#636363] hover:text-white text-xs transition-colors">Home</Link>
+            <span className="text-[#454545] text-xs">/</span>
+            <span className="text-[#818cf8] text-xs font-semibold">Case Studies &amp; Portfolio</span>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+            transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+            className="max-w-3xl"
           >
-            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// CASE STUDIES</span>
-            <h1 id="portfolio-hero-heading" className="text-4xl md:text-6xl font-bold mb-5 text-[#e8e8e8]">
-              Our work
+            <span className="inline-flex items-center gap-2 bg-[#6366f1]/15 border border-[#6366f1]/30 text-[#d0d1fb] text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 uppercase tracking-wider">
+              Proven Track Record
+            </span>
+            <h1 id="portfolio-hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#e8e8e8] leading-[1.08] tracking-tight">
+              Real-World Solutions. <span className="gradient-text">Measurable Business Impact.</span>
             </h1>
-            <p className="text-[#9a9a9a] text-base md:text-lg max-w-2xl leading-relaxed">
-              Explore our portfolio of successful implementations across diverse industries and business challenges.
+            <p className="text-[#9a9a9a] text-base md:text-lg leading-relaxed mb-8">
+              Explore how we have engineered scalable digital platforms, automated business workflows, and secured enterprise network infrastructure for industry leaders worldwide.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Dark Stats Bar */}
-      <section className="bg-[#121212] border-b border-[#1f1f1f] py-12" aria-label="Portfolio statistics">
+      {/* Stats Bar (Dark) */}
+      <section className="bg-[#121212] border-y border-[#1f1f1f] py-12" aria-label="Portfolio metrics">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -77,90 +91,97 @@ export default function PortfolioPage() {
                 transition={{ duration: 0.4, delay: index * 0.08 }}
                 className="text-center"
               >
-                <div className="text-3xl md:text-4xl font-bold text-[#6366f1] mb-1" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</div>
-                <div className="text-[#9a9a9a] text-sm">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-1" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                  {stat.value}
+                </div>
+                <div className="text-[#9a9a9a] text-xs font-medium uppercase tracking-wider">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Dark Filter + Projects */}
-      <section className="py-20 bg-black" aria-labelledby="projects-heading">
+      {/* Filter + Projects Grid (Light Section) */}
+      <section className="section-light py-24 relative z-10" aria-labelledby="projects-heading">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-            className="mb-10"
-          >
-            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// FILTER BY INDUSTRY</span>
-            <h2 id="projects-heading" className="text-2xl md:text-3xl font-bold text-[#e8e8e8] mb-6">Featured projects</h2>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+              <span className="badge-light mb-3">Filter by Industry</span>
+              <h2 id="projects-heading" className="text-3xl md:text-4xl font-bold text-[#0d0d0d] mt-2">
+                Featured Client Implementations
+              </h2>
+            </div>
+
             <div className="flex flex-wrap gap-2">
               {industries.map((industry) => (
                 <button
                   key={industry}
                   onClick={() => setActiveIndustry(industry)}
-                  className={`text-xs font-medium px-5 py-2.5 rounded-full border transition-all duration-200 ${
+                  className={`text-xs font-bold px-4 py-2 rounded-full transition-all duration-200 ${
                     activeIndustry === industry
-                      ? 'bg-[#6366f1] text-white border-[#6366f1] shadow-[0_0_16px_rgba(99,102,241,0.3)]'
-                      : 'bg-[#121212] text-[#9a9a9a] border-[#2a2a2a] hover:border-[rgba(99,102,241,0.3)] hover:text-[#818cf8]'
+                      ? 'bg-[#6366f1] text-white shadow-sm'
+                      : 'bg-white text-[#4b5563] border border-[#e5e7eb] hover:border-[#6366f1]/40'
                   }`}
                 >
                   {industry}
                 </button>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((study, index) => (
               <motion.div
                 key={study.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.06, ease: [0.32, 0.72, 0, 1] }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
               >
                 <Link
                   href={`/portfolio/${study.slug}`}
-                  className="group block bg-[#121212] border border-[#2a2a2a] rounded-2xl overflow-hidden hover-glow card-lift transition-all duration-300"
+                  className="client-logo-card flex-col items-start p-0 rounded-2xl bg-white border border-[#e5e7eb] overflow-hidden hover:border-[#6366f1]/50 group h-full flex justify-between"
                 >
-                  <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={projectImages[study.slug] || fallbackImage}
-                      alt={study.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4">
-                      <span className="text-[10px] px-3 py-1.5 bg-black/70 backdrop-blur-sm border border-[#2a2a2a] rounded-full text-[#e8e8e8] font-medium">
-                        {study.industry}
-                      </span>
+                  <div className="w-full">
+                    <div className="relative h-56 w-full overflow-hidden">
+                      <img
+                        src={projectImages[study.slug] || fallbackImage}
+                        alt={study.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <span className="text-[10px] uppercase font-bold tracking-wider px-3 py-1 bg-black/60 backdrop-blur-md border border-white/20 rounded-full text-white">
+                          {study.industry}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-4 left-4 right-4 text-white">
+                        <h3 className="text-lg font-bold mb-1 group-hover:text-[#d0d1fb] transition-colors">{study.title}</h3>
+                      </div>
                     </div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-lg font-bold text-[#e8e8e8] mb-1">{study.title}</h3>
-                      <p className="text-white/70 text-xs line-clamp-2">{study.summary}</p>
+
+                    <div className="p-6">
+                      <p className="text-[#6b7280] text-xs leading-relaxed line-clamp-3 mb-6">
+                        {study.summary}
+                      </p>
+
+                      <div className="grid grid-cols-2 gap-4 py-3 border-t border-[#f0f0f0] mb-4">
+                        {study.metrics.slice(0, 2).map((metric) => (
+                          <div key={metric.label}>
+                            <div className="text-lg font-bold text-[#6366f1]">{metric.value}</div>
+                            <div className="text-[10px] text-[#9ca3af]">{metric.label}</div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="p-5">
-                    <div className="flex justify-between mb-4">
-                      {study.metrics.slice(0, 2).map((metric) => (
-                        <div key={metric.label}>
-                          <div className="text-lg font-bold text-[#818cf8]">{metric.value}</div>
-                          <div className="text-[10px] text-[#636363]">{metric.label}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-2 text-[#818cf8] text-xs font-medium group-hover:gap-3 transition-all">
-                      View Case Study
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </div>
+                  <div className="p-6 pt-0 w-full flex items-center justify-between text-xs font-bold text-[#6366f1] group-hover:text-[#4f46e5]">
+                    <span>Read Full Case Study</span>
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
                   </div>
                 </Link>
               </motion.div>
@@ -169,31 +190,24 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Dark CTA */}
-      <section className="py-20 bg-[#121212]" aria-labelledby="portfolio-cta-heading">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          >
-            <h2 id="portfolio-cta-heading" className="text-3xl md:text-5xl font-bold mb-5 text-[#e8e8e8]">
-              Start your success story
-            </h2>
-            <p className="text-[#9a9a9a] text-base max-w-xl mx-auto mb-8">
-              Let us help you build a solution that delivers real business results.
-            </p>
+      {/* CTA (Dark Section) */}
+      <section className="py-24 bg-[#0a0a0a] border-t border-[#1f1f1f] relative overflow-hidden text-center">
+        <div className="max-w-5xl mx-auto px-6 relative z-10">
+          <span className="text-[#818cf8] text-xs font-bold tracking-widest uppercase mb-4 block">// READY TO TRANSFORM?</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">
+            Start Your Next Enterprise Success Story
+          </h2>
+          <p className="text-[#9a9a9a] text-base max-w-xl mx-auto mb-10 leading-relaxed">
+            Let our technical architects build a scalable solution tailored to your operational KPIs.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-[#6366f1] text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] active:scale-[0.98]"
+              className="bg-[#6366f1] text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] active:scale-[0.98]"
             >
               Start a Project
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 

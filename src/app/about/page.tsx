@@ -6,33 +6,72 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const timeline = [
-  { year: '2009', title: 'Founded', description: 'Inspired Technology established in Karachi, Pakistan.' },
-  { year: '2012', title: 'First Major Client', description: 'Secured enterprise networking contracts across Pakistan.' },
-  { year: '2015', title: 'Global Expansion', description: 'Expanded operations to USA and Saudi Arabia.' },
-  { year: '2018', title: 'ERPNext Partner', description: 'Became certified ERPNext implementation partner.' },
-  { year: '2020', title: 'AI Division', description: 'Launched AI automation and chatbot development services.' },
-  { year: '2023', title: '500+ Clients', description: 'Reached milestone of 500+ clients served globally.' },
+  { year: '2009', title: 'Foundation in Karachi', description: 'Established as an enterprise networking and infrastructure solutions provider.' },
+  { year: '2013', title: 'Cisco Partnership & ISO Certification', description: 'Earned certified partnership and ISO quality recognition for enterprise corporate clients.' },
+  { year: '2017', title: 'Middle East & US Expansion', description: 'Opened offices in New Jersey (USA) and Saudi Arabia to deliver international IT support.' },
+  { year: '2021', title: 'ERPNext & Digital Engineering Division', description: 'Launched dedicated practice for ZATCA-compliant ERPNext and custom Next.js full-stack software.' },
+  { year: '2024', title: 'AI Automation & Cognitive Workflows', description: 'Pioneered enterprise autonomous AI agents, private RAG knowledge bases, and document OCR.' },
+  { year: '2026', title: '500+ Enterprise Clients Worldwide', description: 'Serving over 500 organizations across North America, the GCC region, and South Asia.' },
 ];
 
 const leaders = [
-  { name: 'Ahmad Raza', role: 'CEO & Founder', description: 'Visionary leader with 15+ years in IT infrastructure and business strategy.', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&auto=format' },
-  { name: 'Usman Ali', role: 'CTO', description: 'Technical architect specializing in enterprise networking and security.', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&auto=format' },
+  {
+    name: 'Muhammad J. Khan',
+    role: 'Director & Chief Executive Officer',
+    description: 'Visionary technology entrepreneur with 15+ years spearheading enterprise IT infrastructure, digital transformation, and global corporate expansion.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&auto=format',
+  },
+  {
+    name: 'Junaid Saleem',
+    role: 'Head of Enterprise Networking & SLAs',
+    description: 'Cisco-certified principal network architect managing multi-building data cabling, structured fiber backbones, and 24/7 resident engineers.',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&auto=format',
+  },
+  {
+    name: 'Jawad Khan',
+    role: 'Director of Digital Platforms & ERP',
+    description: 'Enterprise solutions leader specializing in ZATCA e-Invoicing compliance, Frappe framework custom modules, and cloud integrations.',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&auto=format',
+  },
 ];
 
 const clientLogos = [
-  { name: 'Client 1', url: 'https://inspired.com.pk/img/clients_img1.jpg' },
-  { name: 'Client 2', url: 'https://inspired.com.pk/img/clients_img2.jpg' },
-  { name: 'Client 3', url: 'https://inspired.com.pk/img/clients_img3.jpg' },
-  { name: 'Client 4', url: 'https://inspired.com.pk/img/clients_img4.png' },
-  { name: 'Client 5', url: 'https://inspired.com.pk/img/clients_img5.png' },
-  { name: 'Client 6', url: 'https://inspired.com.pk/img/clients_img6.png' },
+  { name: 'National Medical Centre', url: '/clients/clients_img1.jpg' },
+  { name: 'Benztech Solutions', url: '/clients/clients_img2.jpg' },
+  { name: 'Foundation Securities', url: '/clients/clients_img3.jpg' },
+  { name: 'Kolson', url: '/clients/clients_img4.png' },
+  { name: 'Amna', url: '/clients/clients_img5.png' },
+  { name: 'CP', url: '/clients/clients_img6.png' },
 ];
 
 const stats = [
   { value: '500+', label: 'Clients Served' },
   { value: '15+', label: 'Years Experience' },
-  { value: '1000+', label: 'Projects Done' },
-  { value: '24/7', label: 'Expert Support' },
+  { value: '1,000+', label: 'Projects Completed' },
+  { value: '24/7', label: 'Resident Support' },
+];
+
+const coreValues = [
+  {
+    icon: '🎯',
+    title: 'Customer-Obsessed Delivery',
+    desc: 'We measure success by tangible business outcomes: reduced downtime, cost savings, and accelerated time-to-market.',
+  },
+  {
+    icon: '🛡️',
+    title: 'Zero-Compromise Security',
+    desc: 'From physical server rooms and structured cabling to zero-trust cloud architectures, security is foundational in everything we build.',
+  },
+  {
+    icon: '⚡',
+    title: 'Agile & High-Velocity',
+    desc: 'Rapid sprint cycles, transparent communication, and continuous delivery to keep our clients ahead of market disruptions.',
+  },
+  {
+    icon: '🌐',
+    title: 'Global Delivery, Localized Care',
+    desc: 'Deep understanding of regional regulations — from ZATCA mandates in Saudi Arabia to local IT networks in Pakistan and North America.',
+  },
 ];
 
 export default function AboutPage() {
@@ -40,31 +79,46 @@ export default function AboutPage() {
     <main id="main-content">
       <Navbar />
 
-      <section className="pt-28 pb-20 bg-[#0a0a0a] relative overflow-hidden" aria-labelledby="about-hero-heading">
-        <div className="absolute inset-0 opacity-10" aria-hidden="true">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(rgba(99,102,241,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.3) 1px, transparent 1px)',
-            backgroundSize: '80px 80px',
-          }} />
+      {/* Hero Section (Dark) */}
+      <section className="pt-32 pb-24 bg-[#0a0a0a] relative overflow-hidden" aria-labelledby="about-hero-heading">
+        <div className="absolute inset-0 opacity-15" aria-hidden="true">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: 'radial-gradient(rgba(99,102,241,0.2) 1px, transparent 1px)',
+              backgroundSize: '32px 32px',
+            }}
+          />
         </div>
+
         <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div className="flex flex-wrap items-center gap-2 mb-6">
+            <Link href="/" className="text-[#636363] hover:text-white text-xs transition-colors">Home</Link>
+            <span className="text-[#454545] text-xs">/</span>
+            <span className="text-[#818cf8] text-xs font-semibold">About Us</span>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+            transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+            className="max-w-3xl"
           >
-            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// WHO WE ARE</span>
-            <h1 id="about-hero-heading" className="text-4xl md:text-6xl font-bold mb-5 text-[#e8e8e8]">
-              About Inspired
+            <span className="inline-flex items-center gap-2 bg-[#6366f1]/15 border border-[#6366f1]/30 text-[#d0d1fb] text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 uppercase tracking-wider">
+              About Inspired Technology
+            </span>
+            <h1 id="about-hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#e8e8e8] leading-[1.08] tracking-tight">
+              Powering Enterprise Growth Through <span className="gradient-text">Engineering Excellence</span>
             </h1>
-            <p className="text-[#9a9a9a] text-base md:text-lg max-w-2xl leading-relaxed">
-              Pakistan&apos;s most trusted IT solutions provider — delivering excellence in networking, security, ERP and digital transformation since 2009.
+            <p className="text-[#9a9a9a] text-base md:text-lg leading-relaxed mb-8">
+              Founded in 2009, Inspired Technology is a global technology consulting and digital engineering partner. We combine deep enterprise infrastructure knowledge with modern software craft to build enduring digital capabilities for world-class brands.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="bg-[#121212] border-b border-[#1f1f1f] py-12" aria-label="Key statistics">
+      {/* Stats Bar (Dark) */}
+      <section className="bg-[#121212] border-y border-[#1f1f1f] py-12" aria-label="Key statistics">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -73,213 +127,209 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08, ease: [0.32, 0.72, 0, 1] }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
                 className="text-center"
               >
-                <div className="text-3xl md:text-4xl font-bold text-[#6366f1] mb-1" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</div>
-                <div className="text-[#636363] text-sm">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-1" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                  {stat.value}
+                </div>
+                <div className="text-[#9a9a9a] text-xs font-medium uppercase tracking-wider">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-[#0a0a0a]" aria-labelledby="profile-heading">
+      {/* Company Story & CEO Message (Light Section) */}
+      <section className="section-light py-24 relative z-10" aria-labelledby="story-heading">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-            >
-              <h2 id="profile-heading" className="text-2xl md:text-3xl font-bold mb-5 text-[#e8e8e8]">
-                Delivering networking excellence
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+            <div className="lg:col-span-6">
+              <span className="badge-light mb-4">Our Heritage</span>
+              <h2 id="story-heading" className="text-3xl md:text-4xl font-bold mt-3 text-[#0d0d0d] leading-tight">
+                15+ Years of Proven Technical Leadership &amp; Innovation
               </h2>
-              <p className="text-[#9a9a9a] text-sm leading-relaxed mb-4">
-                Inspired Technology is a network solutions provider based in Pakistan. We provide professional services to large-scale corporate businesses around the globe.
+              <p className="text-[#6b7280] text-sm leading-relaxed mt-4 mb-4">
+                Inspired Technology started with a straightforward vision: to become the most trusted networking and infrastructure solution provider for corporate businesses. Over fifteen years, we have grown into a multi-national engineering partner with active operations across Pakistan, the United States, and Saudi Arabia.
               </p>
-              <p className="text-[#9a9a9a] text-sm leading-relaxed mb-7">
-                We take pride in being the most trusted networking solution provider in Pakistan, with a proven track record of delivering enterprise-grade solutions across multiple industries.
+              <p className="text-[#6b7280] text-sm leading-relaxed mb-8">
+                Today, we lead the industry in full-spectrum technology solutions — from Cisco-certified structured fiber backbones and 24/7 SLA contracts to high-performance Next.js web applications, ZATCA-compliant ERP implementations, and cutting-edge autonomous AI agents.
               </p>
-              <div className="flex flex-wrap gap-2.5">
-                {['Cisco Certified', 'ISO Quality', '500+ Clients', 'Global Reach'].map((badge) => (
-                  <div key={badge} className="bg-[#6366f1]/10 border border-[#6366f1]/20 px-4 py-2.5 rounded-full flex items-center gap-2">
-                    <svg className="w-3.5 h-3.5 text-[#818cf8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-[#d0d1fb] text-xs font-medium">{badge}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-              className="relative"
-            >
-              <div className="rounded-2xl overflow-hidden">
+              <div className="p-6 rounded-2xl bg-[#f8f9fa] border border-[#e5e7eb]">
+                <p className="text-[#1f2937] text-sm italic mb-4 leading-relaxed">
+                  &ldquo;We don&apos;t just deliver software or install hardware — we build resilient digital foundations that enable our clients to scale securely and dominate their respective industries.&rdquo;
+                </p>
+                <div>
+                  <div className="font-bold text-[#0d0d0d] text-sm">Muhammad J. Khan</div>
+                  <div className="text-[#6b7280] text-xs">Director &amp; CEO, Inspired Technology Pvt. Ltd.</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6 relative">
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#e5e7eb] bg-white">
                 <img
-                  src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=400&fit=crop&auto=format"
-                  alt="Inspired Technology team meeting"
-                  className="w-full h-[340px] object-cover"
-                  loading="lazy"
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&auto=format"
+                  alt="Inspired Technology engineering team"
+                  className="w-full h-[450px] object-cover"
                 />
               </div>
-              <div className="absolute bottom-4 left-4 right-4 grid grid-cols-2 gap-3">
-                {[
-                  { value: '15+', label: 'Years' },
-                  { value: '500+', label: 'Clients' },
-                ].map((stat) => (
-                  <div key={stat.label} className="bg-[#121212]/95 backdrop-blur-sm border border-[#2a2a2a] rounded-xl p-3 text-center">
-                    <div className="text-[#818cf8] text-lg font-bold">{stat.value}</div>
-                    <div className="text-[#636363] text-[10px]">{stat.label}</div>
-                  </div>
-                ))}
+              <div className="absolute -bottom-6 -left-6 bg-[#6366f1] text-white p-6 rounded-2xl shadow-xl hidden md:block max-w-xs">
+                <div className="text-2xl font-bold mb-1">Cisco &amp; ISO</div>
+                <div className="text-xs text-white/80">Certified Quality Standards &amp; Enterprise-grade SLA Delivery</div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-[#0a0a0a]" aria-labelledby="timeline-heading">
+      {/* Trusted By Leading Enterprises — Client Logos (Light Section) */}
+      <section className="section-light py-20 border-t border-[#f0f0f0]" aria-label="Trusted by leading organizations">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-            className="mb-14"
-          >
-            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// OUR JOURNEY</span>
-            <h2 id="timeline-heading" className="text-2xl md:text-3xl font-bold text-[#e8e8e8]">Company timeline</h2>
-          </motion.div>
-
-          <div className="space-y-6">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={item.year}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -16 : 16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.06, ease: [0.32, 0.72, 0, 1] }}
-                className="flex items-start gap-6"
-              >
-                <div className="text-[#6366f1] text-sm font-bold w-14 flex-shrink-0 pt-4">{item.year}</div>
-                <div className="bg-[#121212] border border-[#2a2a2a] rounded-xl p-5 flex-1 hover:border-[#6366f1]/30 transition-colors duration-300">
-                  <h3 className="text-base font-bold mb-1.5 text-[#e8e8e8]">{item.title}</h3>
-                  <p className="text-[#9a9a9a] text-sm">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="text-center mb-14">
+            <span className="badge-light mb-4">Trusted By</span>
+            <h2 className="text-2xl md:text-3xl font-bold mt-3 text-[#0d0d0d]">Our Best Clients</h2>
+            <p className="text-[#6b7280] text-sm mt-2 max-w-md mx-auto">
+              Proud to deliver mission-critical solutions to leading corporate institutions.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <section className="py-20 bg-[#0a0a0a]" aria-labelledby="leadership-heading">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-            className="mb-14"
-          >
-            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// OUR TEAM</span>
-            <h2 id="leadership-heading" className="text-2xl md:text-3xl font-bold text-[#e8e8e8]">Leadership</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {leaders.map((leader, index) => (
-              <motion.div
-                key={leader.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.32, 0.72, 0, 1] }}
-                className="bg-[#121212] border border-[#2a2a2a] rounded-2xl p-7 hover:border-[#6366f1]/30 transition-all duration-300"
-              >
-                <div className="flex items-start gap-5">
-                  <img
-                    src={leader.image}
-                    alt={leader.name}
-                    className="w-16 h-16 rounded-xl object-cover"
-                    loading="lazy"
-                  />
-                  <div>
-                    <h3 className="text-lg font-bold mb-0.5 text-[#e8e8e8]">{leader.name}</h3>
-                    <p className="text-[#818cf8] text-xs font-medium mb-3">{leader.role}</p>
-                    <p className="text-[#9a9a9a] text-sm leading-relaxed">{leader.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-[#0a0a0a]" aria-labelledby="clients-heading">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-            className="mb-14"
-          >
-            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// TRUSTED BY</span>
-            <h2 id="clients-heading" className="text-2xl md:text-3xl font-bold text-[#e8e8e8]">Our clients</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center opacity-60">
-            {clientLogos.map((logo, index) => (
-              <motion.div
-                key={logo.name}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.04, ease: [0.32, 0.72, 0, 1] }}
-                className="bg-[#121212] border border-[#2a2a2a] rounded-xl p-4 flex items-center justify-center hover:border-[#6366f1]/30 transition-colors duration-300 h-20"
-              >
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 items-center">
+            {clientLogos.map((logo) => (
+              <div key={logo.name} className="client-logo-card">
                 <img
                   src={logo.url}
                   alt={`${logo.name} logo`}
-                  className="h-10 object-contain"
+                  className="h-12 md:h-14 w-full object-contain"
                   loading="lazy"
                 />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-[#0a0a0a]" aria-labelledby="about-cta-heading">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          >
-            <h2 id="about-cta-heading" className="text-3xl md:text-5xl font-bold mb-5 text-[#e8e8e8]">
-              Join our growing family
+      {/* Core Values (Light Gray Section) */}
+      <section className="section-light-gray py-24 relative z-10" aria-labelledby="values-heading">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="badge-light mb-4">Our Principles</span>
+            <h2 id="values-heading" className="text-3xl md:text-4xl font-bold mt-3 text-[#0d0d0d]">
+              What Sets Us Apart
             </h2>
-            <p className="text-[#9a9a9a] text-base max-w-xl mx-auto mb-8">
-              Experience the Inspired difference — where technology meets excellence.
+            <p className="text-[#6b7280] text-sm mt-3 max-w-xl mx-auto">
+              The foundational values that guide our engineering culture and client partnerships.
             </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {coreValues.map((val) => (
+              <div
+                key={val.title}
+                className="bg-white border border-[#e5e7eb] rounded-2xl p-7 shadow-sm hover:shadow-md hover:border-[#6366f1]/30 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-[#6366f1]/10 flex items-center justify-center text-2xl mb-5">
+                    {val.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-[#0d0d0d] mb-2">{val.title}</h3>
+                  <p className="text-[#6b7280] text-xs leading-relaxed">{val.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Team (Light Section) */}
+      <section className="section-light py-24 relative z-10" aria-labelledby="leadership-heading">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="badge-light mb-4">Leadership</span>
+            <h2 id="leadership-heading" className="text-3xl md:text-4xl font-bold mt-3 text-[#0d0d0d]">
+              Executive Team
+            </h2>
+            <p className="text-[#6b7280] text-sm mt-3 max-w-xl mx-auto">
+              Experienced technology leaders dedicated to engineering excellence and client success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {leaders.map((leader) => (
+              <div
+                key={leader.name}
+                className="bg-[#f8f9fa] border border-[#e5e7eb] rounded-2xl overflow-hidden hover:border-[#6366f1]/40 transition-all shadow-sm"
+              >
+                <div className="h-64 overflow-hidden">
+                  <img
+                    src={leader.image}
+                    alt={leader.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-7">
+                  <h3 className="text-lg font-bold text-[#0d0d0d] mb-1">{leader.name}</h3>
+                  <div className="text-xs font-semibold text-[#6366f1] mb-3">{leader.role}</div>
+                  <p className="text-[#6b7280] text-xs leading-relaxed">{leader.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Journey Timeline (Dark Section) */}
+      <section className="py-24 bg-[#0a0a0a] relative z-10" aria-labelledby="timeline-heading">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-[#818cf8] text-xs font-bold tracking-widest uppercase mb-3 block">// OUR JOURNEY</span>
+            <h2 id="timeline-heading" className="text-3xl md:text-4xl font-bold text-[#e8e8e8]">
+              Milestones of Growth &amp; Innovation
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {timeline.map((item) => (
+              <div
+                key={item.year}
+                className="bg-[#121212] border border-[#2a2a2a] rounded-2xl p-7 hover:border-[#6366f1]/40 transition-colors"
+              >
+                <span className="text-3xl font-bold text-[#6366f1] mb-3 block" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                  {item.year}
+                </span>
+                <h3 className="text-base font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-[#9a9a9a] text-xs leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Global Contact CTA (Dark Section) */}
+      <section className="py-24 bg-[#0a0a0a] border-t border-[#1f1f1f] relative overflow-hidden text-center">
+        <div className="max-w-5xl mx-auto px-6 relative z-10">
+          <span className="text-[#818cf8] text-xs font-bold tracking-widest uppercase mb-4 block">// WORK WITH US</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">
+            Partner With a World-Class Engineering Team
+          </h2>
+          <p className="text-[#9a9a9a] text-base max-w-xl mx-auto mb-10 leading-relaxed">
+            Whether you need custom web applications, ZATCA ERP implementation, or enterprise infrastructure support — our engineers are ready.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-[#6366f1] text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] active:scale-[0.98]"
+              className="bg-[#6366f1] text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] active:scale-[0.98]"
             >
-              Get in Touch
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              Get in Touch Today
             </Link>
-          </motion.div>
+            <Link
+              href="/services"
+              className="border border-[#2a2a2a] text-white px-7 py-4 rounded-full text-sm font-semibold hover:bg-white/5 transition-all"
+            >
+              Explore Our Services
+            </Link>
+          </div>
         </div>
       </section>
 
