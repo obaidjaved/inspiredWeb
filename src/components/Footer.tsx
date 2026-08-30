@@ -1,161 +1,94 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-const footerLinks = {
-  services: [
-    { name: 'Network Security', href: '/services#network-security' },
-    { name: 'Website Development', href: '/services#web-development' },
-    { name: 'ERPNext Solutions', href: '/services#erpnext' },
-    { name: 'AI Automation', href: '/services#ai-automation' },
-    { name: 'Data Cabling', href: '/services#data-cabling' },
-    { name: 'CCTV Systems', href: '/services#cctv' },
-  ],
-  company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Our Work', href: '/portfolio' },
-    { name: 'Clients', href: '/about#clients' },
-    { name: 'Leadership', href: '/about#leadership' },
-    { name: 'Company Profile', href: '/about#profile' },
-    { name: 'Contact', href: '/contact' },
-  ],
-  contact: [
-    { name: '+92 300 9221193', href: 'tel:+923009221193' },
-    { name: '+1 (973) 626-0873', href: 'tel:+19736260873' },
-    { name: 'contact@inspired.com.pk', href: 'mailto:contact@inspired.com.pk' },
-    { name: 'Karachi, Pakistan', href: '/contact' },
-  ],
-};
+const quickLinks = [
+  { name: 'Company', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Insights', href: '/about' },
+  { name: 'Careers', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+];
 
-const socialLinks = [
-  { name: 'LinkedIn', href: '#', icon: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z' },
-  { name: 'Twitter', href: '#', icon: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z' },
-  { name: 'Facebook', href: '#', icon: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z' },
-  { name: 'Instagram', href: '#', icon: 'M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01' },
+const offices = [
+  { col1: ['Pakistan', 'United States', 'United Kingdom', 'Dubai'], col2: ['Canada', 'Saudi Arabia', 'Germany', 'Australia'] },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-[#0a0a0a] border-t border-[#222]" role="contentinfo">
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand Column */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-          >
-            <Link href="/" className="flex items-center gap-2.5 mb-6" aria-label="Inspired Technology - Home">
-              <div className="w-9 h-9 bg-[#6366f1] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-base">I</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+          {/* Column 1: Logo + Description */}
+          <div>
+            <Link href="/" className="flex items-center gap-2 mb-5" aria-label="Inspired Technology - Home">
+              <div className="w-8 h-8 bg-[#6366f1] rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">I</span>
               </div>
               <div className="flex items-baseline">
-                <span className="text-lg font-bold text-white">INSPIRED</span>
-                <span className="text-[#6366f1] text-lg font-semibold">.tech</span>
+                <span className="text-base font-bold text-white">INSPIRED</span>
+                <span className="text-[#6366f1] text-base font-semibold">.tech</span>
               </div>
             </Link>
-            <p className="text-[#666666] text-sm leading-relaxed mb-6">
+            <p className="text-[#666] text-sm leading-relaxed max-w-sm">
               Pakistan&apos;s most trusted IT solutions provider — delivering excellence in networking, security, ERP and digital transformation since 2009.
             </p>
-            <div className="flex gap-2.5">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.name}
-                  href={social.href}
-                  className="w-9 h-9 border border-[#222] rounded-lg flex items-center justify-center text-[#666666] hover:text-[#6366f1] hover:border-[rgba(99,102,241,0.3)] hover:bg-[rgba(99,102,241,0.05)] transition-all duration-200"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={social.name}
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d={social.icon} />
-                  </svg>
-                </motion.a>
+          </div>
+
+          {/* Column 2: Quick Links */}
+          <div>
+            <h3 className="text-sm font-semibold text-white mb-4">Quick Links</h3>
+            <ul className="space-y-2.5" role="list">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-[#666] text-sm hover:text-white transition-colors duration-200">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Offices */}
+          <div>
+            <h3 className="text-sm font-semibold text-white mb-4">Our Offices</h3>
+            <div className="grid grid-cols-2 gap-x-8 gap-y-2.5">
+              {offices[0].col1.map((office) => (
+                <span key={office} className="text-[#666] text-sm">{office}</span>
+              ))}
+              {offices[0].col2.map((office) => (
+                <span key={office} className="text-[#666] text-sm">{office}</span>
               ))}
             </div>
-          </motion.div>
-
-          {/* Services Column */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.08, ease: [0.32, 0.72, 0, 1] }}
-          >
-            <h3 className="text-xs font-semibold text-[#6366f1] mb-5 tracking-widest uppercase">Services</h3>
-            <ul className="space-y-2.5" role="list">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-[#666666] text-sm hover:text-white transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Company Column */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15, ease: [0.32, 0.72, 0, 1] }}
-          >
-            <h3 className="text-xs font-semibold text-[#6366f1] mb-5 tracking-widest uppercase">Company</h3>
-            <ul className="space-y-2.5" role="list">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-[#666666] text-sm hover:text-white transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Contact Column */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.22, ease: [0.32, 0.72, 0, 1] }}
-          >
-            <h3 className="text-xs font-semibold text-[#6366f1] mb-5 tracking-widest uppercase">Contact</h3>
-            <ul className="space-y-2.5" role="list">
-              {footerLinks.contact.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-[#666666] text-sm hover:text-white transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom bar */}
         <div className="border-t border-[#222] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#666666] text-sm">
-            &copy; {new Date().getFullYear()} Inspired Technology Pvt. Ltd. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-[#666666] text-sm hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-[#666666] text-sm hover:text-white transition-colors">
-              Terms of Service
-            </a>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-[#666]">
+            <a href="tel:+923009221193" className="hover:text-white transition-colors">+92 300 9221193</a>
+            <a href="mailto:contact@inspired.com.pk" className="hover:text-white transition-colors">contact@inspired.com.pk</a>
+          </div>
+          <div className="flex items-center gap-4">
+            {/* Social icons */}
+            {[
+              { name: 'LinkedIn', path: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z' },
+              { name: 'Twitter', path: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z' },
+              { name: 'Facebook', path: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z' },
+            ].map((social) => (
+              <a
+                key={social.name}
+                href="#"
+                className="w-8 h-8 border border-[#333] rounded-lg flex items-center justify-center text-[#666] hover:text-[#6366f1] hover:border-[#6366f1]/30 transition-all duration-200"
+                aria-label={social.name}
+              >
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d={social.path} />
+                </svg>
+              </a>
+            ))}
+            <span className="text-[#666] text-sm ml-2">&copy; {new Date().getFullYear()} Inspired Technology</span>
           </div>
         </div>
       </div>
