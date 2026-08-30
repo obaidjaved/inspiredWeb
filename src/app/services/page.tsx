@@ -103,7 +103,7 @@ export default function ServicesPage() {
           >
             <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// WHAT WE DO</span>
             <h1 id="services-hero-heading" className="text-4xl md:text-6xl font-bold mb-5">
-              Our <span className="gradient-text">services</span>
+              Our services
             </h1>
             <p className="text-[#a0a0a0] text-base md:text-lg max-w-2xl leading-relaxed">
               Comprehensive technology solutions tailored to your business needs — from infrastructure to digital transformation.
@@ -112,7 +112,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services List */}
       <section className="pb-28" aria-label="Services list">
         <div className="max-w-7xl mx-auto px-6">
           <div className="space-y-6">
@@ -187,7 +187,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-28 bg-[#0a0a0a]" aria-labelledby="services-cta-heading">
+      <section className="py-20 bg-[#0a0a0a]" aria-labelledby="services-cta-heading">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -196,7 +196,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
             <h2 id="services-cta-heading" className="text-3xl md:text-5xl font-bold mb-5">
-              Need a <span className="gradient-text">custom solution?</span>
+              Need a custom solution?
             </h2>
             <p className="text-[#a0a0a0] text-base max-w-xl mx-auto mb-8">
               We tailor our services to meet your specific business requirements. Let&apos;s discuss your project.

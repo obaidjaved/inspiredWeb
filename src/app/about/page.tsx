@@ -39,7 +39,7 @@ export default function AboutPage() {
           >
             <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// WHO WE ARE</span>
             <h1 id="about-hero-heading" className="text-4xl md:text-6xl font-bold mb-5">
-              About <span className="gradient-text">Inspired</span>
+              About Inspired
             </h1>
             <p className="text-[#a0a0a0] text-base md:text-lg max-w-2xl leading-relaxed">
               Pakistan&apos;s most trusted IT solutions provider — delivering excellence in networking, security, ERP and digital transformation since 2009.
@@ -59,7 +59,7 @@ export default function AboutPage() {
               transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
             >
               <h2 id="profile-heading" className="text-2xl md:text-3xl font-bold mb-5">
-                Delivering <span className="gradient-text">networking excellence</span>
+                Delivering networking excellence
               </h2>
               <p className="text-[#a0a0a0] text-sm leading-relaxed mb-4">
                 Inspired Technology is a network solutions provider based in Pakistan. We provide professional services to large-scale corporate businesses around the globe.
@@ -220,7 +220,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-28" aria-labelledby="about-cta-heading">
+      <section className="py-20" aria-labelledby="about-cta-heading">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -229,7 +229,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
             <h2 id="about-cta-heading" className="text-3xl md:text-5xl font-bold mb-5">
-              Join our <span className="gradient-text">growing family</span>
+              Join our growing family
             </h2>
             <p className="text-[#a0a0a0] text-base max-w-xl mx-auto mb-8">
               Experience the Inspired difference — where technology meets excellence.

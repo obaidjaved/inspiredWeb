@@ -8,7 +8,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { caseStudies } from '@/data/case-studies';
 import ProjectVisual from '@/components/visuals/ProjectVisual';
-import { MagneticElement, RippleButton } from '@/components/MicroInteractions';
 
 const projectImages: Record<string, string> = {
   'tapsvs-lms': 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=900&h=500&fit=crop&auto=format',

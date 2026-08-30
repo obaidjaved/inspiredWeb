@@ -52,7 +52,7 @@ export default function ContactPage() {
           >
             <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// GET IN TOUCH</span>
             <h1 id="contact-hero-heading" className="text-4xl md:text-6xl font-bold mb-5">
-              Contact <span className="gradient-text">us</span>
+              Contact us
             </h1>
             <p className="text-[#a0a0a0] text-base md:text-lg max-w-2xl leading-relaxed">
               Ready to transform your digital presence? Let&apos;s discuss your project and find the perfect solution.

@@ -51,7 +51,7 @@ export default function PortfolioPage() {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
             className="text-4xl md:text-6xl lg:text-[5rem] font-bold leading-[1.06] mb-5 max-w-4xl tracking-tight"
           >
-            Work that <span className="gradient-text">speaks</span>{' '}
+            Work that speaks
             <span className="text-[#a0a0a0] text-2xl md:text-3xl lg:text-4xl font-light block mt-3 leading-snug">
               Results across {caseStudies.length} industries and counting.
             </span>
