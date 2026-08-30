@@ -101,11 +101,11 @@ export default function ServicesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.15em] mb-4 block">// WHAT WE DO</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// WHAT WE DO</span>
             <h1 id="services-hero-heading" className="text-4xl md:text-6xl font-bold mb-5">
               Our <span className="gradient-text">services</span>
             </h1>
-            <p className="text-[#9A9BB0] text-base md:text-lg max-w-2xl leading-relaxed">
+            <p className="text-[#a0a0a0] text-base md:text-lg max-w-2xl leading-relaxed">
               Comprehensive technology solutions tailored to your business needs — from infrastructure to digital transformation.
             </p>
           </motion.div>
@@ -124,7 +124,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.04, ease: [0.32, 0.72, 0, 1] }}
-                className="group bg-[#16161F] border border-[#252533] rounded-2xl overflow-hidden hover-glow transition-all duration-300"
+                className="group bg-[#111] border border-[#222] rounded-2xl overflow-hidden hover-glow transition-all duration-300"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
                   {/* Image */}
@@ -132,23 +132,23 @@ export default function ServicesPage() {
                     <img
                       src={service.image}
                       alt={`${service.title} service`}
-                      className="w-full h-full object-cover img-dark group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#16161F]/50 hidden lg:block" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#16161F] to-transparent lg:hidden" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#111]/50 hidden lg:block" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent lg:hidden" />
                   </div>
 
                   <div className="lg:col-span-2 p-7 md:p-8">
                     <div className="flex items-start gap-5 mb-5">
-                      <span className="text-[#00E87B] text-4xl font-bold opacity-20 group-hover:opacity-80 transition-opacity">
+                      <span className="text-[#6366f1] text-4xl font-bold opacity-20 group-hover:opacity-80 transition-opacity">
                         {service.id}
                       </span>
                       <div>
-                        <h2 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-[#00E87B] transition-colors">
+                        <h2 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-[#6366f1] transition-colors">
                           {service.title}
                         </h2>
-                        <p className="text-[#9A9BB0] text-sm leading-relaxed">
+                        <p className="text-[#a0a0a0] text-sm leading-relaxed">
                           {service.description}
                         </p>
                       </div>
@@ -158,19 +158,19 @@ export default function ServicesPage() {
                       {service.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] px-3 py-1.5 bg-[#0A0A0F] border border-[#252533] rounded-full text-[#5C5D72] group-hover:border-[rgba(0,232,123,0.2)] group-hover:text-[#9A9BB0] transition-colors"
+                          className="text-[10px] px-3 py-1.5 bg-black border border-[#222] rounded-full text-[#666666] group-hover:border-[rgba(99,102,241,0.2)] group-hover:text-[#a0a0a0] transition-colors"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <div className="bg-[#0A0A0F] rounded-xl p-5">
-                      <h3 className="text-xs font-semibold text-[#00E87B] mb-3 tracking-wider">KEY FEATURES</h3>
+                    <div className="bg-black rounded-xl p-5">
+                      <h3 className="text-xs font-semibold text-[#6366f1] mb-3 tracking-wider">KEY FEATURES</h3>
                       <div className="grid grid-cols-2 gap-2">
                         {service.features.map((feature) => (
-                          <div key={feature} className="flex items-center gap-2 text-[#9A9BB0] text-xs">
-                            <svg className="w-3.5 h-3.5 text-[#00E87B] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <div key={feature} className="flex items-center gap-2 text-[#a0a0a0] text-xs">
+                            <svg className="w-3.5 h-3.5 text-[#6366f1] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                             {feature}
@@ -187,7 +187,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-28 bg-[#111118]/40" aria-labelledby="services-cta-heading">
+      <section className="py-28 bg-[#0a0a0a]" aria-labelledby="services-cta-heading">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -198,12 +198,12 @@ export default function ServicesPage() {
             <h2 id="services-cta-heading" className="text-3xl md:text-5xl font-bold mb-5">
               Need a <span className="gradient-text">custom solution?</span>
             </h2>
-            <p className="text-[#9A9BB0] text-base max-w-xl mx-auto mb-8">
+            <p className="text-[#a0a0a0] text-base max-w-xl mx-auto mb-8">
               We tailor our services to meet your specific business requirements. Let&apos;s discuss your project.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-[#00E87B] text-[#0A0A0F] px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-[#00D46F] transition-all duration-200 hover:shadow-[0_0_24px_rgba(0,232,123,0.3)] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 bg-[#6366f1] text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] active:scale-[0.98]"
             >
               Contact Us
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

@@ -17,9 +17,9 @@ export function RippleButton({ children, className = '', href, onClick, variant 
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   const variants = {
-    primary: 'bg-[#00E87B] text-[#0A0A0F] hover:bg-[#00D46F] hover:shadow-[0_0_24px_rgba(0,232,123,0.3)] active:scale-[0.98]',
-    secondary: 'border border-[#252533] text-[#EDEEF2] hover:border-[rgba(0,232,123,0.4)] hover:bg-[rgba(0,232,123,0.04)] active:scale-[0.98]',
-    ghost: 'text-[#9A9BB0] hover:text-[#00E87B] hover:bg-[rgba(0,232,123,0.05)]',
+    primary: 'bg-[#6366f1] text-white hover:bg-[#5558e6] hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] active:scale-[0.98]',
+    secondary: 'border border-[#222] text-white hover:border-[rgba(99,102,241,0.4)] hover:bg-[rgba(99,102,241,0.05)] active:scale-[0.98]',
+    ghost: 'text-[#a0a0a0] hover:text-[#6366f1] hover:bg-[rgba(99,102,241,0.05)]',
   };
 
   const handleClick = (e: React.MouseEvent) => {
@@ -34,7 +34,7 @@ export function RippleButton({ children, className = '', href, onClick, variant 
     onClick?.();
   };
 
-  const baseClass = `relative overflow-hidden inline-flex items-center gap-2 font-semibold transition-all duration-250 ${variants[variant]} ${className}`;
+  const baseClass = `relative overflow-hidden inline-flex items-center gap-2 font-semibold transition-all duration-200 ${variants[variant]} ${className}`;
 
   const content = (
     <>

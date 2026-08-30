@@ -13,25 +13,34 @@ import { RippleButton, MagneticElement, TextReveal } from '@/components/MicroInt
 const Background3DCSS = dynamic(() => import('@/components/Background3DCSS'), { ssr: false });
 
 const services = [
-  { id: '01', title: 'Network Security', description: 'Cisco and multi-vendor installations of any scale. Enterprise-grade security to protect your infrastructure and boost performance.', tags: ['Cisco', 'Firewall', 'VPN', 'SIEM'], icon: '🔒', color: '#00E87B', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format' },
-  { id: '02', title: 'Web Development', description: 'Corporate websites, e-commerce, landing pages, CMS, UI/UX design and progressive web apps that convert.', tags: ['Next.js', 'React', 'Shopify', 'WordPress'], icon: '🌐', color: '#00A3E0', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&auto=format' },
-  { id: '03', title: 'ERPNext Solutions', description: 'Complete ERPNext implementation — accounting, HR, inventory, CRM, manufacturing and project management.', tags: ['ERPNext', 'Frappe', 'ZATCA', 'Custom'], icon: '📊', color: '#7C4DFF', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format' },
-  { id: '04', title: 'AI Automation', description: 'AI-powered chatbots, intelligent workflow automation, and predictive analytics for smarter operations.', tags: ['Chatbots', 'LLM', 'RPA', 'Analytics'], icon: '🤖', color: '#E91E7D', image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop&auto=format' },
-  { id: '05', title: 'Data Cabling', description: 'Professional structured cabling from single outlets to large multi-pair trunk cables across buildings.', tags: ['Fiber', 'Cat6', 'Structured', 'Certified'], icon: '🔌', color: '#F59E0B', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format' },
-  { id: '06', title: 'CCTV Systems', description: 'Complete IP camera network solutions — design, installation, testing and certification for total coverage.', tags: ['IP Cameras', 'NVR', 'Analytics', 'Cloud'], icon: '📹', color: '#10B981', image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=600&h=400&fit=crop&auto=format' },
+  { id: '01', title: 'Network Security', description: 'Cisco and multi-vendor installations of any scale. Enterprise-grade security to protect your infrastructure and boost performance.', tags: ['Cisco', 'Firewall', 'VPN', 'SIEM'], icon: '🔒', color: '#6366f1', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format' },
+  { id: '02', title: 'Web Development', description: 'Corporate websites, e-commerce, landing pages, CMS, UI/UX design and progressive web apps that convert.', tags: ['Next.js', 'React', 'Shopify', 'WordPress'], icon: '🌐', color: '#818cf8', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&auto=format' },
+  { id: '03', title: 'ERPNext Solutions', description: 'Complete ERPNext implementation — accounting, HR, inventory, CRM, manufacturing and project management.', tags: ['ERPNext', 'Frappe', 'ZATCA', 'Custom'], icon: '📊', color: '#d0d1fb', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format' },
+  { id: '04', title: 'AI Automation', description: 'AI-powered chatbots, intelligent workflow automation, and predictive analytics for smarter operations.', tags: ['Chatbots', 'LLM', 'RPA', 'Analytics'], icon: '🤖', color: '#ec4899', image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop&auto=format' },
+  { id: '05', title: 'Data Cabling', description: 'Professional structured cabling from single outlets to large multi-pair trunk cables across buildings.', tags: ['Fiber', 'Cat6', 'Structured', 'Certified'], icon: '🔌', color: '#06b6d4', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format' },
+  { id: '06', title: 'CCTV Systems', description: 'Complete IP camera network solutions — design, installation, testing and certification for total coverage.', tags: ['IP Cameras', 'NVR', 'Analytics', 'Cloud'], icon: '📹', color: '#10b981', image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=600&h=400&fit=crop&auto=format' },
 ];
 
 const projects = [
-  { id: 1, title: 'Mucho Burrito', category: 'UI/UX & Web Dev', metric: '+310% Revenue', gradient: 'from-orange-500 to-red-500', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop&auto=format' },
-  { id: 2, title: 'myZoi Financial', category: 'Full Stack Marketing', metric: '3.4x ROAS', gradient: 'from-blue-500 to-cyan-500', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format' },
-  { id: 3, title: "Stillman's Beauty", category: 'E-Commerce', metric: '$1.2M Revenue', gradient: 'from-pink-500 to-purple-500', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop&auto=format' },
-  { id: 4, title: 'Combaxx Sports', category: 'Web Dev & SEO', metric: '+85% Conversion', gradient: 'from-green-500 to-emerald-500', image: 'https://images.unsplash.com/photo-1461896836934-bd45ba8b8c6c?w=600&h=400&fit=crop&auto=format' },
+  { id: 1, title: 'Mucho Burrito', category: 'UI/UX & Web Dev', metric: '+310% Revenue', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop&auto=format' },
+  { id: 2, title: 'myZoi Financial', category: 'Full Stack Marketing', metric: '3.4x ROAS', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format' },
+  { id: 3, title: "Stillman's Beauty", category: 'E-Commerce', metric: '$1.2M Revenue', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop&auto=format' },
+  { id: 4, title: 'Combaxx Sports', category: 'Web Dev & SEO', metric: '+85% Conversion', image: 'https://images.unsplash.com/photo-1461896836934-bd45ba8b8c6c?w=600&h=400&fit=crop&auto=format' },
 ];
 
 const testimonials = [
   { quote: "Inspired Technology transformed our digital presence completely. Their AI automation solutions saved us 40% in operational costs.", author: 'Sarah Mitchell', role: 'CEO, TechVentures Inc.', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&auto=format' },
   { quote: "The team delivered a world-class e-commerce platform that increased our online revenue by 310%. Outstanding technical expertise.", author: 'Ahmed Al-Rashid', role: 'Founder, Luxe Commerce', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&auto=format' },
   { quote: "From SEO to performance marketing, Inspired Technology took our brand from invisible to industry leader in just six months.", author: 'Fatima Khan', role: 'Marketing Director, Global Brands', avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&auto=format' },
+];
+
+const clients = [
+  { name: 'Cisco', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/200px-Cisco_logo_blue_2016.svg.png' },
+  { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/200px-Microsoft_logo.svg.png' },
+  { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png' },
+  { name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png' },
+  { name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/200px-IBM_logo.svg.png' },
+  { name: 'Oracle', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/200px-Oracle_logo.svg.png' },
 ];
 
 export default function Home() {
@@ -46,7 +55,7 @@ export default function Home() {
       <Navbar />
       <Background3DCSS />
 
-      {/* Hero Section */}
+      {/* Hero Section - 10Pearls inspired */}
       <section ref={heroRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden" aria-labelledby="hero-heading">
         <HeroVisual variant="default" />
 
@@ -60,7 +69,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
                 className="mb-6"
               >
-                <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase">// INSPIRED TECHNOLOGY</span>
+                <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] uppercase">// INSPIRED TECHNOLOGY</span>
               </motion.div>
 
               <motion.h1
@@ -79,7 +88,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7, ease: [0.32, 0.72, 0, 1] }}
-                className="text-[#9A9BB0] text-base md:text-lg max-w-lg mb-10 leading-relaxed"
+                className="text-[#a0a0a0] text-base md:text-lg max-w-lg mb-10 leading-relaxed"
               >
                 Enterprise networking, cybersecurity, ERP systems, and web development — end-to-end technology solutions for businesses across Pakistan, USA & Middle East.
               </motion.p>
@@ -101,12 +110,12 @@ export default function Home() {
                 <MagneticElement strength={0.15}>
                   <RippleButton href="/contact" variant="secondary" className="px-7 py-3.5 rounded-full text-sm">
                     Talk to an Expert
-                    <div className="w-1.5 h-1.5 bg-[#00E87B] rounded-full animate-glow-pulse" aria-hidden="true" />
+                    <div className="w-1.5 h-1.5 bg-[#6366f1] rounded-full animate-glow-pulse" aria-hidden="true" />
                   </RippleButton>
                 </MagneticElement>
               </motion.div>
 
-              {/* Stats */}
+              {/* Stats - 10Pearls style */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -126,17 +135,17 @@ export default function Home() {
                     transition={{ duration: 0.4, delay: 1.2 + index * 0.06, ease: [0.32, 0.72, 0, 1] }}
                     className="text-left"
                   >
-                    <div className="text-2xl md:text-3xl font-bold text-[#00E87B] mb-0.5" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</div>
-                    <div className="text-[#5C5D72] text-xs">{stat.label}</div>
+                    <div className="text-2xl md:text-3xl font-bold text-[#6366f1] mb-0.5" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</div>
+                    <div className="text-[#666666] text-xs">{stat.label}</div>
                   </motion.div>
                 ))}
               </motion.div>
             </div>
 
-            {/* Right: Hero Image */}
+            {/* Right: Hero Image - 10Pearls inspired overlapping layout */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.5, ease: [0.32, 0.72, 0, 1] }}
               className="relative hidden lg:block"
             >
@@ -144,32 +153,32 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&h=500&fit=crop&auto=format"
                   alt="Team collaborating on technology solutions"
-                  className="w-full h-[420px] object-cover img-dark"
+                  className="w-full h-[420px] object-cover"
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-transparent to-transparent opacity-70" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-[#00E87B] rounded-full animate-glow-pulse" />
-                    <span className="text-[#EDEEF2] text-sm font-medium">Trusted by 500+ enterprises worldwide</span>
+                    <div className="w-2 h-2 bg-[#6366f1] rounded-full animate-glow-pulse" />
+                    <span className="text-white text-sm font-medium">Trusted by 500+ enterprises worldwide</span>
                   </div>
                 </div>
               </div>
               {/* Floating accent card */}
               <motion.div
-                className="absolute -bottom-6 -left-6 bg-[#16161F] border border-[#252533] rounded-xl p-4 shadow-xl"
+                className="absolute -bottom-6 -left-6 bg-[#111] border border-[#222] rounded-xl p-4 shadow-xl"
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[rgba(0,232,123,0.1)] rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-[#00E87B]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <div className="w-10 h-10 bg-[rgba(99,102,241,0.1)] rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
                   <div>
-                    <div className="text-[#EDEEF2] text-sm font-semibold">99.9% Uptime</div>
-                    <div className="text-[#5C5D72] text-xs">Network reliability</div>
+                    <div className="text-white text-sm font-semibold">99.9% Uptime</div>
+                    <div className="text-[#666666] text-xs">Network reliability</div>
                   </div>
                 </div>
               </motion.div>
@@ -177,20 +186,20 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Marquee */}
-        <div className="relative border-y border-[#252533]/60 bg-[#111118]/50 py-3.5 overflow-hidden z-10" aria-hidden="true">
+        {/* Marquee - client logos style */}
+        <div className="relative border-y border-[#222]/60 bg-[#0a0a0a]/50 py-3.5 overflow-hidden z-10" aria-hidden="true">
           <div className="animate-marquee flex whitespace-nowrap">
-            {['PERFORMANCE MARKETING', 'UI/UX DESIGN', 'AI AUTOMATION', 'E-COMMERCE GROWTH', 'CUSTOM WEB SYSTEMS', 'SEO OPTIMIZATION', 'NETWORK SECURITY', 'ERPNext'].map((item, index) => (
-              <span key={index} className="mx-8 text-xs font-mono text-[#5C5D72] tracking-wider">
+            {['NETWORK SECURITY', 'WEB DEVELOPMENT', 'ERPNext SOLUTIONS', 'AI AUTOMATION', 'DATA CABLING', 'CCTV SYSTEMS', 'DIGITAL TRANSFORMATION', 'CISCO PARTNER'].map((item, index) => (
+              <span key={index} className="mx-8 text-xs text-[#666666] tracking-wider">
                 {item}
-                <span className="ml-8 text-[#00E87B] opacity-40">•</span>
+                <span className="ml-8 text-[#6366f1] opacity-40">•</span>
               </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About Preview */}
+      {/* About Preview - 10Pearls style */}
       <section className="py-28 relative z-10" aria-labelledby="about-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
@@ -200,25 +209,25 @@ export default function Home() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
             >
-              <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-4 block">// WHO WE ARE</span>
+              <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] uppercase mb-4 block">// WHO WE ARE</span>
               <h2 id="about-heading" className="text-3xl md:text-4xl font-bold mb-5">
                 We deliver <span className="gradient-text">networking excellence</span>
               </h2>
-              <p className="text-[#9A9BB0] text-base leading-relaxed mb-7">
+              <p className="text-[#a0a0a0] text-base leading-relaxed mb-7">
                 Inspired Technology is a network solutions provider based in Pakistan, delivering professional services to large-scale corporate businesses around the globe. We take pride in being the most trusted networking solution provider in Pakistan.
               </p>
               <div className="flex flex-wrap gap-3 mb-7">
-                <div className="bg-[#16161F] border border-[#252533] px-4 py-2.5 rounded-lg flex items-center gap-2.5">
-                  <span className="text-[#00E87B] font-semibold text-sm">Cisco</span>
-                  <span className="text-[#5C5D72] text-xs">Certified Partner</span>
+                <div className="bg-[#111] border border-[#222] px-4 py-2.5 rounded-full flex items-center gap-2.5">
+                  <span className="text-[#6366f1] font-semibold text-sm">Cisco</span>
+                  <span className="text-[#666666] text-xs">Certified Partner</span>
                 </div>
-                <div className="bg-[#16161F] border border-[#252533] px-4 py-2.5 rounded-lg flex items-center gap-2.5">
-                  <span className="text-[#00E87B] font-semibold text-sm">ISO</span>
-                  <span className="text-[#5C5D72] text-xs">Quality Standards</span>
+                <div className="bg-[#111] border border-[#222] px-4 py-2.5 rounded-full flex items-center gap-2.5">
+                  <span className="text-[#6366f1] font-semibold text-sm">ISO</span>
+                  <span className="text-[#666666] text-xs">Quality Standards</span>
                 </div>
               </div>
               <MagneticElement strength={0.12}>
-                <RippleButton href="/about" variant="ghost" className="text-[#00E87B] font-semibold text-sm">
+                <RippleButton href="/about" variant="ghost" className="text-[#6366f1] font-semibold text-sm">
                   Learn More About Us
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -238,10 +247,10 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=450&fit=crop&auto=format"
                   alt="Technology team working on network infrastructure"
-                  className="w-full h-[380px] object-cover img-dark rounded-2xl"
+                  className="w-full h-[380px] object-cover rounded-2xl"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F]/60 to-transparent rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl" />
               </div>
               {/* Feature cards overlay */}
               <div className="absolute bottom-4 left-4 right-4 grid grid-cols-2 gap-3">
@@ -249,10 +258,10 @@ export default function Home() {
                   { icon: '🌐', title: 'Global Reach', desc: 'Pakistan, USA & beyond' },
                   { icon: '🔒', title: 'Secure by Design', desc: 'Enterprise-grade security' },
                 ].map((item) => (
-                  <div key={item.title} className="bg-[#16161F]/90 backdrop-blur-sm border border-[#252533] rounded-xl p-3">
+                  <div key={item.title} className="bg-[#111]/90 backdrop-blur-sm border border-[#222] rounded-xl p-3">
                     <div className="text-lg mb-1">{item.icon}</div>
-                    <div className="text-[#EDEEF2] text-xs font-semibold">{item.title}</div>
-                    <div className="text-[#5C5D72] text-[10px]">{item.desc}</div>
+                    <div className="text-white text-xs font-semibold">{item.title}</div>
+                    <div className="text-[#666666] text-[10px]">{item.desc}</div>
                   </div>
                 ))}
               </div>
@@ -261,8 +270,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-28 relative z-10 bg-[#111118]/40" aria-labelledby="services-heading">
+      {/* Client Logos - 10Pearls style */}
+      <section className="py-16 relative z-10 border-y border-[#222]/40" aria-label="Trusted by leading companies">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+            className="text-center mb-10"
+          >
+            <span className="text-[#666666] text-sm">Trusted by industry leaders worldwide</span>
+          </motion.div>
+          <div className="flex flex-wrap justify-center items-center gap-10 opacity-40">
+            {clients.map((client, index) => (
+              <motion.img
+                key={client.name}
+                src={client.logo}
+                alt={`${client.name} logo`}
+                className="h-8 object-contain filter invert"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                loading="lazy"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Grid - Cubix inspired */}
+      <section className="py-28 relative z-10" aria-labelledby="services-heading">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -271,7 +310,7 @@ export default function Home() {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
             className="mb-14"
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-4 block">// OUR EXPERTISE</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] uppercase mb-4 block">// OUR EXPERTISE</span>
             <h2 id="services-heading" className="text-3xl md:text-4xl font-bold">
               Services that <span className="gradient-text">drive growth</span>
             </h2>
@@ -285,34 +324,34 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.06, ease: [0.32, 0.72, 0, 1] }}
-                className="group bg-[#16161F] border border-[#252533] rounded-2xl overflow-hidden hover-glow card-lift cursor-pointer"
+                className="group bg-[#111] border border-[#222] rounded-2xl overflow-hidden hover-glow card-lift cursor-pointer"
               >
                 {/* Service Image */}
                 <div className="relative h-44 overflow-hidden">
                   <img
                     src={service.image}
                     alt={`${service.title} service`}
-                    className="w-full h-full object-cover img-dark group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#16161F] via-[#16161F]/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/30 to-transparent" />
                   <div className="absolute top-4 left-4">
                     <ServiceVisual icon={service.icon} color={service.color} size="sm" />
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2 group-hover:text-[#00E87B] transition-colors duration-200">
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-[#6366f1] transition-colors duration-200">
                     {service.title}
                   </h3>
-                  <p className="text-[#9A9BB0] text-sm mb-4 leading-relaxed line-clamp-2">
+                  <p className="text-[#a0a0a0] text-sm mb-4 leading-relaxed line-clamp-2">
                     {service.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {service.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] px-2.5 py-1 bg-[#0A0A0F] border border-[#252533] rounded-full text-[#5C5D72] group-hover:border-[rgba(0,232,123,0.2)] group-hover:text-[#9A9BB0] transition-colors"
+                        className="text-[10px] px-2.5 py-1 bg-black border border-[#222] rounded-full text-[#666666] group-hover:border-[rgba(99,102,241,0.2)] group-hover:text-[#a0a0a0] transition-colors"
                       >
                         {tag}
                       </span>
@@ -331,7 +370,7 @@ export default function Home() {
             className="mt-10 text-center"
           >
             <MagneticElement strength={0.12}>
-              <RippleButton href="/services" variant="ghost" className="text-[#00E87B] font-semibold text-sm">
+              <RippleButton href="/services" variant="ghost" className="text-[#6366f1] font-semibold text-sm">
                 View All Services
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -352,14 +391,14 @@ export default function Home() {
             transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
           >
             <h2 id="tagline-heading" className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="text-[#5C5D72]">Technology should work for you, </span>
+              <span className="text-[#666666]">Technology should work for you, </span>
               <span className="gradient-text">not the other way around.</span>
             </h2>
           </motion.div>
         </div>
       </section>
 
-      {/* Portfolio */}
+      {/* Portfolio - Cubix inspired */}
       <section className="py-28 relative z-10" aria-labelledby="work-heading">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -369,7 +408,7 @@ export default function Home() {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
             className="mb-14"
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-4 block">// OUR WORK</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] uppercase mb-4 block">// OUR WORK</span>
             <h2 id="work-heading" className="text-3xl md:text-4xl font-bold">
               Case studies that <span className="gradient-text">speak</span>
             </h2>
@@ -389,26 +428,26 @@ export default function Home() {
                 <img
                   src={project.image}
                   alt={`${project.title} project preview`}
-                  className="absolute inset-0 w-full h-full object-cover img-dark group-hover:scale-105 transition-transform duration-700"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F]/90 via-[#0A0A0F]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
                 <div className="relative z-10 p-7 h-full flex flex-col justify-between">
                   <div>
-                    <div className="w-12 h-12 bg-[#16161F]/80 backdrop-blur-sm border border-[#252533] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-[rgba(0,232,123,0.3)] transition-all duration-300">
-                      <span className="text-[#00E87B] text-base font-bold">{String(project.id).padStart(2, '0')}</span>
+                    <div className="w-12 h-12 bg-[#111]/80 backdrop-blur-sm border border-[#222] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-[rgba(99,102,241,0.3)] transition-all duration-300">
+                      <span className="text-[#6366f1] text-base font-bold">{String(project.id).padStart(2, '0')}</span>
                     </div>
-                    <h3 className="text-xl font-bold mb-1.5 text-[#EDEEF2] group-hover:text-[#00E87B] transition-colors">{project.title}</h3>
-                    <p className="text-[#9A9BB0] text-sm">{project.category}</p>
+                    <h3 className="text-xl font-bold mb-1.5 text-white group-hover:text-[#6366f1] transition-colors">{project.title}</h3>
+                    <p className="text-[#a0a0a0] text-sm">{project.category}</p>
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <div className="bg-[rgba(0,232,123,0.08)] border border-[rgba(0,232,123,0.2)] px-3.5 py-1.5 rounded-full backdrop-blur-sm">
-                      <span className="text-[#00E87B] text-xs font-semibold">{project.metric}</span>
+                    <div className="bg-[rgba(99,102,241,0.1)] border border-[rgba(99,102,241,0.2)] px-3.5 py-1.5 rounded-full backdrop-blur-sm">
+                      <span className="text-[#6366f1] text-xs font-semibold">{project.metric}</span>
                     </div>
-                    <div className="w-9 h-9 border border-[#252533] rounded-full flex items-center justify-center group-hover:border-[rgba(0,232,123,0.3)] group-hover:bg-[rgba(0,232,123,0.04)] transition-all duration-200 backdrop-blur-sm">
-                      <svg className="w-4 h-4 text-[#5C5D72] group-hover:text-[#00E87B] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <div className="w-9 h-9 border border-[#222] rounded-full flex items-center justify-center group-hover:border-[rgba(99,102,241,0.3)] group-hover:bg-[rgba(99,102,241,0.05)] transition-all duration-200 backdrop-blur-sm">
+                      <svg className="w-4 h-4 text-[#666666] group-hover:text-[#6366f1] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </div>
@@ -426,7 +465,7 @@ export default function Home() {
             className="mt-10 text-center"
           >
             <MagneticElement strength={0.12}>
-              <RippleButton href="/portfolio" variant="ghost" className="text-[#00E87B] font-semibold text-sm">
+              <RippleButton href="/portfolio" variant="ghost" className="text-[#6366f1] font-semibold text-sm">
                 View All Projects
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -438,7 +477,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-28 relative z-10 bg-[#111118]/40" aria-labelledby="testimonials-heading">
+      <section className="py-28 relative z-10 bg-[#0a0a0a]" aria-labelledby="testimonials-heading">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -447,7 +486,7 @@ export default function Home() {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
             className="mb-14"
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-4 block">// WHAT PEOPLE SAY</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] uppercase mb-4 block">// WHAT PEOPLE SAY</span>
             <h2 id="testimonials-heading" className="text-3xl md:text-4xl font-bold">
               Client <span className="gradient-text">testimonials</span>
             </h2>
@@ -461,14 +500,14 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08, ease: [0.32, 0.72, 0, 1] }}
-                className="bg-[#16161F] border border-[#252533] rounded-2xl p-7 hover-glow card-lift relative overflow-hidden"
+                className="bg-[#111] border border-[#222] rounded-2xl p-7 hover-glow card-lift relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-[rgba(0,232,123,0.03)] rounded-full blur-2xl pointer-events-none" aria-hidden="true" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[rgba(99,102,241,0.03)] rounded-full blur-2xl pointer-events-none" aria-hidden="true" />
 
-                <svg className="w-8 h-8 text-[rgba(0,232,123,0.2)] mb-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-8 h-8 text-[rgba(99,102,241,0.2)] mb-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
-                <p className="text-[#EDEEF2] text-sm leading-relaxed mb-5">{testimonial.quote}</p>
+                <p className="text-white text-sm leading-relaxed mb-5">{testimonial.quote}</p>
                 <div className="flex items-center gap-3">
                   <img
                     src={testimonial.avatar}
@@ -477,8 +516,8 @@ export default function Home() {
                     loading="lazy"
                   />
                   <div>
-                    <div className="font-semibold text-xs text-[#EDEEF2]">{testimonial.author}</div>
-                    <div className="text-[#5C5D72] text-[11px]">{testimonial.role}</div>
+                    <div className="font-semibold text-xs text-white">{testimonial.author}</div>
+                    <div className="text-[#666666] text-[11px]">{testimonial.role}</div>
                   </div>
                 </div>
               </motion.div>
@@ -487,9 +526,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA - 10Pearls inspired */}
       <section className="py-28 relative z-10 overflow-hidden" aria-labelledby="cta-heading">
-        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(0,232,123,0.06)] via-transparent to-[rgba(0,163,224,0.06)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(99,102,241,0.06)] via-transparent to-[rgba(208,209,251,0.06)]" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -497,11 +536,11 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-5 block">// READY TO GROW?</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] uppercase mb-5 block">// READY TO GROW?</span>
             <h2 id="cta-heading" className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
               Ready to build something <span className="gradient-text">remarkable?</span>
             </h2>
-            <p className="text-[#9A9BB0] text-base md:text-lg max-w-xl mx-auto mb-10">
+            <p className="text-[#a0a0a0] text-base md:text-lg max-w-xl mx-auto mb-10">
               Let&apos;s discuss how we can transform your digital presence and drive real results for your business.
             </p>
             <div className="flex flex-wrap justify-center gap-3">

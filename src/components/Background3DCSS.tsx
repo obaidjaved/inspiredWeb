@@ -77,7 +77,7 @@ export default function Background3DCSS() {
 
         ctx.beginPath();
         ctx.arc(x2d, y2d, size2d, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 232, 123, ${p.opacity * scale * 0.8})`;
+        ctx.fillStyle = `rgba(99, 102, 241, ${p.opacity * scale * 0.8})`;
         ctx.fill();
 
         particles.forEach((p2, j) => {
@@ -92,7 +92,7 @@ export default function Background3DCSS() {
             ctx.moveTo(x2d, y2d);
             const scale2 = 600 / (600 + p2.z);
             ctx.lineTo(p2.x * scale2 * scaleX, p2.y * scale2 * scaleY);
-            ctx.strokeStyle = `rgba(0, 232, 123, ${lineOpacity})`;
+            ctx.strokeStyle = `rgba(99, 102, 241, ${lineOpacity})`;
             ctx.lineWidth = 0.4;
             ctx.stroke();
           }
@@ -124,7 +124,7 @@ export default function Background3DCSS() {
       <canvas ref={canvasRef} className="absolute inset-0" style={{ opacity: 0.5 }} />
       {/* Gradient overlay */}
       <div className="absolute inset-0" style={{
-        background: 'linear-gradient(180deg, rgba(10,10,15,0.4) 0%, transparent 40%, rgba(10,10,15,0.7) 100%)'
+        background: 'linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 40%, rgba(0,0,0,0.7) 100%)'
       }} />
     </div>
   );

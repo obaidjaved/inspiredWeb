@@ -18,10 +18,10 @@ export default function ProjectVisual({ gradient, icon, title, index, image }: P
           <img
             src={image}
             alt={`${title} project preview`}
-            className="absolute inset-0 w-full h-full object-cover img-dark group-hover:scale-105 transition-transform duration-700"
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F]/80 via-[#0A0A0F]/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         </>
       ) : (
         <>

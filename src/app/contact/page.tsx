@@ -50,11 +50,11 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.15em] mb-4 block">// GET IN TOUCH</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// GET IN TOUCH</span>
             <h1 id="contact-hero-heading" className="text-4xl md:text-6xl font-bold mb-5">
               Contact <span className="gradient-text">us</span>
             </h1>
-            <p className="text-[#9A9BB0] text-base md:text-lg max-w-2xl leading-relaxed">
+            <p className="text-[#a0a0a0] text-base md:text-lg max-w-2xl leading-relaxed">
               Ready to transform your digital presence? Let&apos;s discuss your project and find the perfect solution.
             </p>
           </motion.div>
@@ -79,23 +79,23 @@ export default function ContactPage() {
                 <a
                   key={info.title}
                   href={info.href}
-                  className="group flex items-start gap-3.5 p-3.5 bg-[#16161F] border border-[#252533] rounded-xl hover-glow transition-all duration-200"
+                  className="group flex items-start gap-3.5 p-3.5 bg-[#111] border border-[#222] rounded-xl hover-glow transition-all duration-200"
                 >
-                  <div className="w-10 h-10 border border-[#252533] rounded-lg flex items-center justify-center group-hover:border-[rgba(0,232,123,0.3)] group-hover:bg-[rgba(0,232,123,0.04)] transition-all flex-shrink-0">
-                    <svg className="w-4 h-4 text-[#5C5D72] group-hover:text-[#00E87B] transition-colors" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                  <div className="w-10 h-10 border border-[#222] rounded-lg flex items-center justify-center group-hover:border-[rgba(99,102,241,0.3)] group-hover:bg-[rgba(99,102,241,0.05)] transition-all flex-shrink-0">
+                    <svg className="w-4 h-4 text-[#666666] group-hover:text-[#6366f1] transition-colors" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
                       <path d={info.icon} />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-[#5C5D72] text-xs mb-0.5">{info.title}</p>
-                    <p className="text-[#EDEEF2] text-sm font-medium group-hover:text-[#00E87B] transition-colors">{info.value}</p>
+                    <p className="text-[#666666] text-xs mb-0.5">{info.title}</p>
+                    <p className="text-white text-sm font-medium group-hover:text-[#6366f1] transition-colors">{info.value}</p>
                   </div>
                 </a>
               ))}
 
               <div className="pt-4">
-                <h3 className="text-xs font-semibold text-[#00E87B] mb-3 tracking-wider">OFFICE HOURS</h3>
-                <div className="space-y-1.5 text-[#9A9BB0] text-sm">
+                <h3 className="text-xs font-semibold text-[#6366f1] mb-3 tracking-wider">OFFICE HOURS</h3>
+                <div className="space-y-1.5 text-[#a0a0a0] text-sm">
                   <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                   <p>Saturday: 10:00 AM - 2:00 PM</p>
                   <p>Sunday: Closed</p>
@@ -111,31 +111,31 @@ export default function ContactPage() {
               transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
               className="lg:col-span-2"
             >
-              <form onSubmit={handleSubmit} className="bg-[#16161F] border border-[#252533] rounded-2xl p-7 md:p-8 space-y-5">
+              <form onSubmit={handleSubmit} className="bg-[#111] border border-[#222] rounded-2xl p-7 md:p-8 space-y-5">
                 <h2 className="text-xl font-bold mb-5">Send us a message</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="name" className="block text-xs text-[#5C5D72] mb-1.5">Full Name *</label>
+                    <label htmlFor="name" className="block text-xs text-[#666666] mb-1.5">Full Name *</label>
                     <input
                       type="text"
                       id="name"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#0A0A0F] border border-[#252533] rounded-lg px-3.5 py-2.5 text-sm text-[#EDEEF2] focus:outline-none focus:border-[rgba(0,232,123,0.4)] focus:ring-1 focus:ring-[rgba(0,232,123,0.15)] transition-all placeholder:text-[#5C5D72]"
+                      className="w-full bg-black border border-[#222] rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[rgba(99,102,241,0.4)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)] transition-all placeholder:text-[#666666]"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-xs text-[#5C5D72] mb-1.5">Email Address *</label>
+                    <label htmlFor="email" className="block text-xs text-[#666666] mb-1.5">Email Address *</label>
                     <input
                       type="email"
                       id="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#0A0A0F] border border-[#252533] rounded-lg px-3.5 py-2.5 text-sm text-[#EDEEF2] focus:outline-none focus:border-[rgba(0,232,123,0.4)] focus:ring-1 focus:ring-[rgba(0,232,123,0.15)] transition-all placeholder:text-[#5C5D72]"
+                      className="w-full bg-black border border-[#222] rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[rgba(99,102,241,0.4)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)] transition-all placeholder:text-[#666666]"
                       placeholder="john@company.com"
                     />
                   </div>
@@ -143,24 +143,24 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="phone" className="block text-xs text-[#5C5D72] mb-1.5">Phone Number</label>
+                    <label htmlFor="phone" className="block text-xs text-[#666666] mb-1.5">Phone Number</label>
                     <input
                       type="tel"
                       id="phone"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-[#0A0A0F] border border-[#252533] rounded-lg px-3.5 py-2.5 text-sm text-[#EDEEF2] focus:outline-none focus:border-[rgba(0,232,123,0.4)] focus:ring-1 focus:ring-[rgba(0,232,123,0.15)] transition-all placeholder:text-[#5C5D72]"
+                      className="w-full bg-black border border-[#222] rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[rgba(99,102,241,0.4)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)] transition-all placeholder:text-[#666666]"
                       placeholder="+92 300 1234567"
                     />
                   </div>
                   <div>
-                    <label htmlFor="service" className="block text-xs text-[#5C5D72] mb-1.5">Service Interested In *</label>
+                    <label htmlFor="service" className="block text-xs text-[#666666] mb-1.5">Service Interested In *</label>
                     <select
                       id="service"
                       required
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full bg-[#0A0A0F] border border-[#252533] rounded-lg px-3.5 py-2.5 text-sm text-[#EDEEF2] focus:outline-none focus:border-[rgba(0,232,123,0.4)] focus:ring-1 focus:ring-[rgba(0,232,123,0.15)] transition-all appearance-none cursor-pointer"
+                      className="w-full bg-black border border-[#222] rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[rgba(99,102,241,0.4)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)] transition-all appearance-none cursor-pointer"
                     >
                       <option value="">Select a service</option>
                       {services.map((service) => (
@@ -171,21 +171,21 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs text-[#5C5D72] mb-1.5">Your Message *</label>
+                  <label htmlFor="message" className="block text-xs text-[#666666] mb-1.5">Your Message *</label>
                   <textarea
                     id="message"
                     required
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-[#0A0A0F] border border-[#252533] rounded-lg px-3.5 py-2.5 text-sm text-[#EDEEF2] focus:outline-none focus:border-[rgba(0,232,123,0.4)] focus:ring-1 focus:ring-[rgba(0,232,123,0.15)] transition-all resize-none placeholder:text-[#5C5D72]"
+                    className="w-full bg-black border border-[#222] rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[rgba(99,102,241,0.4)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)] transition-all resize-none placeholder:text-[#666666]"
                     placeholder="Tell us about your project..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#00E87B] text-[#0A0A0F] py-3 rounded-full text-sm font-semibold hover:bg-[#00D46F] transition-all duration-200 hover:shadow-[0_0_24px_rgba(0,232,123,0.3)] active:scale-[0.98] flex items-center justify-center gap-2"
+                  className="w-full bg-[#6366f1] text-white py-3 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] active:scale-[0.98] flex items-center justify-center gap-2"
                 >
                   Send Message
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -193,7 +193,7 @@ export default function ContactPage() {
                   </svg>
                 </button>
 
-                <p className="text-[#5C5D72] text-xs text-center">
+                <p className="text-[#666666] text-xs text-center">
                   We typically respond within 24 hours during business days.
                 </p>
               </form>

@@ -37,7 +37,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111118] border-t border-[#252533]" role="contentinfo">
+    <footer className="bg-[#0a0a0a] border-t border-[#222]" role="contentinfo">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
@@ -48,15 +48,15 @@ export default function Footer() {
             transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
           >
             <Link href="/" className="flex items-center gap-2.5 mb-6" aria-label="Inspired Technology - Home">
-              <div className="w-9 h-9 bg-[#00E87B] rounded-lg flex items-center justify-center">
-                <span className="text-[#0A0A0F] font-bold text-base">I</span>
+              <div className="w-9 h-9 bg-[#6366f1] rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-base">I</span>
               </div>
               <div className="flex items-baseline">
-                <span className="text-lg font-bold text-[#EDEEF2]">INSPIRED</span>
-                <span className="text-[#00E87B] text-lg font-semibold">.tech</span>
+                <span className="text-lg font-bold text-white">INSPIRED</span>
+                <span className="text-[#6366f1] text-lg font-semibold">.tech</span>
               </div>
             </Link>
-            <p className="text-[#5C5D72] text-sm leading-relaxed mb-6">
+            <p className="text-[#666666] text-sm leading-relaxed mb-6">
               Pakistan&apos;s most trusted IT solutions provider — delivering excellence in networking, security, ERP and digital transformation since 2009.
             </p>
             <div className="flex gap-2.5">
@@ -64,7 +64,7 @@ export default function Footer() {
                 <motion.a
                   key={social.name}
                   href={social.href}
-                  className="w-9 h-9 border border-[#252533] rounded-lg flex items-center justify-center text-[#5C5D72] hover:text-[#00E87B] hover:border-[rgba(0,232,123,0.3)] hover:bg-[rgba(0,232,123,0.04)] transition-all duration-200"
+                  className="w-9 h-9 border border-[#222] rounded-lg flex items-center justify-center text-[#666666] hover:text-[#6366f1] hover:border-[rgba(99,102,241,0.3)] hover:bg-[rgba(99,102,241,0.05)] transition-all duration-200"
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={social.name}
@@ -84,13 +84,13 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.08, ease: [0.32, 0.72, 0, 1] }}
           >
-            <h3 className="text-xs font-semibold text-[#00E87B] mb-5 tracking-widest uppercase font-mono">Services</h3>
+            <h3 className="text-xs font-semibold text-[#6366f1] mb-5 tracking-widest uppercase">Services</h3>
             <ul className="space-y-2.5" role="list">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[#5C5D72] text-sm hover:text-[#EDEEF2] transition-colors duration-200"
+                    className="text-[#666666] text-sm hover:text-white transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -106,13 +106,13 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15, ease: [0.32, 0.72, 0, 1] }}
           >
-            <h3 className="text-xs font-semibold text-[#00E87B] mb-5 tracking-widest uppercase font-mono">Company</h3>
+            <h3 className="text-xs font-semibold text-[#6366f1] mb-5 tracking-widest uppercase">Company</h3>
             <ul className="space-y-2.5" role="list">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[#5C5D72] text-sm hover:text-[#EDEEF2] transition-colors duration-200"
+                    className="text-[#666666] text-sm hover:text-white transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -128,13 +128,13 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.22, ease: [0.32, 0.72, 0, 1] }}
           >
-            <h3 className="text-xs font-semibold text-[#00E87B] mb-5 tracking-widest uppercase font-mono">Contact</h3>
+            <h3 className="text-xs font-semibold text-[#6366f1] mb-5 tracking-widest uppercase">Contact</h3>
             <ul className="space-y-2.5" role="list">
               {footerLinks.contact.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-[#5C5D72] text-sm hover:text-[#EDEEF2] transition-colors duration-200"
+                    className="text-[#666666] text-sm hover:text-white transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -145,15 +145,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-[#252533] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#5C5D72] text-sm">
+        <div className="border-t border-[#222] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#666666] text-sm">
             &copy; {new Date().getFullYear()} Inspired Technology Pvt. Ltd. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-[#5C5D72] text-sm hover:text-[#EDEEF2] transition-colors">
+            <a href="#" className="text-[#666666] text-sm hover:text-white transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-[#5C5D72] text-sm hover:text-[#EDEEF2] transition-colors">
+            <a href="#" className="text-[#666666] text-sm hover:text-white transition-colors">
               Terms of Service
             </a>
           </div>

@@ -66,7 +66,7 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
             rotateY,
             transformStyle: 'preserve-3d',
           }}
-          className="relative bg-[#16161F] border border-[#252533] rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[0_16px_48px_-12px_rgba(0,232,123,0.12)]"
+          className="relative bg-[#111] border border-[#222] rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[0_16px_48px_-12px_rgba(99,102,241,0.12)]"
         >
           {/* Project Visual Banner */}
           <ProjectVisual
@@ -96,12 +96,12 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
             {/* Header */}
             <div className="flex items-start justify-between mb-3">
               <div>
-                <p className="text-[#5C5D72] text-[10px] font-mono tracking-wider uppercase mb-0.5">{study.industry}</p>
-                <p className="text-[#EDEEF2] font-semibold text-xs">{study.client}</p>
+                <p className="text-[#666666] text-[10px] font-medium tracking-wider uppercase mb-0.5">{study.industry}</p>
+                <p className="text-white font-semibold text-xs">{study.client}</p>
               </div>
-              <div className="w-8 h-8 rounded-full flex items-center justify-center border border-[#252533] group-hover:border-[rgba(0,232,123,0.3)] group-hover:bg-[rgba(0,232,123,0.04)] transition-all duration-200">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center border border-[#222] group-hover:border-[rgba(99,102,241,0.3)] group-hover:bg-[rgba(99,102,241,0.05)] transition-all duration-200">
                 <svg
-                  className="w-3.5 h-3.5 text-[#5C5D72] group-hover:text-[#00E87B] transition-colors"
+                  className="w-3.5 h-3.5 text-[#666666] group-hover:text-[#6366f1] transition-colors"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -113,12 +113,12 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
             </div>
 
             {/* Title */}
-            <h3 className="text-lg font-bold mb-2 group-hover:text-[#00E87B] transition-colors duration-200 leading-tight">
+            <h3 className="text-lg font-bold mb-2 group-hover:text-[#6366f1] transition-colors duration-200 leading-tight">
               {study.title}
             </h3>
 
             {/* Summary */}
-            <p className="text-[#9A9BB0] text-xs leading-relaxed mb-4 line-clamp-3">
+            <p className="text-[#a0a0a0] text-xs leading-relaxed mb-4 line-clamp-3">
               {study.summary}
             </p>
 
@@ -127,9 +127,9 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
               {study.metrics.map((metric) => (
                 <div
                   key={metric.label}
-                  className="bg-[#0A0A0F] border border-[#252533] rounded-lg px-2.5 py-1.5 flex flex-col"
+                  className="bg-black border border-[#222] rounded-lg px-2.5 py-1.5 flex flex-col"
                 >
-                  <span className="text-[9px] text-[#5C5D72] mb-0.5">{metric.label}</span>
+                  <span className="text-[9px] text-[#666666] mb-0.5">{metric.label}</span>
                   <span className="text-[10px] font-bold" style={{ color: study.color }}>
                     {metric.value}
                   </span>
@@ -142,7 +142,7 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
               {study.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] px-2.5 py-1 bg-[#0A0A0F] border border-[#252533] rounded-full text-[#5C5D72] group-hover:border-[rgba(0,232,123,0.2)] group-hover:text-[#9A9BB0] transition-colors"
+                  className="text-[10px] px-2.5 py-1 bg-black border border-[#222] rounded-full text-[#666666] group-hover:border-[rgba(99,102,241,0.2)] group-hover:text-[#a0a0a0] transition-colors"
                 >
                   {tag}
                 </span>

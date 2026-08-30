@@ -34,19 +34,19 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#0A0A0F]/90 backdrop-blur-xl border-b border-[#252533]/60'
+            ? 'bg-black/90 backdrop-blur-xl border-b border-[#222]/60'
             : 'bg-transparent'
         }`}
         role="banner"
       >
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between" aria-label="Main navigation">
           <Link href="/" className="flex items-center gap-2.5" aria-label="Inspired Technology - Home">
-            <div className="w-9 h-9 bg-[#00E87B] rounded-lg flex items-center justify-center">
-              <span className="text-[#0A0A0F] font-bold text-base">I</span>
+            <div className="w-9 h-9 bg-[#6366f1] rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-base">I</span>
             </div>
             <div className="flex items-baseline">
-              <span className="text-base font-bold tracking-tight text-[#EDEEF2]">INSPIRED</span>
-              <span className="text-[#00E87B] text-base font-semibold">.tech</span>
+              <span className="text-base font-bold tracking-tight text-white">INSPIRED</span>
+              <span className="text-[#6366f1] text-base font-semibold">.tech</span>
             </div>
           </Link>
 
@@ -56,10 +56,10 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 role="menuitem"
-                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`px-3.5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   pathname === link.href
-                    ? 'text-[#00E87B] bg-[rgba(0,232,123,0.08)]'
-                    : 'text-[#9A9BB0] hover:text-[#EDEEF2] hover:bg-[#1F1F2C]'
+                    ? 'text-[#6366f1] bg-[rgba(99,102,241,0.1)]'
+                    : 'text-[#a0a0a0] hover:text-white hover:bg-[#1a1a1a]'
                 }`}
               >
                 {link.name}
@@ -67,14 +67,14 @@ export default function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="ml-3 bg-[#00E87B] text-[#0A0A0F] px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#00D46F] transition-all duration-200 hover:shadow-[0_0_20px_rgba(0,232,123,0.25)] active:scale-[0.98]"
+              className="ml-3 bg-[#6366f1] text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] active:scale-[0.98]"
             >
               Get Started
             </Link>
           </div>
 
           <button
-            className="lg:hidden text-[#EDEEF2] p-2 rounded-lg hover:bg-[#1F1F2C] transition-colors"
+            className="lg:hidden text-white p-2 rounded-lg hover:bg-[#1a1a1a] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
@@ -97,7 +97,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
-            className="fixed inset-0 z-40 bg-[#0A0A0F]/98 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-40 bg-black/98 backdrop-blur-2xl lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
@@ -114,8 +114,8 @@ export default function Navbar() {
                     href={link.href}
                     className={`text-2xl font-semibold transition-colors block py-3 ${
                       pathname === link.href
-                        ? 'text-[#00E87B]'
-                        : 'text-[#EDEEF2] hover:text-[#00E87B]'
+                        ? 'text-[#6366f1]'
+                        : 'text-white hover:text-[#6366f1]'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -130,7 +130,7 @@ export default function Navbar() {
               >
                 <Link
                   href="/contact"
-                  className="mt-8 bg-[#00E87B] text-[#0A0A0F] px-8 py-3.5 rounded-full text-lg font-semibold"
+                  className="mt-8 bg-[#6366f1] text-white px-8 py-3.5 rounded-full text-lg font-semibold"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Get Started

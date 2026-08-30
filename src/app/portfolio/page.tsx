@@ -41,7 +41,7 @@ export default function PortfolioPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-5 block">// Case Studies</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] uppercase mb-5 block">// Case Studies</span>
           </motion.div>
 
           <motion.h1
@@ -52,7 +52,7 @@ export default function PortfolioPage() {
             className="text-4xl md:text-6xl lg:text-[5rem] font-bold leading-[1.06] mb-5 max-w-4xl tracking-tight"
           >
             Work that <span className="gradient-text">speaks</span>{' '}
-            <span className="text-[#9A9BB0] text-2xl md:text-3xl lg:text-4xl font-light block mt-3 leading-snug">
+            <span className="text-[#a0a0a0] text-2xl md:text-3xl lg:text-4xl font-light block mt-3 leading-snug">
               Results across {caseStudies.length} industries and counting.
             </span>
           </motion.h1>
@@ -69,15 +69,15 @@ export default function PortfolioPage() {
               { value: '100%', label: 'Client Satisfaction' },
             ].map((stat) => (
               <div key={stat.label} className="flex items-baseline gap-2.5">
-                <span className="text-xl md:text-2xl font-bold text-[#00E87B]" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</span>
-                <span className="text-[#5C5D72] text-xs">{stat.label}</span>
+                <span className="text-xl md:text-2xl font-bold text-[#6366f1]" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</span>
+                <span className="text-[#666666] text-xs">{stat.label}</span>
               </div>
             ))}
           </motion.div>
         </motion.div>
 
         {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0A0A0F] to-transparent pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent pointer-events-none" aria-hidden="true" />
       </section>
 
       {/* Case Studies Grid */}
@@ -96,8 +96,8 @@ export default function PortfolioPage() {
                 key={industry}
                 className={`text-xs px-4 py-2 rounded-full border transition-colors cursor-pointer ${
                   i === 0
-                    ? 'bg-[#00E87B] text-[#0A0A0F] border-[#00E87B] font-semibold'
-                    : 'bg-[#16161F] text-[#5C5D72] border-[#252533] hover:border-[rgba(0,232,123,0.3)] hover:text-[#00E87B]'
+                    ? 'bg-[#6366f1] text-white border-[#6366f1] font-semibold'
+                    : 'bg-[#111] text-[#666666] border-[#222] hover:border-[rgba(99,102,241,0.3)] hover:text-[#6366f1]'
                 }`}
               >
                 {industry}

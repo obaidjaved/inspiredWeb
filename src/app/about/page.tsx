@@ -37,11 +37,11 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.15em] mb-4 block">// WHO WE ARE</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// WHO WE ARE</span>
             <h1 id="about-hero-heading" className="text-4xl md:text-6xl font-bold mb-5">
               About <span className="gradient-text">Inspired</span>
             </h1>
-            <p className="text-[#9A9BB0] text-base md:text-lg max-w-2xl leading-relaxed">
+            <p className="text-[#a0a0a0] text-base md:text-lg max-w-2xl leading-relaxed">
               Pakistan&apos;s most trusted IT solutions provider — delivering excellence in networking, security, ERP and digital transformation since 2009.
             </p>
           </motion.div>
@@ -61,19 +61,19 @@ export default function AboutPage() {
               <h2 id="profile-heading" className="text-2xl md:text-3xl font-bold mb-5">
                 Delivering <span className="gradient-text">networking excellence</span>
               </h2>
-              <p className="text-[#9A9BB0] text-sm leading-relaxed mb-4">
+              <p className="text-[#a0a0a0] text-sm leading-relaxed mb-4">
                 Inspired Technology is a network solutions provider based in Pakistan. We provide professional services to large-scale corporate businesses around the globe.
               </p>
-              <p className="text-[#9A9BB0] text-sm leading-relaxed mb-7">
+              <p className="text-[#a0a0a0] text-sm leading-relaxed mb-7">
                 We take pride in being the most trusted networking solution provider in Pakistan, with a proven track record of delivering enterprise-grade solutions across multiple industries.
               </p>
               <div className="flex flex-wrap gap-2.5">
                 {['Cisco Certified', 'ISO Quality', '500+ Clients', 'Global Reach'].map((badge) => (
-                  <div key={badge} className="bg-[#16161F] border border-[#252533] px-4 py-2.5 rounded-lg flex items-center gap-2">
-                    <svg className="w-3.5 h-3.5 text-[#00E87B]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <div key={badge} className="bg-[#111] border border-[#222] px-4 py-2.5 rounded-full flex items-center gap-2">
+                    <svg className="w-3.5 h-3.5 text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-[#EDEEF2] text-xs font-medium">{badge}</span>
+                    <span className="text-white text-xs font-medium">{badge}</span>
                   </div>
                 ))}
               </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
                 <img
                   src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=400&fit=crop&auto=format"
                   alt="Inspired Technology team meeting"
-                  className="w-full h-[340px] object-cover img-dark rounded-2xl"
+                  className="w-full h-[340px] object-cover rounded-2xl"
                   loading="lazy"
                 />
               </div>
@@ -99,9 +99,9 @@ export default function AboutPage() {
                   { value: '15+', label: 'Years' },
                   { value: '500+', label: 'Clients' },
                 ].map((stat) => (
-                  <div key={stat.label} className="bg-[#16161F]/90 backdrop-blur-sm border border-[#252533] rounded-xl p-3 text-center">
-                    <div className="text-[#00E87B] text-lg font-bold">{stat.value}</div>
-                    <div className="text-[#5C5D72] text-[10px]">{stat.label}</div>
+                  <div key={stat.label} className="bg-[#111]/90 backdrop-blur-sm border border-[#222] rounded-xl p-3 text-center">
+                    <div className="text-[#6366f1] text-lg font-bold">{stat.value}</div>
+                    <div className="text-[#666666] text-[10px]">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -111,7 +111,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 bg-[#111118]/40" aria-labelledby="timeline-heading">
+      <section className="py-20 bg-[#0a0a0a]" aria-labelledby="timeline-heading">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -120,7 +120,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
             className="mb-14"
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.15em] mb-4 block">// OUR JOURNEY</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// OUR JOURNEY</span>
             <h2 id="timeline-heading" className="text-2xl md:text-3xl font-bold">Company timeline</h2>
           </motion.div>
 
@@ -134,10 +134,10 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: index * 0.06, ease: [0.32, 0.72, 0, 1] }}
                 className="flex items-start gap-6"
               >
-                <div className="text-[#00E87B] font-mono text-sm font-bold w-14 flex-shrink-0 pt-4">{item.year}</div>
-                <div className="bg-[#16161F] border border-[#252533] rounded-xl p-5 flex-1 hover-glow">
-                  <h3 className="text-base font-bold mb-1.5 text-[#EDEEF2]">{item.title}</h3>
-                  <p className="text-[#9A9BB0] text-sm">{item.description}</p>
+                <div className="text-[#6366f1] text-sm font-bold w-14 flex-shrink-0 pt-4">{item.year}</div>
+                <div className="bg-[#111] border border-[#222] rounded-xl p-5 flex-1 hover-glow">
+                  <h3 className="text-base font-bold mb-1.5 text-white">{item.title}</h3>
+                  <p className="text-[#a0a0a0] text-sm">{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -155,7 +155,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
             className="mb-14"
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.15em] mb-4 block">// OUR TEAM</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// OUR TEAM</span>
             <h2 id="leadership-heading" className="text-2xl md:text-3xl font-bold">Leadership</h2>
           </motion.div>
 
@@ -167,7 +167,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08, ease: [0.32, 0.72, 0, 1] }}
-                className="bg-[#16161F] border border-[#252533] rounded-2xl p-7 hover-glow"
+                className="bg-[#111] border border-[#222] rounded-2xl p-7 hover-glow"
               >
                 <div className="flex items-start gap-5">
                   <img
@@ -177,9 +177,9 @@ export default function AboutPage() {
                     loading="lazy"
                   />
                   <div>
-                    <h3 className="text-lg font-bold mb-0.5 text-[#EDEEF2]">{leader.name}</h3>
-                    <p className="text-[#00E87B] text-xs font-medium mb-3">{leader.role}</p>
-                    <p className="text-[#9A9BB0] text-sm leading-relaxed">{leader.description}</p>
+                    <h3 className="text-lg font-bold mb-0.5 text-white">{leader.name}</h3>
+                    <p className="text-[#6366f1] text-xs font-medium mb-3">{leader.role}</p>
+                    <p className="text-[#a0a0a0] text-sm leading-relaxed">{leader.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -189,7 +189,7 @@ export default function AboutPage() {
       </section>
 
       {/* Clients */}
-      <section className="py-20 bg-[#111118]/40" aria-labelledby="clients-heading">
+      <section className="py-20 bg-[#0a0a0a]" aria-labelledby="clients-heading">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -198,7 +198,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
             className="mb-14"
           >
-            <span className="text-[#00E87B] text-xs font-mono tracking-[0.15em] mb-4 block">// TRUSTED BY</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// TRUSTED BY</span>
             <h2 id="clients-heading" className="text-2xl md:text-3xl font-bold">Our clients</h2>
           </motion.div>
 
@@ -210,9 +210,9 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.04, ease: [0.32, 0.72, 0, 1] }}
-                className="bg-[#16161F] border border-[#252533] rounded-xl p-5 flex items-center justify-center hover-glow h-20"
+                className="bg-[#111] border border-[#222] rounded-xl p-5 flex items-center justify-center hover-glow h-20"
               >
-                <span className="text-[#5C5D72] text-xs font-medium text-center">{client}</span>
+                <span className="text-[#666666] text-xs font-medium text-center">{client}</span>
               </motion.div>
             ))}
           </div>
@@ -231,12 +231,12 @@ export default function AboutPage() {
             <h2 id="about-cta-heading" className="text-3xl md:text-5xl font-bold mb-5">
               Join our <span className="gradient-text">growing family</span>
             </h2>
-            <p className="text-[#9A9BB0] text-base max-w-xl mx-auto mb-8">
+            <p className="text-[#a0a0a0] text-base max-w-xl mx-auto mb-8">
               Experience the Inspired difference — where technology meets excellence.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-[#00E87B] text-[#0A0A0F] px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-[#00D46F] transition-all duration-200 hover:shadow-[0_0_24px_rgba(0,232,123,0.3)] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 bg-[#6366f1] text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] active:scale-[0.98]"
             >
               Get in Touch
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
