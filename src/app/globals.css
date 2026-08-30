@@ -22,12 +22,46 @@ body {
   background-color: #0A0A0F;
   color: #FFFFFF;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
+/* ===== Typography Hierarchy ===== */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
+h1 {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* ===== Scrollbar ===== */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -45,11 +79,13 @@ h1, h2, h3, h4, h5, h6 {
   background: #00FF88;
 }
 
+/* ===== Selection ===== */
 ::selection {
   background-color: #00FF88;
   color: #0A0A0F;
 }
 
+/* ===== Animations ===== */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -76,6 +112,48 @@ h1, h2, h3, h4, h5, h6 {
   to { transform: rotate(360deg); }
 }
 
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes text-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
@@ -97,11 +175,30 @@ h1, h2, h3, h4, h5, h6 {
   animation: spin-slow 20s linear infinite;
 }
 
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-text-reveal {
+  animation: text-reveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* ===== Gradient Text ===== */
 .gradient-text {
   background: linear-gradient(135deg, #00FF88, #00B4FF, #8B5CF6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
 }
 
 .gradient-text-alt {
@@ -111,14 +208,16 @@ h1, h2, h3, h4, h5, h6 {
   background-clip: text;
 }
 
+/* ===== Glass Card ===== */
 .glass-card {
   background: rgba(18, 18, 26, 0.8);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(30, 30, 42, 0.5);
 }
 
+/* ===== Hover Effects ===== */
 .hover-glow {
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .hover-glow:hover {
@@ -127,13 +226,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-4px);
 }
 
-.text-gradient {
-  background: linear-gradient(135deg, #00FF88, #00B4FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
+/* ===== Background Patterns ===== */
 .bg-grid {
   background-image: 
     linear-gradient(rgba(30, 30, 42, 0.3) 1px, transparent 1px),
@@ -146,11 +239,13 @@ h1, h2, h3, h4, h5, h6 {
   background-size: 30px 30px;
 }
 
+/* ===== Focus States ===== */
 .focus-visible:focus {
   outline: 2px solid #00FF88;
   outline-offset: 2px;
 }
 
+/* ===== Skip Link ===== */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -164,4 +259,54 @@ h1, h2, h3, h4, h5, h6 {
 
 .skip-link:focus {
   top: 0;
+}
+
+/* ===== Text Gradient Overlay ===== */
+.text-gradient-overlay {
+  position: relative;
+  display: inline-block;
+}
+
+.text-gradient-overlay::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00FF88, #00B4FF, #8B5CF6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.text-gradient-overlay:hover::after {
+  transform: scaleX(1);
+}
+
+/* ===== Smooth Section Transitions ===== */
+section {
+  position: relative;
+}
+
+/* ===== Line Clamp ===== */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

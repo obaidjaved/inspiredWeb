@@ -1,11 +1,13 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Background3D from '@/components/Background3D';
+
+const Background3DCSS = dynamic(() => import('@/components/Background3DCSS'), { ssr: false });
 
 const services = [
   { id: '01', title: 'Network Security', description: 'Cisco and multi-vendor installations of any scale. Industry-leading technologies to boost network performance.', tags: ['Cisco', 'Firewall', 'VPN', 'SIEM'] },
@@ -34,30 +36,35 @@ export default function Home() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.98]);
 
   return (
     <main id="main-content">
       <Navbar />
-      <Background3D />
+      <Background3DCSS />
 
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden" aria-labelledby="hero-heading">
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
+        {/* Decorative elements */}
+        <div className="absolute top-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-[100px] pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent-blue/5 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
+
+        <motion.div style={{ y: heroY, opacity: heroOpacity, scale: heroScale }} className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-6"
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mb-8"
           >
-            <span className="text-accent text-sm font-mono tracking-wider">// INSPIRED TECHNOLOGY</span>
+            <span className="text-accent text-sm font-mono tracking-widest uppercase">// INSPIRED TECHNOLOGY</span>
           </motion.div>
 
           <motion.h1
             id="hero-heading"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8 max-w-5xl"
+            transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.03] mb-8 max-w-5xl tracking-tight"
           >
             We Build, Design, and Scale{' '}
             <span className="gradient-text">Digital Experiences</span>{' '}
@@ -67,7 +74,7 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-text-secondary text-lg md:text-xl max-w-2xl mb-12 leading-relaxed"
           >
             From enterprise networking and cybersecurity to ERP systems and web development — we deliver end-to-end technology solutions that transform businesses.
@@ -76,7 +83,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="flex flex-wrap gap-4 mb-20"
           >
             <Link
@@ -101,7 +108,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
@@ -114,7 +121,7 @@ export default function Home() {
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
+                transition={{ duration: 0.5, delay: 1.2 + index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="text-center md:text-left"
               >
                 <div className="text-3xl md:text-4xl font-bold text-accent mb-1">{stat.value}</div>
@@ -144,10 +151,10 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <span className="text-accent text-sm font-mono tracking-wider mb-4 block">// WHO WE ARE</span>
+              <span className="text-accent text-sm font-mono tracking-widest uppercase mb-4 block">// WHO WE ARE</span>
               <h2 id="about-heading" className="text-4xl md:text-5xl font-bold mb-6">
                 We Deliver <span className="gradient-text">Networking Excellence</span>
               </h2>
@@ -178,8 +185,8 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="grid grid-cols-2 gap-4"
             >
               {[
@@ -193,7 +200,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
                   className="bg-dark-card border border-dark-border rounded-2xl p-6 hover-glow"
                 >
                   <div className="text-3xl mb-3">{item.icon}</div>
@@ -212,11 +219,11 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mb-16"
           >
-            <span className="text-accent text-sm font-mono tracking-wider mb-4 block">// OUR EXPERTISE</span>
+            <span className="text-accent text-sm font-mono tracking-widest uppercase mb-4 block">// OUR EXPERTISE</span>
             <h2 id="services-heading" className="text-4xl md:text-5xl font-bold">
               Services That <span className="gradient-text">Drive Growth</span>
             </h2>
@@ -228,8 +235,8 @@ export default function Home() {
                 key={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.6, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="group bg-dark-card border border-dark-border rounded-2xl p-8 hover-glow transition-all duration-300 cursor-pointer"
               >
                 <div className="flex items-start justify-between mb-6">
@@ -291,11 +298,11 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mb-16"
           >
-            <span className="text-accent text-sm font-mono tracking-wider mb-4 block">// OUR WORK</span>
+            <span className="text-accent text-sm font-mono tracking-widest uppercase mb-4 block">// OUR WORK</span>
             <h2 id="work-heading" className="text-4xl md:text-5xl font-bold">
               Case Studies That <span className="gradient-text">Speak</span>
             </h2>
@@ -307,8 +314,8 @@ export default function Home() {
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="group relative rounded-2xl overflow-hidden cursor-pointer min-h-[300px]"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />
@@ -364,11 +371,11 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mb-16"
           >
-            <span className="text-accent text-sm font-mono tracking-wider mb-4 block">// WHAT PEOPLE SAY</span>
+            <span className="text-accent text-sm font-mono tracking-widest uppercase mb-4 block">// WHAT PEOPLE SAY</span>
             <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-bold">
               Client <span className="gradient-text">Testimonials</span>
             </h2>
@@ -381,7 +388,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="bg-dark-card border border-dark-border rounded-2xl p-8 hover-glow"
               >
                 <svg className="w-10 h-10 text-accent/30 mb-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -411,9 +418,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <span className="text-accent text-sm font-mono tracking-wider mb-6 block">// READY TO GROW?</span>
+            <span className="text-accent text-sm font-mono tracking-widest uppercase mb-6 block">// READY TO GROW?</span>
             <h2 id="cta-heading" className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8">
               Ready to squish the <span className="gradient-text">competition?</span>
             </h2>
