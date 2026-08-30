@@ -64,12 +64,12 @@ const anchorLinks = [
 ];
 
 const clientLogos = [
-  { name: 'Client 1', url: 'https://inspired.com.pk/img/clients_img1.jpg' },
-  { name: 'Client 2', url: 'https://inspired.com.pk/img/clients_img2.jpg' },
-  { name: 'Client 3', url: 'https://inspired.com.pk/img/clients_img3.jpg' },
-  { name: 'Client 4', url: 'https://inspired.com.pk/img/clients_img4.png' },
-  { name: 'Client 5', url: 'https://inspired.com.pk/img/clients_img5.png' },
-  { name: 'Client 6', url: 'https://inspired.com.pk/img/clients_img6.png' },
+  { name: 'National Medical Centre', url: '/clients/clients_img1.jpg' },
+  { name: 'Benztech Solutions', url: '/clients/clients_img2.jpg' },
+  { name: 'Foundation Securities', url: '/clients/clients_img3.jpg' },
+  { name: 'Kolson', url: '/clients/clients_img4.png' },
+  { name: 'Amna', url: '/clients/clients_img5.png' },
+  { name: 'CP', url: '/clients/clients_img6.png' },
 ];
 
 const caseStudies = [
@@ -122,6 +122,48 @@ const advantages = [
   { icon: '🚀', title: 'Delivery excellence', desc: 'Deep technical expertise with agile methodology ensures on-time, on-budget delivery of complex projects.' },
   { icon: '🌍', title: 'Global scale', desc: 'Experts across four continents with nearshore and offshore teams available in any time zone.' },
   { icon: '🔒', title: 'Security first', desc: 'Security built into every layer — from architecture design to deployment, meeting all regulatory requirements.' },
+];
+
+const services = [
+  {
+    icon: '🛡️',
+    title: 'Network Security',
+    desc: 'Cisco and multi-vendor installations of any scale. Boost network performance and protect your infrastructure with industry-leading technology.',
+    color: '#6366f1',
+  },
+  {
+    icon: '📋',
+    title: 'Service Level Agreements',
+    desc: 'Expert SLA coverage with 24×7 operations, resident engineers, and remote monitoring. Maximum uptime guaranteed.',
+    color: '#10b981',
+  },
+  {
+    icon: '🖥️',
+    title: 'Comms Room Services',
+    desc: 'Structured cabling, fiber optic backbone, CCTV and access control — complete server room infrastructure design.',
+    color: '#f59e0b',
+  },
+  {
+    icon: '🌐',
+    title: 'Website Development',
+    desc: 'Corporate websites, e-commerce, landing pages, UI/UX design and progressive web apps built to convert visitors.',
+    color: '#6366f1',
+    isNew: true,
+  },
+  {
+    icon: '📊',
+    title: 'ERPNext Implementation',
+    desc: 'Complete ERPNext — accounting, HR & payroll, inventory, CRM, manufacturing and project management.',
+    color: '#10b981',
+    isNew: true,
+  },
+  {
+    icon: '🤖',
+    title: 'AI Automation',
+    desc: 'AI-powered chatbots, intelligent workflow automation, and predictive analytics to streamline your operations.',
+    color: '#f59e0b',
+    isNew: true,
+  },
 ];
 
 const awards = [
@@ -307,24 +349,23 @@ function InsightsCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: i * 0.08, ease: [0.32, 0.72, 0, 1] }}
-          className="group relative bg-[#121212] border border-[#2a2a2a] rounded-2xl overflow-hidden cursor-pointer h-[420px] card-lift"
+          className="group relative bg-white border border-[#e5e7eb] rounded-2xl overflow-hidden cursor-pointer card-light"
+          style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}
           onMouseEnter={() => setHovered(i)}
           onMouseLeave={() => setHovered(null)}
         >
-          <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-          <div className={`absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 ${hovered === i ? 'h-full flex flex-col justify-end' : 'h-[140px]'}`}>
-            <span className="text-[#818cf8] text-xs font-bold uppercase tracking-wider mb-2">{item.tag}</span>
-            <h4 className="text-white text-lg font-bold mb-2 leading-snug">{item.title}</h4>
-            {hovered === i && (
-              <>
-                <p className="text-white/50 text-sm mb-4 leading-relaxed">{item.excerpt}</p>
-                <span className="inline-flex items-center gap-2 text-[#818cf8] text-sm font-semibold">
-                  Read More
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </span>
-              </>
-            )}
+          <div className="relative overflow-hidden h-52">
+            <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+          </div>
+          <div className="p-6">
+            <span className="text-[#6366f1] text-xs font-bold uppercase tracking-wider mb-2 inline-block">{item.tag}</span>
+            <h4 className="text-[#0d0d0d] text-lg font-bold mb-2 leading-snug">{item.title}</h4>
+            <p className="text-[#6b7280] text-sm mb-4 leading-relaxed line-clamp-2">{item.excerpt}</p>
+            <span className="inline-flex items-center gap-2 text-[#6366f1] text-sm font-semibold group-hover:gap-3 transition-all duration-200">
+              Read More
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </span>
           </div>
         </motion.div>
       ))}
@@ -451,19 +492,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 4. CLIENT LOGOS ===== */}
-      <section id="clients" className="py-20 relative z-10" aria-label="Trusted by leading enterprises">
+      {/* ===== 4. CLIENT LOGOS — Light section ===== */}
+      <section id="clients" className="section-light py-20 relative z-10" aria-label="Trusted by leading enterprises">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[#e8e8e8]">Trusted by leading global enterprises</h2>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center justify-items-center opacity-50">
+          <div className="text-center mb-14">
+            <span className="badge-light mb-4">Trusted By</span>
+            <h2 className="text-2xl md:text-3xl font-bold mt-3 text-[#0d0d0d]">Our Best Clients</h2>
+            <p className="text-[#6b7280] text-sm mt-2 max-w-md mx-auto">Proud to serve leading organizations across Pakistan and internationally.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 items-center">
             {clientLogos.map((logo) => (
-              <img
-                key={logo.name}
-                src={logo.url}
-                alt={`${logo.name} logo`}
-                className="h-12 md:h-14 object-contain"
-                loading="lazy"
-              />
+              <div key={logo.name} className="client-logo-card">
+                <img
+                  src={logo.url}
+                  alt={`${logo.name} logo`}
+                  className="h-12 md:h-14 w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 4.5. SERVICES — Light gray section ===== */}
+      <section id="services" className="section-light-gray py-20 relative z-10" aria-labelledby="services-heading">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="badge-light mb-4">What We Do</span>
+            <h2 id="services-heading" className="text-2xl md:text-3xl font-bold mt-3 text-[#0d0d0d]">Our Core Services</h2>
+            <p className="text-[#6b7280] text-sm mt-2 max-w-lg mx-auto">Comprehensive technology solutions tailored to your business needs — from infrastructure to digital transformation.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {services.map((svc, i) => (
+              <motion.div
+                key={svc.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.07, ease: [0.32, 0.72, 0, 1] }}
+                className="card-light-on-gray rounded-2xl p-7 group"
+              >
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-2xl"
+                  style={{ background: `${svc.color}15` }}
+                >
+                  {svc.icon}
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-lg font-bold text-[#0d0d0d]">{svc.title}</h3>
+                  {svc.isNew && (
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full text-white" style={{ background: svc.color }}>NEW</span>
+                  )}
+                </div>
+                <p className="text-[#6b7280] text-sm leading-relaxed">{svc.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -500,12 +583,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 7. ADVANTAGES — 3x2 grid ===== */}
-      <section id="advantages" className="py-20 relative z-10" aria-labelledby="adv-heading">
+      {/* ===== 7. ADVANTAGES — Light gray 3x2 grid ===== */}
+      <section id="advantages" className="section-light-gray py-20 relative z-10" aria-labelledby="adv-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12">
-            <h2 id="adv-heading" className="text-2xl md:text-3xl font-bold mb-3 text-[#e8e8e8]">The Inspired Technology difference</h2>
-            <p className="text-[#636363] text-sm max-w-xl">We don&apos;t just build software. We provide the strategic depth and technical precision required to dominate your market.</p>
+            <span className="badge-light mb-4">Why Inspired</span>
+            <h2 id="adv-heading" className="text-2xl md:text-3xl font-bold mb-3 mt-3 text-[#0d0d0d]">The Inspired Technology difference</h2>
+            <p className="text-[#6b7280] text-sm max-w-xl">We don&apos;t just build software. We provide the strategic depth and technical precision required to dominate your market.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {advantages.map((adv, i) => (
@@ -515,11 +599,11 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.06, ease: [0.32, 0.72, 0, 1] }}
-                className="bg-[#121212] border border-[#2a2a2a] rounded-2xl p-7 hover-glow"
+                className="card-light-on-gray rounded-2xl p-7"
               >
-                <div className="text-3xl mb-4">{adv.icon}</div>
-                <h3 className="text-lg font-bold text-[#e8e8e8] mb-2">{adv.title}</h3>
-                <p className="text-[#636363] text-sm leading-relaxed">{adv.desc}</p>
+                <div className="w-12 h-12 bg-[#6366f1]/10 rounded-xl flex items-center justify-center mb-4 text-2xl">{adv.icon}</div>
+                <h3 className="text-lg font-bold text-[#0d0d0d] mb-2">{adv.title}</h3>
+                <p className="text-[#6b7280] text-sm leading-relaxed">{adv.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -554,10 +638,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 9. INSIGHTS ===== */}
-      <section id="insights" className="py-20 relative z-10" aria-labelledby="insights-heading">
+      {/* ===== 9. INSIGHTS — Light section ===== */}
+      <section id="insights" className="section-light py-20 relative z-10" aria-labelledby="insights-heading">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 id="insights-heading" className="text-2xl md:text-3xl font-bold mb-10 text-[#e8e8e8]">Insights</h2>
+          <div className="mb-10">
+            <span className="badge-light mb-4">Latest Insights</span>
+            <h2 id="insights-heading" className="text-2xl md:text-3xl font-bold mt-3 text-[#0d0d0d]">Knowledge Hub</h2>
+            <p className="text-[#6b7280] text-sm mt-2">Expert articles on technology trends across Pakistan, USA, Middle East and beyond.</p>
+          </div>
           <InsightsCarousel />
         </div>
       </section>

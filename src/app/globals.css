@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Dark mode surface hierarchy (dark-mode-design) */
+  /* Dark mode surface hierarchy */
   --color-dark-base: #000000;
   --color-dark-surface-0: #0a0a0a;
   --color-dark-surface-1: #121212;
@@ -10,17 +10,29 @@
   --color-dark-border: #2a2a2a;
   --color-dark-border-subtle: #1f1f1f;
 
+  /* Light mode surfaces */
+  --color-light-base: #ffffff;
+  --color-light-surface-1: #f8f9fa;
+  --color-light-surface-2: #f0f2f5;
+  --color-light-border: #e5e7eb;
+  --color-light-border-subtle: #f0f0f0;
+
   /* Accent palette */
   --color-accent: #6366f1;
   --color-accent-light: #d0d1fb;
   --color-accent-muted: #818cf8;
   --color-accent-dim: #4f46e5;
 
-  /* Text hierarchy (better-typography) */
+  /* Text hierarchy */
   --color-text-primary: #e8e8e8;
   --color-text-secondary: #9a9a9a;
   --color-text-muted: #636363;
   --color-text-faint: #454545;
+
+  /* Light text hierarchy */
+  --color-light-text-primary: #0d0d0d;
+  --color-light-text-secondary: #4b5563;
+  --color-light-text-muted: #9ca3af;
 }
 
 /* ===== Root ===== */
@@ -344,4 +356,116 @@ p {
     background: white;
     color: black;
   }
+}
+
+/* ===== Light Section Styles ===== */
+.section-light {
+  background-color: #ffffff;
+  color: #0d0d0d;
+}
+
+.section-light-gray {
+  background-color: #f8f9fa;
+  color: #0d0d0d;
+}
+
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.section-light h4,
+.section-light h5,
+.section-light h6 {
+  color: #0d0d0d;
+}
+
+.section-light-gray h1,
+.section-light-gray h2,
+.section-light-gray h3,
+.section-light-gray h4,
+.section-light-gray h5,
+.section-light-gray h6 {
+  color: #0d0d0d;
+}
+
+.section-light p,
+.section-light-gray p {
+  color: #6b7280;
+}
+
+/* Light card */
+.card-light {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  transition: all 0.22s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.card-light:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Light card on gray bg */
+.card-light-on-gray {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: all 0.22s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.card-light-on-gray:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Section separator gradient */
+.section-separator-dark-to-light {
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1 0%, transparent 100%);
+}
+
+.section-separator-light-to-dark {
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #6366f1 100%);
+}
+
+/* Light mode accent badge */
+.badge-light {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: #4f46e5;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+  display: inline-block;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Client logo card */
+.client-logo-card {
+  background: #ffffff;
+  border: 1px solid #ebebeb;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 32px;
+  transition: all 0.22s cubic-bezier(0.32, 0.72, 0, 1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.client-logo-card:hover {
+  border-color: rgba(99, 102, 241, 0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+/* Light gradient text */
+.gradient-text-light {
+  background: linear-gradient(135deg, #4f46e5, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

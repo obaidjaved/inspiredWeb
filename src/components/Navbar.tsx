@@ -56,13 +56,12 @@ export default function Navbar() {
         <nav className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between" aria-label="Main navigation">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5" aria-label="Inspired Technology - Home">
-            <div className="w-9 h-9 bg-[#6366f1] rounded-lg flex items-center justify-center shadow-[0_0_16px_rgba(99,102,241,0.25)]">
-              <span className="text-white font-bold text-base">I</span>
-            </div>
-            <div className="flex items-baseline">
-              <span className="text-lg font-bold tracking-tight text-white">INSPIRED</span>
-              <span className="text-[#818cf8] text-lg font-semibold">.tech</span>
-            </div>
+            <img
+              src="/clients/logo.png"
+              alt="Inspired Technology"
+              className="h-9 w-auto object-contain"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
           </Link>
 
           {/* Desktop nav links */}
