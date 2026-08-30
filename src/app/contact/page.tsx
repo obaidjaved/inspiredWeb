@@ -1,203 +1,233 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { useState } from 'react';
 
-const contactInfo = [
-  { title: 'Phone (Pakistan)', value: '+92 300 9221193', href: 'tel:+923009221193', icon: 'M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z' },
-  { title: 'Phone (USA)', value: '+1 (973) 626-0873', href: 'tel:+19736260873', icon: 'M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z' },
-  { title: 'Email', value: 'contact@inspired.com.pk', href: 'mailto:contact@inspired.com.pk', icon: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22 6l-10 7L2 6' },
-  { title: 'Location', value: 'Karachi, Pakistan', href: '/contact', icon: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z M12 13a3 3 0 100-6 3 3 0 000 6z' },
+const offices = [
+  { city: 'Karachi', address: 'Plot 4/C, SB-14, KDA Scheme 24, Qayyumabad', phone: '+92 21 3258 0106', hours: 'Mon–Fri, 9AM–6PM' },
+  { city: 'Lahore', address: 'Office 412, SB-12, City Tower, Main Boulevard', phone: '+92 42 3578 0106', hours: 'Mon–Fri, 9AM–6PM' },
+  { city: 'Riyadh', address: 'Office 204, Business District, King Fahd Road', phone: '+966 11 234 5678', hours: 'Sun–Thu, 9AM–5PM' },
+  { city: 'New York', address: '200 Park Avenue, Suite 1700, New York, NY 10166', phone: '+1 (888) 345 6789', hours: 'Mon–Fri, 9AM–5PM EST' },
 ];
 
-const services = [
-  'Network Security',
-  'Web Development',
-  'ERPNext Solutions',
-  'AI Automation',
-  'Data Cabling',
-  'CCTV Systems',
-  'IT Audits',
-  'Other',
+const process = [
+  { step: '01', title: 'Tell us about your project', description: 'Share your requirements and goals with our team.' },
+  { step: '02', title: 'We analyze and plan', description: 'Our experts craft a tailored solution strategy.' },
+  { step: '03', title: 'Deliver with excellence', description: 'We implement and provide ongoing support.' },
 ];
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '', service: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your message! We will get back to you shortly.');
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
+      alert('Message sent! We\'ll get back to you within 24 hours.');
+    }, 1500);
   };
 
   return (
     <main id="main-content">
       <Navbar />
 
-      {/* Hero */}
-      <section className="pt-28 pb-16 relative" aria-labelledby="contact-hero-heading">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* Dark Hero */}
+      <section className="pt-28 pb-20 bg-[#0a0a0a] relative overflow-hidden" aria-labelledby="contact-hero-heading">
+        <div className="absolute inset-0 opacity-10" aria-hidden="true">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'linear-gradient(rgba(99,102,241,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.3) 1px, transparent 1px)',
+            backgroundSize: '80px 80px',
+          }} />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
             <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// GET IN TOUCH</span>
-            <h1 id="contact-hero-heading" className="text-4xl md:text-6xl font-bold mb-5">
+            <h1 id="contact-hero-heading" className="text-4xl md:text-6xl font-bold mb-5 text-white">
               Contact us
             </h1>
             <p className="text-[#a0a0a0] text-base md:text-lg max-w-2xl leading-relaxed">
-              Ready to transform your digital presence? Let&apos;s discuss your project and find the perfect solution.
+              Ready to transform your business? Let&apos;s discuss your project and find the perfect solution.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Form + Info */}
-      <section className="pb-28" aria-label="Contact form and information">
+      {/* Light Process Steps */}
+      <section className="bg-white border-b border-gray-100 py-14" aria-label="Our process">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {process.map((step, index) => (
+              <motion.div
+                key={step.step}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="flex items-start gap-5"
+              >
+                <span className="text-[#6366f1] text-2xl font-bold opacity-25 flex-shrink-0">{step.step}</span>
+                <div>
+                  <h3 className="text-sm font-bold text-[#171616] mb-1">{step.title}</h3>
+                  <p className="text-[#888] text-xs leading-relaxed">{step.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Light Form + Contact Info */}
+      <section className="py-20 bg-gray-50" aria-labelledby="form-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-              className="space-y-4"
-            >
-              <h2 className="text-xl font-bold mb-6">Contact information</h2>
+            {/* Form */}
+            <div className="lg:col-span-2">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+              >
+                <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// SEND A MESSAGE</span>
+                <h2 id="form-heading" className="text-2xl md:text-3xl font-bold mb-6 text-[#171616]">Get in touch</h2>
+              </motion.div>
 
-              {contactInfo.map((info) => (
-                <a
-                  key={info.title}
-                  href={info.href}
-                  className="group flex items-start gap-3.5 p-3.5 bg-[#111] border border-[#222] rounded-xl hover-glow transition-all duration-200"
-                >
-                  <div className="w-10 h-10 border border-[#222] rounded-lg flex items-center justify-center group-hover:border-[rgba(99,102,241,0.3)] group-hover:bg-[rgba(99,102,241,0.05)] transition-all flex-shrink-0">
-                    <svg className="w-4 h-4 text-[#666666] group-hover:text-[#6366f1] transition-colors" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d={info.icon} />
-                    </svg>
-                  </div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <p className="text-[#666666] text-xs mb-0.5">{info.title}</p>
-                    <p className="text-white text-sm font-medium group-hover:text-[#6366f1] transition-colors">{info.value}</p>
-                  </div>
-                </a>
-              ))}
-
-              <div className="pt-4">
-                <h3 className="text-xs font-semibold text-[#6366f1] mb-3 tracking-wider">OFFICE HOURS</h3>
-                <div className="space-y-1.5 text-[#a0a0a0] text-sm">
-                  <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                  <p>Saturday: 10:00 AM - 2:00 PM</p>
-                  <p>Sunday: Closed</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-              className="lg:col-span-2"
-            >
-              <form onSubmit={handleSubmit} className="bg-[#111] border border-[#222] rounded-2xl p-7 md:p-8 space-y-5">
-                <h2 className="text-xl font-bold mb-5">Send us a message</h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div>
-                    <label htmlFor="name" className="block text-xs text-[#666666] mb-1.5">Full Name *</label>
+                    <label htmlFor="name" className="text-[#171616] text-xs font-medium block mb-1.5">Full Name *</label>
                     <input
-                      type="text"
                       id="name"
+                      type="text"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-black border border-[#222] rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[rgba(99,102,241,0.4)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)] transition-all placeholder:text-[#666666]"
-                      placeholder="Your name"
+                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-[#171616] text-sm placeholder:text-[#bbb] focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] transition-all duration-200"
+                      placeholder="Enter your full name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-xs text-[#666666] mb-1.5">Email Address *</label>
+                    <label htmlFor="email" className="text-[#171616] text-xs font-medium block mb-1.5">Email *</label>
                     <input
-                      type="email"
                       id="email"
+                      type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-black border border-[#222] rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[rgba(99,102,241,0.4)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)] transition-all placeholder:text-[#666666]"
-                      placeholder="john@company.com"
+                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-[#171616] text-sm placeholder:text-[#bbb] focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] transition-all duration-200"
+                      placeholder="Enter your email address"
                     />
                   </div>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="phone" className="block text-xs text-[#666666] mb-1.5">Phone Number</label>
+                    <label htmlFor="phone" className="text-[#171616] text-xs font-medium block mb-1.5">Phone Number</label>
                     <input
-                      type="tel"
                       id="phone"
+                      type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-black border border-[#222] rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[rgba(99,102,241,0.4)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)] transition-all placeholder:text-[#666666]"
-                      placeholder="+92 300 1234567"
+                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-[#171616] text-sm placeholder:text-[#bbb] focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] transition-all duration-200"
+                      placeholder="Enter your phone number"
                     />
                   </div>
                   <div>
-                    <label htmlFor="service" className="block text-xs text-[#666666] mb-1.5">Service Interested In *</label>
-                    <select
-                      id="service"
-                      required
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full bg-black border border-[#222] rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[rgba(99,102,241,0.4)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)] transition-all appearance-none cursor-pointer"
-                    >
-                      <option value="">Select a service</option>
-                      {services.map((service) => (
-                        <option key={service} value={service}>{service}</option>
-                      ))}
-                    </select>
+                    <label htmlFor="company" className="text-[#171616] text-xs font-medium block mb-1.5">Company</label>
+                    <input
+                      id="company"
+                      type="text"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-[#171616] text-sm placeholder:text-[#bbb] focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] transition-all duration-200"
+                      placeholder="Enter your company name"
+                    />
                   </div>
                 </div>
-
                 <div>
-                  <label htmlFor="message" className="block text-xs text-[#666666] mb-1.5">Your Message *</label>
+                  <label htmlFor="service" className="text-[#171616] text-xs font-medium block mb-1.5">Service Interest</label>
+                  <select
+                    id="service"
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-[#171616] text-sm focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] transition-all duration-200 appearance-none"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="networking">Network Infrastructure</option>
+                    <option value="security">Cyber Security</option>
+                    <option value="erp">ERP Solutions</option>
+                    <option value="ai">AI Automation</option>
+                    <option value="web">Web Development</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="message" className="text-[#171616] text-xs font-medium block mb-1.5">Message *</label>
                   <textarea
                     id="message"
                     required
-                    rows={4}
+                    rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-black border border-[#222] rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[rgba(99,102,241,0.4)] focus:ring-1 focus:ring-[rgba(99,102,241,0.15)] transition-all resize-none placeholder:text-[#666666]"
-                    placeholder="Tell us about your project..."
+                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-[#171616] text-sm placeholder:text-[#bbb] focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] transition-all duration-200 resize-none"
+                    placeholder="Tell us about your project, requirements, and timeline..."
                   />
                 </div>
-
                 <button
                   type="submit"
-                  className="w-full bg-[#6366f1] text-white py-3 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] active:scale-[0.98] flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#6366f1] text-white py-3.5 rounded-xl text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.99]"
                 >
-                  Send Message
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
-
-                <p className="text-[#666666] text-xs text-center">
-                  We typically respond within 24 hours during business days.
-                </p>
               </form>
-            </motion.div>
+            </div>
+
+            {/* Info Sidebar */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+                className="space-y-5"
+              >
+                {offices.map((office) => (
+                  <div key={office.city} className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow">
+                    <h3 className="text-base font-bold text-[#171616] mb-2">{office.city}</h3>
+                    <p className="text-[#555] text-xs leading-relaxed mb-2">{office.address}</p>
+                    <p className="text-[#6366f1] text-xs font-medium mb-1">{office.phone}</p>
+                    <p className="text-[#888] text-[10px]">{office.hours}</p>
+                  </div>
+                ))}
+
+                <div className="bg-[#0a0a0a] rounded-xl p-5">
+                  <h3 className="text-sm font-bold text-white mb-3">Direct Contact</h3>
+                  <div className="space-y-2">
+                    <a href="mailto:sales@inspired.com.pk" className="flex items-center gap-3 text-[#a0a0a0] text-xs hover:text-white transition-colors">
+                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      sales@inspired.com.pk
+                    </a>
+                    <a href="tel:+922132580106" className="flex items-center gap-3 text-[#a0a0a0] text-xs hover:text-white transition-colors">
+                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      +92 21 3258 0106
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>

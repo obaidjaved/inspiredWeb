@@ -1,116 +1,199 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import CaseStudyCard from '@/components/CaseStudyCard';
 import { caseStudies } from '@/data/case-studies';
+import { useState } from 'react';
+
+const projectImages: Record<string, string> = {
+  'tapsvs-lms': 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=900&h=500&fit=crop&auto=format',
+  'clineum-medical': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&h=500&fit=crop&auto=format',
+  'dikhatz-shopify': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&h=500&fit=crop&auto=format',
+  'drive-venturous': 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900&h=500&fit=crop&auto=format',
+  'english-evolution': 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&h=500&fit=crop&auto=format',
+  'made-by-throne': 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&h=500&fit=crop&auto=format',
+  'meri-pharmacy': 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=900&h=500&fit=crop&auto=format',
+  'student-portal': 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=900&h=500&fit=crop&auto=format',
+};
+
+const fallbackImage = 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&h=500&fit=crop&auto=format';
+
+const industries = ['All', 'Telecom', 'Finance', 'Healthcare', 'Manufacturing', 'Education'];
+
+const stats = [
+  { value: '500+', label: 'Clients Served' },
+  { value: '1000+', label: 'Projects Completed' },
+  { value: '98%', label: 'Client Satisfaction' },
+];
 
 export default function PortfolioPage() {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.96]);
+  const [activeIndustry, setActiveIndustry] = useState('All');
+
+  const filtered = activeIndustry === 'All'
+    ? caseStudies
+    : caseStudies.filter(c => c.industry === activeIndustry);
 
   return (
     <main id="main-content">
       <Navbar />
 
-      {/* Hero */}
-      <section
-        ref={heroRef}
-        className="pt-28 pb-16 relative min-h-[55vh] flex flex-col justify-end overflow-hidden"
-        aria-labelledby="portfolio-hero-heading"
-      >
-        {/* Decorative grid */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
+      {/* Dark Hero */}
+      <section className="pt-28 pb-20 bg-[#0a0a0a] relative overflow-hidden" aria-labelledby="portfolio-hero-heading">
+        <div className="absolute inset-0 opacity-10" aria-hidden="true">
           <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
+            backgroundImage: 'linear-gradient(rgba(99,102,241,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.3) 1px, transparent 1px)',
+            backgroundSize: '80px 80px',
           }} />
         </div>
-
-        <motion.div
-          style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
-          className="relative z-10 max-w-7xl mx-auto px-6 pb-10"
-        >
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
+            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
-            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] uppercase mb-5 block">// Case Studies</span>
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// CASE STUDIES</span>
+            <h1 id="portfolio-hero-heading" className="text-4xl md:text-6xl font-bold mb-5 text-white">
+              Our work
+            </h1>
+            <p className="text-[#a0a0a0] text-base md:text-lg max-w-2xl leading-relaxed">
+              Explore our portfolio of successful implementations across diverse industries and business challenges.
+            </p>
           </motion.div>
-
-          <motion.h1
-            id="portfolio-hero-heading"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
-            className="text-4xl md:text-6xl lg:text-[5rem] font-bold leading-[1.06] mb-5 max-w-4xl tracking-tight"
-          >
-            Work that speaks
-            <span className="text-[#a0a0a0] text-2xl md:text-3xl lg:text-4xl font-light block mt-3 leading-snug">
-              Results across {caseStudies.length} industries and counting.
-            </span>
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4, ease: [0.32, 0.72, 0, 1] }}
-            className="flex flex-wrap gap-8 mt-8"
-          >
-            {[
-              { value: `${caseStudies.length}+`, label: 'Projects Delivered' },
-              { value: '6+', label: 'Industries Served' },
-              { value: '100%', label: 'Client Satisfaction' },
-            ].map((stat) => (
-              <div key={stat.label} className="flex items-baseline gap-2.5">
-                <span className="text-xl md:text-2xl font-bold text-[#6366f1]" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</span>
-                <span className="text-[#666666] text-xs">{stat.label}</span>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent pointer-events-none" aria-hidden="true" />
+        </div>
       </section>
 
-      {/* Case Studies Grid */}
-      <section className="pb-28 relative z-10" aria-label="Case studies">
+      {/* Light Stats Bar */}
+      <section className="bg-white border-b border-gray-100 py-12" aria-label="Portfolio statistics">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Industry filter pills */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-            className="flex flex-wrap gap-2 mb-10"
-          >
-            {['All', ...new Set(caseStudies.map((s) => s.industry))].map((industry, i) => (
-              <span
-                key={industry}
-                className={`text-xs px-4 py-2 rounded-full border transition-colors cursor-pointer ${
-                  i === 0
-                    ? 'bg-[#6366f1] text-white border-[#6366f1] font-semibold'
-                    : 'bg-[#111] text-[#666666] border-[#222] hover:border-[rgba(99,102,241,0.3)] hover:text-[#6366f1]'
-                }`}
+          <div className="grid grid-cols-3 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="text-center"
               >
-                {industry}
-              </span>
-            ))}
-          </motion.div>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {caseStudies.map((study, index) => (
-              <CaseStudyCard key={study.slug} study={study} index={index} />
+                <div className="text-3xl md:text-4xl font-bold text-[#6366f1] mb-1" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</div>
+                <div className="text-[#888] text-sm">{stat.label}</div>
+              </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Light Filter + Projects */}
+      <section className="py-20 bg-gray-50" aria-labelledby="projects-heading">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+            className="mb-10"
+          >
+            <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// FILTER BY INDUSTRY</span>
+            <h2 id="projects-heading" className="text-2xl md:text-3xl font-bold text-[#171616] mb-6">Featured projects</h2>
+            <div className="flex flex-wrap gap-2">
+              {industries.map((industry) => (
+                <button
+                  key={industry}
+                  onClick={() => setActiveIndustry(industry)}
+                  className={`text-xs font-medium px-5 py-2.5 rounded-full border transition-all duration-200 ${
+                    activeIndustry === industry
+                      ? 'bg-[#6366f1] text-white border-[#6366f1] shadow-[0_0_16px_rgba(99,102,241,0.3)]'
+                      : 'bg-white text-[#888] border-gray-200 hover:border-[rgba(99,102,241,0.3)] hover:text-[#6366f1]'
+                  }`}
+                >
+                  {industry}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filtered.map((study, index) => (
+              <motion.div
+                key={study.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.06, ease: [0.32, 0.72, 0, 1] }}
+              >
+                <Link
+                  href={`/portfolio/${study.slug}`}
+                  className="group block bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-[rgba(99,102,241,0.2)] transition-all duration-300"
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={projectImages[study.slug] || fallbackImage}
+                      alt={study.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="text-[10px] px-3 py-1.5 bg-white/90 backdrop-blur-sm border border-white/20 rounded-full text-[#171616] font-medium">
+                        {study.industry}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-lg font-bold text-white mb-1">{study.title}</h3>
+                      <p className="text-white/70 text-xs line-clamp-2">{study.summary}</p>
+                    </div>
+                  </div>
+
+                  <div className="p-5">
+                    <div className="flex justify-between mb-4">
+                      {study.metrics.slice(0, 2).map((metric) => (
+                        <div key={metric.label}>
+                          <div className="text-lg font-bold text-[#6366f1]">{metric.value}</div>
+                          <div className="text-[10px] text-[#888]">{metric.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-2 text-[#6366f1] text-xs font-medium group-hover:gap-3 transition-all">
+                      View Case Study
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dark CTA */}
+      <section className="py-20 bg-[#0a0a0a]" aria-labelledby="portfolio-cta-heading">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+          >
+            <h2 id="portfolio-cta-heading" className="text-3xl md:text-5xl font-bold mb-5 text-white">
+              Start your success story
+            </h2>
+            <p className="text-[#a0a0a0] text-base max-w-xl mx-auto mb-8">
+              Let us help you build a solution that delivers real business results.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-[#6366f1] text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] active:scale-[0.98]"
+            >
+              Start a Project
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
