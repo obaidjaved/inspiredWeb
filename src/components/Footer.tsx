@@ -37,39 +37,39 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-dark-card border-t border-dark-border" role="contentinfo">
+    <footer className="bg-[#111118] border-t border-[#252533]" role="contentinfo">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
           >
-            <Link href="/" className="flex items-center gap-2 mb-6" aria-label="Inspired Technology - Home">
-              <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                <span className="text-dark font-bold text-lg">I</span>
+            <Link href="/" className="flex items-center gap-2.5 mb-6" aria-label="Inspired Technology - Home">
+              <div className="w-9 h-9 bg-[#00E87B] rounded-lg flex items-center justify-center">
+                <span className="text-[#0A0A0F] font-bold text-base">I</span>
               </div>
-              <div>
-                <span className="text-xl font-bold text-text-primary">INSPIRED</span>
-                <span className="text-accent text-xl">.tech</span>
+              <div className="flex items-baseline">
+                <span className="text-lg font-bold text-[#EDEEF2]">INSPIRED</span>
+                <span className="text-[#00E87B] text-lg font-semibold">.tech</span>
               </div>
             </Link>
-            <p className="text-text-muted text-sm leading-relaxed mb-6">
+            <p className="text-[#5C5D72] text-sm leading-relaxed mb-6">
               Pakistan&apos;s most trusted IT solutions provider — delivering excellence in networking, security, ERP and digital transformation since 2009.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2.5">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.name}
                   href={social.href}
-                  className="w-10 h-10 border border-dark-border rounded-lg flex items-center justify-center text-text-muted hover:text-accent hover:border-accent/50 hover:bg-accent/5 transition-all duration-200"
+                  className="w-9 h-9 border border-[#252533] rounded-lg flex items-center justify-center text-[#5C5D72] hover:text-[#00E87B] hover:border-[rgba(0,232,123,0.3)] hover:bg-[rgba(0,232,123,0.04)] transition-all duration-200"
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={social.name}
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
                     <path d={social.icon} />
                   </svg>
                 </motion.a>
@@ -79,18 +79,18 @@ export default function Footer() {
 
           {/* Services Column */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.08, ease: [0.32, 0.72, 0, 1] }}
           >
-            <h3 className="text-xs font-semibold text-accent mb-6 tracking-widest uppercase font-mono">Services</h3>
-            <ul className="space-y-3" role="list">
+            <h3 className="text-xs font-semibold text-[#00E87B] mb-5 tracking-widest uppercase font-mono">Services</h3>
+            <ul className="space-y-2.5" role="list">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-text-muted text-sm hover:text-accent transition-colors duration-200"
+                    className="text-[#5C5D72] text-sm hover:text-[#EDEEF2] transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -101,18 +101,18 @@ export default function Footer() {
 
           {/* Company Column */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.15, ease: [0.32, 0.72, 0, 1] }}
           >
-            <h3 className="text-xs font-semibold text-accent mb-6 tracking-widest uppercase font-mono">Company</h3>
-            <ul className="space-y-3" role="list">
+            <h3 className="text-xs font-semibold text-[#00E87B] mb-5 tracking-widest uppercase font-mono">Company</h3>
+            <ul className="space-y-2.5" role="list">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-text-muted text-sm hover:text-accent transition-colors duration-200"
+                    className="text-[#5C5D72] text-sm hover:text-[#EDEEF2] transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -123,18 +123,18 @@ export default function Footer() {
 
           {/* Contact Column */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.22, ease: [0.32, 0.72, 0, 1] }}
           >
-            <h3 className="text-xs font-semibold text-accent mb-6 tracking-widest uppercase font-mono">Contact</h3>
-            <ul className="space-y-3" role="list">
+            <h3 className="text-xs font-semibold text-[#00E87B] mb-5 tracking-widest uppercase font-mono">Contact</h3>
+            <ul className="space-y-2.5" role="list">
               {footerLinks.contact.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-text-muted text-sm hover:text-accent transition-colors duration-200"
+                    className="text-[#5C5D72] text-sm hover:text-[#EDEEF2] transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -145,15 +145,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-dark-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-text-muted text-sm">
+        <div className="border-t border-[#252533] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#5C5D72] text-sm">
             &copy; {new Date().getFullYear()} Inspired Technology Pvt. Ltd. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-text-muted text-sm hover:text-accent transition-colors">
+            <a href="#" className="text-[#5C5D72] text-sm hover:text-[#EDEEF2] transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-text-muted text-sm hover:text-accent transition-colors">
+            <a href="#" className="text-[#5C5D72] text-sm hover:text-[#EDEEF2] transition-colors">
               Terms of Service
             </a>
           </div>

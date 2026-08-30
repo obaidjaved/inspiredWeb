@@ -17,9 +17,9 @@ export function RippleButton({ children, className = '', href, onClick, variant 
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   const variants = {
-    primary: 'bg-accent text-dark hover:bg-accent/90 hover:shadow-[0_0_30px_rgba(0,255,136,0.4)]',
-    secondary: 'border border-dark-border text-text-primary hover:border-accent/50 hover:bg-accent/5',
-    ghost: 'text-text-muted hover:text-accent hover:bg-accent/5',
+    primary: 'bg-[#00E87B] text-[#0A0A0F] hover:bg-[#00D46F] hover:shadow-[0_0_24px_rgba(0,232,123,0.3)] active:scale-[0.98]',
+    secondary: 'border border-[#252533] text-[#EDEEF2] hover:border-[rgba(0,232,123,0.4)] hover:bg-[rgba(0,232,123,0.04)] active:scale-[0.98]',
+    ghost: 'text-[#9A9BB0] hover:text-[#00E87B] hover:bg-[rgba(0,232,123,0.05)]',
   };
 
   const handleClick = (e: React.MouseEvent) => {
@@ -34,14 +34,14 @@ export function RippleButton({ children, className = '', href, onClick, variant 
     onClick?.();
   };
 
-  const baseClass = `relative overflow-hidden inline-flex items-center gap-2 font-semibold transition-all duration-300 ${variants[variant]} ${className}`;
+  const baseClass = `relative overflow-hidden inline-flex items-center gap-2 font-semibold transition-all duration-250 ${variants[variant]} ${className}`;
 
   const content = (
     <>
       {ripples.map((ripple) => (
         <span
           key={ripple.id}
-          className="absolute rounded-full bg-white/20 pointer-events-none"
+          className="absolute rounded-full bg-white/15 pointer-events-none"
           style={{
             left: ripple.x,
             top: ripple.y,
@@ -103,7 +103,7 @@ export function MagneticElement({ children, className = '', strength = 0.3 }: Ma
       style={{ x, y }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      transition={{ type: 'spring', stiffness: 150, damping: 15 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 20, mass: 0.8 }}
     >
       {children}
     </motion.div>
@@ -125,12 +125,12 @@ export function TextReveal({ children, className = '', delay = 0 }: TextRevealPr
         <motion.span
           key={i}
           className="inline-block mr-[0.3em]"
-          initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+          initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{
-            duration: 0.5,
-            delay: delay + i * 0.05,
-            ease: [0.25, 0.46, 0.45, 0.94],
+            duration: 0.45,
+            delay: delay + i * 0.04,
+            ease: [0.32, 0.72, 0, 1],
           }}
         >
           {word}

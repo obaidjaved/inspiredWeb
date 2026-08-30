@@ -13,31 +13,31 @@ import { RippleButton, MagneticElement, TextReveal } from '@/components/MicroInt
 const Background3DCSS = dynamic(() => import('@/components/Background3DCSS'), { ssr: false });
 
 const services = [
-  { id: '01', title: 'Network Security', description: 'Cisco and multi-vendor installations of any scale. Industry-leading technologies to boost network performance.', tags: ['Cisco', 'Firewall', 'VPN', 'SIEM'], icon: '🔒', color: '#00FF88' },
-  { id: '02', title: 'Web Development', description: 'Corporate websites, e-commerce, landing pages, CMS, UI/UX design and progressive web apps.', tags: ['Next.js', 'React', 'Shopify', 'WordPress'], icon: '🌐', color: '#00B4FF' },
-  { id: '03', title: 'ERPNext Solutions', description: 'Complete ERPNext implementation — accounting, HR, inventory, CRM, manufacturing and project management.', tags: ['ERPNext', 'Frappe', 'ZATCA', 'Custom'], icon: '📊', color: '#8B5CF6' },
-  { id: '04', title: 'AI Automation', description: 'AI-powered chatbots, intelligent workflow automation, and predictive analytics.', tags: ['Chatbots', 'LLM', 'RPA', 'Analytics'], icon: '🤖', color: '#FF0080' },
-  { id: '05', title: 'Data Cabling', description: 'Professional structured cabling from single outlets to large multi-pair trunk cables.', tags: ['Fiber', 'Cat6', 'Structured', 'Certified'], icon: '🔌', color: '#F59E0B' },
-  { id: '06', title: 'CCTV Systems', description: 'Complete IP camera network solutions — design, installation, testing and certification.', tags: ['IP Cameras', 'NVR', 'Analytics', 'Cloud'], icon: '📹', color: '#10B981' },
+  { id: '01', title: 'Network Security', description: 'Cisco and multi-vendor installations of any scale. Enterprise-grade security to protect your infrastructure and boost performance.', tags: ['Cisco', 'Firewall', 'VPN', 'SIEM'], icon: '🔒', color: '#00E87B', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format' },
+  { id: '02', title: 'Web Development', description: 'Corporate websites, e-commerce, landing pages, CMS, UI/UX design and progressive web apps that convert.', tags: ['Next.js', 'React', 'Shopify', 'WordPress'], icon: '🌐', color: '#00A3E0', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&auto=format' },
+  { id: '03', title: 'ERPNext Solutions', description: 'Complete ERPNext implementation — accounting, HR, inventory, CRM, manufacturing and project management.', tags: ['ERPNext', 'Frappe', 'ZATCA', 'Custom'], icon: '📊', color: '#7C4DFF', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format' },
+  { id: '04', title: 'AI Automation', description: 'AI-powered chatbots, intelligent workflow automation, and predictive analytics for smarter operations.', tags: ['Chatbots', 'LLM', 'RPA', 'Analytics'], icon: '🤖', color: '#E91E7D', image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop&auto=format' },
+  { id: '05', title: 'Data Cabling', description: 'Professional structured cabling from single outlets to large multi-pair trunk cables across buildings.', tags: ['Fiber', 'Cat6', 'Structured', 'Certified'], icon: '🔌', color: '#F59E0B', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&auto=format' },
+  { id: '06', title: 'CCTV Systems', description: 'Complete IP camera network solutions — design, installation, testing and certification for total coverage.', tags: ['IP Cameras', 'NVR', 'Analytics', 'Cloud'], icon: '📹', color: '#10B981', image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=600&h=400&fit=crop&auto=format' },
 ];
 
 const projects = [
-  { id: 1, title: 'Mucho Burrito', category: 'UI/UX & Web Dev', metric: '+310% Revenue', gradient: 'from-orange-500 to-red-500', icon: '🌮' },
-  { id: 2, title: 'myZoi Financial', category: 'Full Stack Marketing', metric: '3.4x ROAS', gradient: 'from-blue-500 to-cyan-500', icon: '💳' },
-  { id: 3, title: "Stillman's Beauty", category: 'E-Commerce', metric: '$1.2M Revenue', gradient: 'from-pink-500 to-purple-500', icon: '💄' },
-  { id: 4, title: 'Combaxx Sports', category: 'Web Dev & SEO', metric: '+85% Conversion', gradient: 'from-green-500 to-emerald-500', icon: '⚽' },
+  { id: 1, title: 'Mucho Burrito', category: 'UI/UX & Web Dev', metric: '+310% Revenue', gradient: 'from-orange-500 to-red-500', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop&auto=format' },
+  { id: 2, title: 'myZoi Financial', category: 'Full Stack Marketing', metric: '3.4x ROAS', gradient: 'from-blue-500 to-cyan-500', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format' },
+  { id: 3, title: "Stillman's Beauty", category: 'E-Commerce', metric: '$1.2M Revenue', gradient: 'from-pink-500 to-purple-500', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop&auto=format' },
+  { id: 4, title: 'Combaxx Sports', category: 'Web Dev & SEO', metric: '+85% Conversion', gradient: 'from-green-500 to-emerald-500', image: 'https://images.unsplash.com/photo-1461896836934-bd45ba8b8c6c?w=600&h=400&fit=crop&auto=format' },
 ];
 
 const testimonials = [
-  { quote: "Inspired Technology transformed our digital presence completely. Their AI automation solutions saved us 40% in operational costs.", author: 'Sarah Mitchell', role: 'CEO, TechVentures Inc.' },
-  { quote: "The team delivered a world-class e-commerce platform that increased our online revenue by 310%.", author: 'Ahmed Al-Rashid', role: 'Founder, Luxe Commerce' },
-  { quote: "From SEO to performance marketing, Inspired Technology took our brand from invisible to industry leader.", author: 'Fatima Khan', role: 'Marketing Director, Global Brands' },
+  { quote: "Inspired Technology transformed our digital presence completely. Their AI automation solutions saved us 40% in operational costs.", author: 'Sarah Mitchell', role: 'CEO, TechVentures Inc.', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&auto=format' },
+  { quote: "The team delivered a world-class e-commerce platform that increased our online revenue by 310%. Outstanding technical expertise.", author: 'Ahmed Al-Rashid', role: 'Founder, Luxe Commerce', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&auto=format' },
+  { quote: "From SEO to performance marketing, Inspired Technology took our brand from invisible to industry leader in just six months.", author: 'Fatima Khan', role: 'Marketing Director, Global Brands', avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&auto=format' },
 ];
 
 export default function Home() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.98]);
 
@@ -51,92 +51,139 @@ export default function Home() {
         <HeroVisual variant="default" />
 
         <motion.div style={{ y: heroY, opacity: heroOpacity, scale: heroScale }} className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mb-8"
-          >
-            <span className="text-accent text-sm font-mono tracking-widest uppercase">// INSPIRED TECHNOLOGY</span>
-          </motion.div>
-
-          <motion.h1
-            id="hero-heading"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.03] mb-8 max-w-5xl tracking-tight"
-          >
-            <TextReveal delay={0.5}>
-              We Build, Design, and Scale Digital Experiences That Deliver.
-            </TextReveal>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-text-secondary text-lg md:text-xl max-w-2xl mb-12 leading-relaxed"
-          >
-            From enterprise networking and cybersecurity to ERP systems and web development — we deliver end-to-end technology solutions that transform businesses.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex flex-wrap gap-4 mb-20"
-          >
-            <MagneticElement strength={0.2}>
-              <RippleButton href="/services" variant="primary" className="px-8 py-4 rounded-full text-base">
-                Explore Services
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </RippleButton>
-            </MagneticElement>
-            <MagneticElement strength={0.2}>
-              <RippleButton href="/contact" variant="secondary" className="px-8 py-4 rounded-full text-base">
-                Talk to an Expert
-                <div className="w-2 h-2 bg-accent rounded-full animate-glow-pulse" aria-hidden="true" />
-              </RippleButton>
-            </MagneticElement>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-          >
-            {[
-              { value: '500+', label: 'Clients Served' },
-              { value: '15+', label: 'Years Experience' },
-              { value: '1000+', label: 'Projects Completed' },
-              { value: '24/7', label: 'Expert Support' },
-            ].map((stat, index) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Copy */}
+            <div>
               <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.4 + index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-center md:text-left"
+                transition={{ duration: 0.5, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
+                className="mb-6"
               >
-                <div className="text-3xl md:text-4xl font-bold text-accent mb-1">{stat.value}</div>
-                <div className="text-text-muted text-sm">{stat.label}</div>
+                <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase">// INSPIRED TECHNOLOGY</span>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.h1
+                id="hero-heading"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                className="text-4xl md:text-5xl lg:text-[4rem] font-bold leading-[1.08] mb-6 max-w-xl"
+              >
+                <TextReveal delay={0.4}>
+                  We build digital experiences that deliver real results.
+                </TextReveal>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7, ease: [0.32, 0.72, 0, 1] }}
+                className="text-[#9A9BB0] text-base md:text-lg max-w-lg mb-10 leading-relaxed"
+              >
+                Enterprise networking, cybersecurity, ERP systems, and web development — end-to-end technology solutions for businesses across Pakistan, USA & Middle East.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.9, ease: [0.32, 0.72, 0, 1] }}
+                className="flex flex-wrap gap-3 mb-14"
+              >
+                <MagneticElement strength={0.15}>
+                  <RippleButton href="/services" variant="primary" className="px-7 py-3.5 rounded-full text-sm">
+                    Explore Services
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </RippleButton>
+                </MagneticElement>
+                <MagneticElement strength={0.15}>
+                  <RippleButton href="/contact" variant="secondary" className="px-7 py-3.5 rounded-full text-sm">
+                    Talk to an Expert
+                    <div className="w-1.5 h-1.5 bg-[#00E87B] rounded-full animate-glow-pulse" aria-hidden="true" />
+                  </RippleButton>
+                </MagneticElement>
+              </motion.div>
+
+              {/* Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.1, ease: [0.32, 0.72, 0, 1] }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-6"
+              >
+                {[
+                  { value: '500+', label: 'Clients Served' },
+                  { value: '15+', label: 'Years Experience' },
+                  { value: '1000+', label: 'Projects Done' },
+                  { value: '24/7', label: 'Expert Support' },
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 1.2 + index * 0.06, ease: [0.32, 0.72, 0, 1] }}
+                    className="text-left"
+                  >
+                    <div className="text-2xl md:text-3xl font-bold text-[#00E87B] mb-0.5" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</div>
+                    <div className="text-[#5C5D72] text-xs">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Right: Hero Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+              transition={{ duration: 1, delay: 0.5, ease: [0.32, 0.72, 0, 1] }}
+              className="relative hidden lg:block"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&h=500&fit=crop&auto=format"
+                  alt="Team collaborating on technology solutions"
+                  className="w-full h-[420px] object-cover img-dark"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-transparent to-transparent opacity-70" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-[#00E87B] rounded-full animate-glow-pulse" />
+                    <span className="text-[#EDEEF2] text-sm font-medium">Trusted by 500+ enterprises worldwide</span>
+                  </div>
+                </div>
+              </div>
+              {/* Floating accent card */}
+              <motion.div
+                className="absolute -bottom-6 -left-6 bg-[#16161F] border border-[#252533] rounded-xl p-4 shadow-xl"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-[rgba(0,232,123,0.1)] rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#00E87B]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-[#EDEEF2] text-sm font-semibold">99.9% Uptime</div>
+                    <div className="text-[#5C5D72] text-xs">Network reliability</div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Marquee */}
-        <div className="relative border-y border-dark-border bg-dark-card/50 py-4 overflow-hidden z-10" aria-hidden="true">
+        <div className="relative border-y border-[#252533]/60 bg-[#111118]/50 py-3.5 overflow-hidden z-10" aria-hidden="true">
           <div className="animate-marquee flex whitespace-nowrap">
             {['PERFORMANCE MARKETING', 'UI/UX DESIGN', 'AI AUTOMATION', 'E-COMMERCE GROWTH', 'CUSTOM WEB SYSTEMS', 'SEO OPTIMIZATION', 'NETWORK SECURITY', 'ERPNext'].map((item, index) => (
-              <span key={index} className="mx-8 text-sm font-mono text-text-muted tracking-wider">
+              <span key={index} className="mx-8 text-xs font-mono text-[#5C5D72] tracking-wider">
                 {item}
-                <span className="ml-8 text-accent">•</span>
+                <span className="ml-8 text-[#00E87B] opacity-40">•</span>
               </span>
             ))}
           </div>
@@ -144,36 +191,36 @@ export default function Home() {
       </section>
 
       {/* About Preview */}
-      <section className="py-32 relative z-10" aria-labelledby="about-heading">
+      <section className="py-28 relative z-10" aria-labelledby="about-heading">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
             >
-              <span className="text-accent text-sm font-mono tracking-widest uppercase mb-4 block">// WHO WE ARE</span>
-              <h2 id="about-heading" className="text-4xl md:text-5xl font-bold mb-6">
-                We Deliver <span className="gradient-text">Networking Excellence</span>
+              <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-4 block">// WHO WE ARE</span>
+              <h2 id="about-heading" className="text-3xl md:text-4xl font-bold mb-5">
+                We deliver <span className="gradient-text">networking excellence</span>
               </h2>
-              <p className="text-text-secondary text-lg leading-relaxed mb-8">
+              <p className="text-[#9A9BB0] text-base leading-relaxed mb-7">
                 Inspired Technology is a network solutions provider based in Pakistan, delivering professional services to large-scale corporate businesses around the globe. We take pride in being the most trusted networking solution provider in Pakistan.
               </p>
-              <div className="flex flex-wrap gap-4 mb-8">
-                <div className="bg-dark-card border border-dark-border px-5 py-3 rounded-xl flex items-center gap-3">
-                  <span className="text-accent font-bold">Cisco</span>
-                  <span className="text-text-muted text-sm">Certified Partner</span>
+              <div className="flex flex-wrap gap-3 mb-7">
+                <div className="bg-[#16161F] border border-[#252533] px-4 py-2.5 rounded-lg flex items-center gap-2.5">
+                  <span className="text-[#00E87B] font-semibold text-sm">Cisco</span>
+                  <span className="text-[#5C5D72] text-xs">Certified Partner</span>
                 </div>
-                <div className="bg-dark-card border border-dark-border px-5 py-3 rounded-xl flex items-center gap-3">
-                  <span className="text-accent font-bold">ISO</span>
-                  <span className="text-text-muted text-sm">Quality Standards</span>
+                <div className="bg-[#16161F] border border-[#252533] px-4 py-2.5 rounded-lg flex items-center gap-2.5">
+                  <span className="text-[#00E87B] font-semibold text-sm">ISO</span>
+                  <span className="text-[#5C5D72] text-xs">Quality Standards</span>
                 </div>
               </div>
-              <MagneticElement strength={0.15}>
-                <RippleButton href="/about" variant="ghost" className="text-accent font-semibold">
+              <MagneticElement strength={0.12}>
+                <RippleButton href="/about" variant="ghost" className="text-[#00E87B] font-semibold text-sm">
                   Learn More About Us
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </RippleButton>
@@ -181,104 +228,112 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="grid grid-cols-2 gap-4"
+              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+              className="relative"
             >
-              {[
-                { icon: '🌐', title: 'Global Reach', desc: 'Serving clients in Pakistan, USA, Saudi Arabia & beyond' },
-                { icon: '🔒', title: 'Secure by Design', desc: 'Enterprise-grade security in every solution' },
-                { icon: '⚡', title: 'Fast Deployment', desc: 'Quick turnaround without compromising quality' },
-                { icon: '🤝', title: '24/7 Support', desc: 'Resident engineers and remote monitoring always ready' },
-              ].map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  className="bg-dark-card border border-dark-border rounded-2xl p-6 hover-glow card-lift"
-                >
-                  <div className="text-3xl mb-3">{item.icon}</div>
-                  <h3 className="font-semibold mb-2">{item.title}</h3>
-                  <p className="text-text-muted text-sm leading-relaxed">{item.desc}</p>
-                </motion.div>
-              ))}
+              <div className="rounded-2xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=450&fit=crop&auto=format"
+                  alt="Technology team working on network infrastructure"
+                  className="w-full h-[380px] object-cover img-dark rounded-2xl"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F]/60 to-transparent rounded-2xl" />
+              </div>
+              {/* Feature cards overlay */}
+              <div className="absolute bottom-4 left-4 right-4 grid grid-cols-2 gap-3">
+                {[
+                  { icon: '🌐', title: 'Global Reach', desc: 'Pakistan, USA & beyond' },
+                  { icon: '🔒', title: 'Secure by Design', desc: 'Enterprise-grade security' },
+                ].map((item) => (
+                  <div key={item.title} className="bg-[#16161F]/90 backdrop-blur-sm border border-[#252533] rounded-xl p-3">
+                    <div className="text-lg mb-1">{item.icon}</div>
+                    <div className="text-[#EDEEF2] text-xs font-semibold">{item.title}</div>
+                    <div className="text-[#5C5D72] text-[10px]">{item.desc}</div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-32 relative z-10 bg-dark-card/30" aria-labelledby="services-heading">
+      <section className="py-28 relative z-10 bg-[#111118]/40" aria-labelledby="services-heading">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mb-16"
+            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+            className="mb-14"
           >
-            <span className="text-accent text-sm font-mono tracking-widest uppercase mb-4 block">// OUR EXPERTISE</span>
-            <h2 id="services-heading" className="text-4xl md:text-5xl font-bold">
-              Services That <span className="gradient-text">Drive Growth</span>
+            <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-4 block">// OUR EXPERTISE</span>
+            <h2 id="services-heading" className="text-3xl md:text-4xl font-bold">
+              Services that <span className="gradient-text">drive growth</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.6, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="group bg-dark-card border border-dark-border rounded-2xl p-8 hover-glow card-lift cursor-pointer"
+                transition={{ duration: 0.5, delay: index * 0.06, ease: [0.32, 0.72, 0, 1] }}
+                className="group bg-[#16161F] border border-[#252533] rounded-2xl overflow-hidden hover-glow card-lift cursor-pointer"
               >
-                <div className="flex items-start justify-between mb-6">
-                  <ServiceVisual icon={service.icon} color={service.color} size="md" />
-                  <div className="w-10 h-10 border border-dark-border rounded-full flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/5 transition-all duration-200">
-                    <svg className="w-5 h-5 text-text-muted group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                {/* Service Image */}
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={`${service.title} service`}
+                    className="w-full h-full object-cover img-dark group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#16161F] via-[#16161F]/30 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <ServiceVisual icon={service.icon} color={service.color} size="sm" />
                   </div>
                 </div>
 
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-accent transition-colors">
-                  {service.title}
-                </h3>
-
-                <p className="text-text-secondary text-sm mb-5 leading-relaxed">
-                  {service.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-3 py-1.5 bg-dark border border-dark-border rounded-full text-text-muted group-hover:border-accent/30 group-hover:text-accent/80 transition-colors"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-[#00E87B] transition-colors duration-200">
+                    {service.title}
+                  </h3>
+                  <p className="text-[#9A9BB0] text-sm mb-4 leading-relaxed line-clamp-2">
+                    {service.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {service.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] px-2.5 py-1 bg-[#0A0A0F] border border-[#252533] rounded-full text-[#5C5D72] group-hover:border-[rgba(0,232,123,0.2)] group-hover:text-[#9A9BB0] transition-colors"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-12 text-center"
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-10 text-center"
           >
-            <MagneticElement strength={0.15}>
-              <RippleButton href="/services" variant="ghost" className="text-accent font-semibold">
+            <MagneticElement strength={0.12}>
+              <RippleButton href="/services" variant="ghost" className="text-[#00E87B] font-semibold text-sm">
                 View All Services
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </RippleButton>
@@ -287,72 +342,73 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Tagline Reveal */}
+      <section className="py-28 relative z-10" aria-labelledby="tagline-heading">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
+          >
+            <h2 id="tagline-heading" className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <span className="text-[#5C5D72]">Technology should work for you, </span>
+              <span className="gradient-text">not the other way around.</span>
+            </h2>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Portfolio */}
-      <section className="py-32 relative z-10" aria-labelledby="work-heading">
+      <section className="py-28 relative z-10" aria-labelledby="work-heading">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mb-16"
+            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+            className="mb-14"
           >
-            <span className="text-accent text-sm font-mono tracking-widest uppercase mb-4 block">// OUR WORK</span>
-            <h2 id="work-heading" className="text-4xl md:text-5xl font-bold">
-              Case Studies That <span className="gradient-text">Speak</span>
+            <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-4 block">// OUR WORK</span>
+            <h2 id="work-heading" className="text-3xl md:text-4xl font-bold">
+              Case studies that <span className="gradient-text">speak</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="group relative rounded-2xl overflow-hidden cursor-pointer min-h-[320px] card-lift"
+                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.32, 0.72, 0, 1] }}
+                className="group relative rounded-2xl overflow-hidden cursor-pointer min-h-[300px] card-lift"
               >
-                {/* Visual background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-25 group-hover:opacity-40 transition-opacity duration-500`} />
-                <div className="absolute inset-0" style={{
-                  backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
-                  backgroundSize: '40px 40px',
-                }} />
-                <div className="absolute inset-0 bg-dark/50" />
-
-                {/* Floating shapes */}
-                <motion.div
-                  className="absolute top-8 right-8 w-16 h-16 border border-white/10 rounded-xl"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                {/* Project Image */}
+                <img
+                  src={project.image}
+                  alt={`${project.title} project preview`}
+                  className="absolute inset-0 w-full h-full object-cover img-dark group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
                 />
-                <motion.div
-                  className="absolute bottom-12 left-12 w-10 h-10 border border-white/10 rounded-full"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F]/90 via-[#0A0A0F]/40 to-transparent" />
 
-                {/* Icon */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-500">
-                  {project.icon}
-                </div>
-
-                <div className="relative z-10 p-8 h-full flex flex-col justify-between">
+                <div className="relative z-10 p-7 h-full flex flex-col justify-between">
                   <div>
-                    <div className="w-14 h-14 bg-dark-card/80 border border-dark-border rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-accent/50 transition-all duration-300 backdrop-blur-sm">
-                      <span className="text-accent text-xl font-bold">{String(project.id).padStart(2, '0')}</span>
+                    <div className="w-12 h-12 bg-[#16161F]/80 backdrop-blur-sm border border-[#252533] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-[rgba(0,232,123,0.3)] transition-all duration-300">
+                      <span className="text-[#00E87B] text-base font-bold">{String(project.id).padStart(2, '0')}</span>
                     </div>
-                    <h3 className="text-2xl font-bold mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
-                    <p className="text-text-secondary text-sm">{project.category}</p>
+                    <h3 className="text-xl font-bold mb-1.5 text-[#EDEEF2] group-hover:text-[#00E87B] transition-colors">{project.title}</h3>
+                    <p className="text-[#9A9BB0] text-sm">{project.category}</p>
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <div className="bg-accent/10 border border-accent/30 px-4 py-2 rounded-full backdrop-blur-sm">
-                      <span className="text-accent text-sm font-semibold">{project.metric}</span>
+                    <div className="bg-[rgba(0,232,123,0.08)] border border-[rgba(0,232,123,0.2)] px-3.5 py-1.5 rounded-full backdrop-blur-sm">
+                      <span className="text-[#00E87B] text-xs font-semibold">{project.metric}</span>
                     </div>
-                    <div className="w-10 h-10 border border-dark-border rounded-full flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/5 transition-all duration-200 backdrop-blur-sm">
-                      <svg className="w-5 h-5 text-text-muted group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <div className="w-9 h-9 border border-[#252533] rounded-full flex items-center justify-center group-hover:border-[rgba(0,232,123,0.3)] group-hover:bg-[rgba(0,232,123,0.04)] transition-all duration-200 backdrop-blur-sm">
+                      <svg className="w-4 h-4 text-[#5C5D72] group-hover:text-[#00E87B] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </div>
@@ -363,16 +419,16 @@ export default function Home() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 text-center"
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-10 text-center"
           >
-            <MagneticElement strength={0.15}>
-              <RippleButton href="/portfolio" variant="ghost" className="text-accent font-semibold">
+            <MagneticElement strength={0.12}>
+              <RippleButton href="/portfolio" variant="ghost" className="text-[#00E87B] font-semibold text-sm">
                 View All Projects
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </RippleButton>
@@ -382,45 +438,47 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-32 relative z-10 bg-dark-card/30" aria-labelledby="testimonials-heading">
+      <section className="py-28 relative z-10 bg-[#111118]/40" aria-labelledby="testimonials-heading">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mb-16"
+            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+            className="mb-14"
           >
-            <span className="text-accent text-sm font-mono tracking-widest uppercase mb-4 block">// WHAT PEOPLE SAY</span>
-            <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-bold">
-              Client <span className="gradient-text">Testimonials</span>
+            <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-4 block">// WHAT PEOPLE SAY</span>
+            <h2 id="testimonials-heading" className="text-3xl md:text-4xl font-bold">
+              Client <span className="gradient-text">testimonials</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="bg-dark-card border border-dark-border rounded-2xl p-8 hover-glow card-lift relative overflow-hidden"
+                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.32, 0.72, 0, 1] }}
+                className="bg-[#16161F] border border-[#252533] rounded-2xl p-7 hover-glow card-lift relative overflow-hidden"
               >
-                {/* Decorative gradient */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl pointer-events-none" aria-hidden="true" />
-                
-                <svg className="w-10 h-10 text-accent/30 mb-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[rgba(0,232,123,0.03)] rounded-full blur-2xl pointer-events-none" aria-hidden="true" />
+
+                <svg className="w-8 h-8 text-[rgba(0,232,123,0.2)] mb-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
-                <p className="text-text-primary leading-relaxed mb-6">{testimonial.quote}</p>
+                <p className="text-[#EDEEF2] text-sm leading-relaxed mb-5">{testimonial.quote}</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                    <span className="text-accent font-bold">{testimonial.author.charAt(0)}</span>
-                  </div>
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.author}
+                    className="w-9 h-9 rounded-full object-cover"
+                    loading="lazy"
+                  />
                   <div>
-                    <div className="font-semibold text-sm">{testimonial.author}</div>
-                    <div className="text-text-muted text-xs">{testimonial.role}</div>
+                    <div className="font-semibold text-xs text-[#EDEEF2]">{testimonial.author}</div>
+                    <div className="text-[#5C5D72] text-[11px]">{testimonial.role}</div>
                   </div>
                 </div>
               </motion.div>
@@ -430,33 +488,33 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 relative z-10 overflow-hidden" aria-labelledby="cta-heading">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent-blue/10" />
+      <section className="py-28 relative z-10 overflow-hidden" aria-labelledby="cta-heading">
+        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(0,232,123,0.06)] via-transparent to-[rgba(0,163,224,0.06)]" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
-            <span className="text-accent text-sm font-mono tracking-widest uppercase mb-6 block">// READY TO GROW?</span>
-            <h2 id="cta-heading" className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8">
-              Ready to squish the <span className="gradient-text">competition?</span>
+            <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-5 block">// READY TO GROW?</span>
+            <h2 id="cta-heading" className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Ready to build something <span className="gradient-text">remarkable?</span>
             </h2>
-            <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto mb-12">
-              Let&apos;s talk about how we can transform your digital presence and drive real results for your business.
+            <p className="text-[#9A9BB0] text-base md:text-lg max-w-xl mx-auto mb-10">
+              Let&apos;s discuss how we can transform your digital presence and drive real results for your business.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <MagneticElement strength={0.2}>
-                <RippleButton href="/contact" variant="primary" className="px-10 py-5 rounded-full text-lg">
+            <div className="flex flex-wrap justify-center gap-3">
+              <MagneticElement strength={0.15}>
+                <RippleButton href="/contact" variant="primary" className="px-8 py-4 rounded-full text-sm">
                   Start Your Project
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </RippleButton>
               </MagneticElement>
-              <MagneticElement strength={0.2}>
-                <RippleButton href="/services" variant="secondary" className="px-10 py-5 rounded-full text-lg">
+              <MagneticElement strength={0.15}>
+                <RippleButton href="/services" variant="secondary" className="px-8 py-4 rounded-full text-sm">
                   Explore Services
                 </RippleButton>
               </MagneticElement>

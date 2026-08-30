@@ -31,35 +31,35 @@ export default function Navbar() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-dark/95 backdrop-blur-xl border-b border-dark-border'
+            ? 'bg-[#0A0A0F]/90 backdrop-blur-xl border-b border-[#252533]/60'
             : 'bg-transparent'
         }`}
         role="banner"
       >
-        <nav className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between" aria-label="Main navigation">
-          <Link href="/" className="flex items-center gap-2" aria-label="Inspired Technology - Home">
-            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-              <span className="text-dark font-bold text-lg">I</span>
+        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between" aria-label="Main navigation">
+          <Link href="/" className="flex items-center gap-2.5" aria-label="Inspired Technology - Home">
+            <div className="w-9 h-9 bg-[#00E87B] rounded-lg flex items-center justify-center">
+              <span className="text-[#0A0A0F] font-bold text-base">I</span>
             </div>
-            <div>
-              <span className="text-lg font-bold tracking-tight text-text-primary">INSPIRED</span>
-              <span className="text-accent text-lg">.tech</span>
+            <div className="flex items-baseline">
+              <span className="text-base font-bold tracking-tight text-[#EDEEF2]">INSPIRED</span>
+              <span className="text-[#00E87B] text-base font-semibold">.tech</span>
             </div>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1" role="menubar">
+          <div className="hidden lg:flex items-center gap-0.5" role="menubar">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 role="menuitem"
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   pathname === link.href
-                    ? 'text-accent bg-accent/10'
-                    : 'text-text-secondary hover:text-accent hover:bg-dark-hover'
+                    ? 'text-[#00E87B] bg-[rgba(0,232,123,0.08)]'
+                    : 'text-[#9A9BB0] hover:text-[#EDEEF2] hover:bg-[#1F1F2C]'
                 }`}
               >
                 {link.name}
@@ -67,14 +67,14 @@ export default function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="ml-4 bg-accent text-dark px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-accent/90 transition-all duration-200 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)]"
+              className="ml-3 bg-[#00E87B] text-[#0A0A0F] px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#00D46F] transition-all duration-200 hover:shadow-[0_0_20px_rgba(0,232,123,0.25)] active:scale-[0.98]"
             >
               Get Started
             </Link>
           </div>
 
           <button
-            className="lg:hidden text-text-primary p-2"
+            className="lg:hidden text-[#EDEEF2] p-2 rounded-lg hover:bg-[#1F1F2C] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
@@ -96,7 +96,8 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-dark/98 backdrop-blur-xl lg:hidden"
+            transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
+            className="fixed inset-0 z-40 bg-[#0A0A0F]/98 backdrop-blur-2xl lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
@@ -105,16 +106,16 @@ export default function Navbar() {
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.06, duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
                 >
                   <Link
                     href={link.href}
-                    className={`text-3xl font-semibold transition-colors block py-3 ${
+                    className={`text-2xl font-semibold transition-colors block py-3 ${
                       pathname === link.href
-                        ? 'text-accent'
-                        : 'text-text-primary hover:text-accent'
+                        ? 'text-[#00E87B]'
+                        : 'text-[#EDEEF2] hover:text-[#00E87B]'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -123,13 +124,13 @@ export default function Navbar() {
                 </motion.div>
               ))}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.35, duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
               >
                 <Link
                   href="/contact"
-                  className="mt-8 bg-accent text-dark px-10 py-4 rounded-full text-lg font-semibold"
+                  className="mt-8 bg-[#00E87B] text-[#0A0A0F] px-8 py-3.5 rounded-full text-lg font-semibold"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Get Started

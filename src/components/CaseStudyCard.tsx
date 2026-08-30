@@ -6,6 +6,17 @@ import { useRef } from 'react';
 import type { CaseStudy } from '@/data/case-studies';
 import ProjectVisual from '@/components/visuals/ProjectVisual';
 
+const cardImages: Record<string, string> = {
+  'tapsvs-lms': 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop&auto=format',
+  'clineum-medical': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop&auto=format',
+  'dikhatz-shopify': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&auto=format',
+  'drive-venturous': 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop&auto=format',
+  'english-evolution': 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop&auto=format',
+  'made-by-throne': 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop&auto=format',
+  'meri-pharmacy': 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&h=400&fit=crop&auto=format',
+  'student-portal': 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop&auto=format',
+};
+
 interface CaseStudyCardProps {
   study: CaseStudy;
   index: number;
@@ -16,11 +27,11 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 15 });
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 15 });
+  const mouseXSpring = useSpring(x, { stiffness: 200, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 200, damping: 20 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['8deg', '-8deg']);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-8deg', '8deg']);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['6deg', '-6deg']);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-6deg', '6deg']);
   const glareX = useTransform(mouseXSpring, [-0.5, 0.5], ['0%', '100%']);
   const glareY = useTransform(mouseYSpring, [-0.5, 0.5], ['0%', '100%']);
 
@@ -40,10 +51,10 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.5, delay: index * 0.06, ease: [0.32, 0.72, 0, 1] }}
     >
       <Link href={`/portfolio/${study.slug}`} className="block group" aria-label={`View case study: ${study.title}`}>
         <motion.div
@@ -55,7 +66,7 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
             rotateY,
             transformStyle: 'preserve-3d',
           }}
-          className="relative bg-dark-card border border-dark-border rounded-3xl overflow-hidden transition-shadow duration-300 hover:shadow-[0_20px_60px_-15px_rgba(0,255,136,0.15)]"
+          className="relative bg-[#16161F] border border-[#252533] rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[0_16px_48px_-12px_rgba(0,232,123,0.12)]"
         >
           {/* Project Visual Banner */}
           <ProjectVisual
@@ -63,15 +74,16 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
             icon={study.icon}
             title={study.client}
             index={index}
+            image={cardImages[study.slug]}
           />
 
           {/* Content */}
-          <div className="p-8">
+          <div className="p-6">
             {/* Glare effect */}
             <motion.div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{
-                background: `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.06) 0%, transparent 60%)`,
+                background: `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.04) 0%, transparent 60%)`,
               }}
             />
 
@@ -82,14 +94,14 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
             />
 
             {/* Header */}
-            <div className="flex items-start justify-between mb-4">
+            <div className="flex items-start justify-between mb-3">
               <div>
-                <p className="text-text-muted text-xs font-mono tracking-wider uppercase mb-1">{study.industry}</p>
-                <p className="text-text-primary font-semibold text-sm">{study.client}</p>
+                <p className="text-[#5C5D72] text-[10px] font-mono tracking-wider uppercase mb-0.5">{study.industry}</p>
+                <p className="text-[#EDEEF2] font-semibold text-xs">{study.client}</p>
               </div>
-              <div className="w-10 h-10 rounded-full flex items-center justify-center border border-dark-border group-hover:border-accent/50 group-hover:bg-accent/5 transition-all duration-200">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center border border-[#252533] group-hover:border-[rgba(0,232,123,0.3)] group-hover:bg-[rgba(0,232,123,0.04)] transition-all duration-200">
                 <svg
-                  className="w-5 h-5 text-text-muted group-hover:text-accent transition-colors"
+                  className="w-3.5 h-3.5 text-[#5C5D72] group-hover:text-[#00E87B] transition-colors"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -101,24 +113,24 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
             </div>
 
             {/* Title */}
-            <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-accent transition-colors duration-200 leading-tight">
+            <h3 className="text-lg font-bold mb-2 group-hover:text-[#00E87B] transition-colors duration-200 leading-tight">
               {study.title}
             </h3>
 
             {/* Summary */}
-            <p className="text-text-secondary text-sm leading-relaxed mb-5 line-clamp-3">
+            <p className="text-[#9A9BB0] text-xs leading-relaxed mb-4 line-clamp-3">
               {study.summary}
             </p>
 
             {/* Metrics */}
-            <div className="flex flex-wrap gap-2 mb-5">
+            <div className="flex flex-wrap gap-1.5 mb-4">
               {study.metrics.map((metric) => (
                 <div
                   key={metric.label}
-                  className="bg-dark border border-dark-border rounded-xl px-3 py-2 flex flex-col"
+                  className="bg-[#0A0A0F] border border-[#252533] rounded-lg px-2.5 py-1.5 flex flex-col"
                 >
-                  <span className="text-[10px] text-text-muted mb-0.5">{metric.label}</span>
-                  <span className="text-xs font-bold" style={{ color: study.color }}>
+                  <span className="text-[9px] text-[#5C5D72] mb-0.5">{metric.label}</span>
+                  <span className="text-[10px] font-bold" style={{ color: study.color }}>
                     {metric.value}
                   </span>
                 </div>
@@ -126,11 +138,11 @@ export default function CaseStudyCard({ study, index }: CaseStudyCardProps) {
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {study.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs px-3 py-1.5 bg-dark border border-dark-border rounded-full text-text-muted group-hover:border-accent/30 group-hover:text-accent/80 transition-colors"
+                  className="text-[10px] px-2.5 py-1 bg-[#0A0A0F] border border-[#252533] rounded-full text-[#5C5D72] group-hover:border-[rgba(0,232,123,0.2)] group-hover:text-[#9A9BB0] transition-colors"
                 >
                   {tag}
                 </span>

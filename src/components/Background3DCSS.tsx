@@ -37,17 +37,17 @@ export default function Background3DCSS() {
     };
 
     const createParticles = () => {
-      const count = Math.min(Math.floor((width * height) / 15000), 80);
+      const count = Math.min(Math.floor((width * height) / 18000), 60);
       particles = [];
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
           z: Math.random() * 1000,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.5 + 0.1,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+          size: Math.random() * 1.8 + 0.8,
+          opacity: Math.random() * 0.4 + 0.08,
         });
       }
     };
@@ -55,7 +55,7 @@ export default function Background3DCSS() {
     let time = 0;
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      time += 0.005;
+      time += 0.004;
 
       const scaleX = canvas.width / width;
       const scaleY = canvas.height / height;
@@ -63,7 +63,7 @@ export default function Background3DCSS() {
       particles.forEach((p, i) => {
         p.x += p.vx;
         p.y += p.vy;
-        p.z += Math.sin(time + i * 0.1) * 0.5;
+        p.z += Math.sin(time + i * 0.1) * 0.4;
 
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
@@ -77,7 +77,7 @@ export default function Background3DCSS() {
 
         ctx.beginPath();
         ctx.arc(x2d, y2d, size2d, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 255, 136, ${p.opacity * scale})`;
+        ctx.fillStyle = `rgba(0, 232, 123, ${p.opacity * scale * 0.8})`;
         ctx.fill();
 
         particles.forEach((p2, j) => {
@@ -86,14 +86,14 @@ export default function Background3DCSS() {
           const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 120) {
-            const lineOpacity = (1 - dist / 120) * 0.15 * scale;
+          if (dist < 110) {
+            const lineOpacity = (1 - dist / 110) * 0.1 * scale;
             ctx.beginPath();
             ctx.moveTo(x2d, y2d);
             const scale2 = 600 / (600 + p2.z);
             ctx.lineTo(p2.x * scale2 * scaleX, p2.y * scale2 * scaleY);
-            ctx.strokeStyle = `rgba(0, 255, 136, ${lineOpacity})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(0, 232, 123, ${lineOpacity})`;
+            ctx.lineWidth = 0.4;
             ctx.stroke();
           }
         });
@@ -121,9 +121,11 @@ export default function Background3DCSS() {
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
-      <canvas ref={canvasRef} className="absolute inset-0" style={{ opacity: 0.6 }} />
-      {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background/80" />
+      <canvas ref={canvasRef} className="absolute inset-0" style={{ opacity: 0.5 }} />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0" style={{
+        background: 'linear-gradient(180deg, rgba(10,10,15,0.4) 0%, transparent 40%, rgba(10,10,15,0.7) 100%)'
+      }} />
     </div>
   );
 }

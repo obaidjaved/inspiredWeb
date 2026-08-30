@@ -2,9 +2,15 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Inspired Technology | IT Solutions & Digital Transformation',
-  description: 'Pakistan\'s most trusted IT solutions provider — networking, cybersecurity, ERP systems, web development, and AI automation across Pakistan, USA & Middle East.',
-  keywords: 'IT solutions, networking, cybersecurity, ERPNext, web development, AI automation, Pakistan, USA, Middle East',
+  title: 'Inspired Technology — Enterprise IT Solutions & Digital Transformation',
+  description: 'Pakistan\'s most trusted IT solutions provider. Networking, cybersecurity, ERP systems, web development, and AI automation across Pakistan, USA & Middle East.',
+  keywords: 'IT solutions, networking, cybersecurity, ERPNext, web development, AI automation, Pakistan, USA, Middle East, Cisco, structured cabling',
+  openGraph: {
+    title: 'Inspired Technology — Enterprise IT Solutions',
+    description: 'Networking, cybersecurity, ERP systems, web development, and AI automation.',
+    type: 'website',
+    locale: 'en_US',
+  },
 };
 
 export default function RootLayout({

@@ -10,9 +10,9 @@ import { caseStudies } from '@/data/case-studies';
 export default function PortfolioPage() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
+  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.96]);
 
   return (
     <main id="main-content">
@@ -21,83 +21,83 @@ export default function PortfolioPage() {
       {/* Hero */}
       <section
         ref={heroRef}
-        className="pt-32 pb-20 relative min-h-[60vh] flex flex-col justify-end overflow-hidden"
+        className="pt-28 pb-16 relative min-h-[55vh] flex flex-col justify-end overflow-hidden"
         aria-labelledby="portfolio-hero-heading"
       >
         {/* Decorative grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
           <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            backgroundImage: 'linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
             backgroundSize: '60px 60px',
           }} />
         </div>
 
         <motion.div
           style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
-          className="relative z-10 max-w-7xl mx-auto px-6 pb-12"
+          className="relative z-10 max-w-7xl mx-auto px-6 pb-10"
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
           >
-            <span className="text-accent text-sm font-mono tracking-widest uppercase mb-6 block">// Case Studies</span>
+            <span className="text-[#00E87B] text-xs font-mono tracking-[0.2em] uppercase mb-5 block">// Case Studies</span>
           </motion.div>
 
           <motion.h1
             id="portfolio-hero-heading"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05] mb-6 max-w-4xl tracking-tight"
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
+            className="text-4xl md:text-6xl lg:text-[5rem] font-bold leading-[1.06] mb-5 max-w-4xl tracking-tight"
           >
-            Work That <span className="gradient-text">Speaks</span>{' '}
-            <span className="text-text-secondary text-3xl md:text-4xl lg:text-5xl font-light block mt-4 leading-snug">
+            Work that <span className="gradient-text">speaks</span>{' '}
+            <span className="text-[#9A9BB0] text-2xl md:text-3xl lg:text-4xl font-light block mt-3 leading-snug">
               Results across {caseStudies.length} industries and counting.
             </span>
           </motion.h1>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap gap-8 mt-10"
+            transition={{ duration: 0.5, delay: 0.4, ease: [0.32, 0.72, 0, 1] }}
+            className="flex flex-wrap gap-8 mt-8"
           >
             {[
               { value: `${caseStudies.length}+`, label: 'Projects Delivered' },
               { value: '6+', label: 'Industries Served' },
               { value: '100%', label: 'Client Satisfaction' },
-            ].map((stat, i) => (
-              <div key={stat.label} className="flex items-baseline gap-3">
-                <span className="text-2xl md:text-3xl font-bold text-accent">{stat.value}</span>
-                <span className="text-text-muted text-sm">{stat.label}</span>
+            ].map((stat) => (
+              <div key={stat.label} className="flex items-baseline gap-2.5">
+                <span className="text-xl md:text-2xl font-bold text-[#00E87B]" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</span>
+                <span className="text-[#5C5D72] text-xs">{stat.label}</span>
               </div>
             ))}
           </motion.div>
         </motion.div>
 
         {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0A0A0F] to-transparent pointer-events-none" aria-hidden="true" />
       </section>
 
       {/* Case Studies Grid */}
-      <section className="pb-32 relative z-10" aria-label="Case studies">
+      <section className="pb-28 relative z-10" aria-label="Case studies">
         <div className="max-w-7xl mx-auto px-6">
           {/* Industry filter pills */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-wrap gap-3 mb-12"
+            transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+            className="flex flex-wrap gap-2 mb-10"
           >
             {['All', ...new Set(caseStudies.map((s) => s.industry))].map((industry, i) => (
               <span
                 key={industry}
-                className={`text-sm px-5 py-2.5 rounded-full border transition-colors cursor-pointer ${
+                className={`text-xs px-4 py-2 rounded-full border transition-colors cursor-pointer ${
                   i === 0
-                    ? 'bg-accent text-dark border-accent font-semibold'
-                    : 'bg-dark-card text-text-muted border-dark-border hover:border-accent/50 hover:text-accent'
+                    ? 'bg-[#00E87B] text-[#0A0A0F] border-[#00E87B] font-semibold'
+                    : 'bg-[#16161F] text-[#5C5D72] border-[#252533] hover:border-[rgba(0,232,123,0.3)] hover:text-[#00E87B]'
                 }`}
               >
                 {industry}
@@ -106,7 +106,7 @@ export default function PortfolioPage() {
           </motion.div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {caseStudies.map((study, index) => (
               <CaseStudyCard key={study.slug} study={study} index={index} />
             ))}
