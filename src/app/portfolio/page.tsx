@@ -54,18 +54,18 @@ export default function PortfolioPage() {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
             <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// CASE STUDIES</span>
-            <h1 id="portfolio-hero-heading" className="text-4xl md:text-6xl font-bold mb-5 text-white">
+            <h1 id="portfolio-hero-heading" className="text-4xl md:text-6xl font-bold mb-5 text-[#e8e8e8]">
               Our work
             </h1>
-            <p className="text-[#a0a0a0] text-base md:text-lg max-w-2xl leading-relaxed">
+            <p className="text-[#9a9a9a] text-base md:text-lg max-w-2xl leading-relaxed">
               Explore our portfolio of successful implementations across diverse industries and business challenges.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Light Stats Bar */}
-      <section className="bg-white border-b border-gray-100 py-12" aria-label="Portfolio statistics">
+      {/* Dark Stats Bar */}
+      <section className="bg-[#121212] border-b border-[#1f1f1f] py-12" aria-label="Portfolio statistics">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-3 gap-8">
             {stats.map((stat, index) => (
@@ -78,15 +78,15 @@ export default function PortfolioPage() {
                 className="text-center"
               >
                 <div className="text-3xl md:text-4xl font-bold text-[#6366f1] mb-1" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</div>
-                <div className="text-[#888] text-sm">{stat.label}</div>
+                <div className="text-[#9a9a9a] text-sm">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Light Filter + Projects */}
-      <section className="py-20 bg-gray-50" aria-labelledby="projects-heading">
+      {/* Dark Filter + Projects */}
+      <section className="py-20 bg-black" aria-labelledby="projects-heading">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -96,7 +96,7 @@ export default function PortfolioPage() {
             className="mb-10"
           >
             <span className="text-[#6366f1] text-xs font-medium tracking-[0.15em] mb-4 block">// FILTER BY INDUSTRY</span>
-            <h2 id="projects-heading" className="text-2xl md:text-3xl font-bold text-[#171616] mb-6">Featured projects</h2>
+            <h2 id="projects-heading" className="text-2xl md:text-3xl font-bold text-[#e8e8e8] mb-6">Featured projects</h2>
             <div className="flex flex-wrap gap-2">
               {industries.map((industry) => (
                 <button
@@ -105,7 +105,7 @@ export default function PortfolioPage() {
                   className={`text-xs font-medium px-5 py-2.5 rounded-full border transition-all duration-200 ${
                     activeIndustry === industry
                       ? 'bg-[#6366f1] text-white border-[#6366f1] shadow-[0_0_16px_rgba(99,102,241,0.3)]'
-                      : 'bg-white text-[#888] border-gray-200 hover:border-[rgba(99,102,241,0.3)] hover:text-[#6366f1]'
+                      : 'bg-[#121212] text-[#9a9a9a] border-[#2a2a2a] hover:border-[rgba(99,102,241,0.3)] hover:text-[#818cf8]'
                   }`}
                 >
                   {industry}
@@ -125,7 +125,7 @@ export default function PortfolioPage() {
               >
                 <Link
                   href={`/portfolio/${study.slug}`}
-                  className="group block bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-[rgba(99,102,241,0.2)] transition-all duration-300"
+                  className="group block bg-[#121212] border border-[#2a2a2a] rounded-2xl overflow-hidden hover-glow card-lift transition-all duration-300"
                 >
                   <div className="relative h-56 overflow-hidden">
                     <img
@@ -136,12 +136,12 @@ export default function PortfolioPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
-                      <span className="text-[10px] px-3 py-1.5 bg-white/90 backdrop-blur-sm border border-white/20 rounded-full text-[#171616] font-medium">
+                      <span className="text-[10px] px-3 py-1.5 bg-black/70 backdrop-blur-sm border border-[#2a2a2a] rounded-full text-[#e8e8e8] font-medium">
                         {study.industry}
                       </span>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-lg font-bold text-white mb-1">{study.title}</h3>
+                      <h3 className="text-lg font-bold text-[#e8e8e8] mb-1">{study.title}</h3>
                       <p className="text-white/70 text-xs line-clamp-2">{study.summary}</p>
                     </div>
                   </div>
@@ -150,12 +150,12 @@ export default function PortfolioPage() {
                     <div className="flex justify-between mb-4">
                       {study.metrics.slice(0, 2).map((metric) => (
                         <div key={metric.label}>
-                          <div className="text-lg font-bold text-[#6366f1]">{metric.value}</div>
-                          <div className="text-[10px] text-[#888]">{metric.label}</div>
+                          <div className="text-lg font-bold text-[#818cf8]">{metric.value}</div>
+                          <div className="text-[10px] text-[#636363]">{metric.label}</div>
                         </div>
                       ))}
                     </div>
-                    <div className="flex items-center gap-2 text-[#6366f1] text-xs font-medium group-hover:gap-3 transition-all">
+                    <div className="flex items-center gap-2 text-[#818cf8] text-xs font-medium group-hover:gap-3 transition-all">
                       View Case Study
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -170,7 +170,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Dark CTA */}
-      <section className="py-20 bg-[#0a0a0a]" aria-labelledby="portfolio-cta-heading">
+      <section className="py-20 bg-[#121212]" aria-labelledby="portfolio-cta-heading">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -178,10 +178,10 @@ export default function PortfolioPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
-            <h2 id="portfolio-cta-heading" className="text-3xl md:text-5xl font-bold mb-5 text-white">
+            <h2 id="portfolio-cta-heading" className="text-3xl md:text-5xl font-bold mb-5 text-[#e8e8e8]">
               Start your success story
             </h2>
-            <p className="text-[#a0a0a0] text-base max-w-xl mx-auto mb-8">
+            <p className="text-[#9a9a9a] text-base max-w-xl mx-auto mb-8">
               Let us help you build a solution that delivers real business results.
             </p>
             <Link

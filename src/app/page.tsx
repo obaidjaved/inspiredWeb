@@ -186,10 +186,10 @@ function HeroSlideCounter({ current, total, onPrev, onNext }: { current: number;
         <div className="absolute top-0 left-0 w-full bg-white transition-all duration-500" style={{ height: `${((current + 1) / total) * 100}%` }} />
       </div>
       <div className="flex gap-2">
-        <button onClick={onPrev} className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors" aria-label="Previous slide">
+        <button onClick={onPrev} className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-all duration-200 active:scale-90" aria-label="Previous slide">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
         </button>
-        <button onClick={onNext} className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors" aria-label="Next slide">
+        <button onClick={onNext} className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-all duration-200 active:scale-90" aria-label="Next slide">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
         </button>
       </div>
@@ -217,10 +217,10 @@ function CaseStudySlider() {
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 1.02 }}
+          animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
           className="relative h-[500px] md:h-[600px] rounded-2xl overflow-hidden"
         >
           <img
@@ -230,16 +230,16 @@ function CaseStudySlider() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
           <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-16 max-w-2xl">
-            <span className="inline-block bg-[#6366f1]/20 border border-[#6366f1]/30 text-[#d0d1fb] text-xs font-semibold px-3 py-1 rounded-full mb-4 w-fit uppercase tracking-wider">
+            <span className="inline-block bg-[#6366f1]/15 border border-[#6366f1]/25 text-[#d0d1fb] text-xs font-semibold px-3 py-1.5 rounded-full mb-4 w-fit uppercase tracking-wider">
               {caseStudies[active].category}
             </span>
             <h3 className="text-2xl md:text-4xl font-bold text-white mb-4 leading-tight">{caseStudies[active].title}</h3>
-            <p className="text-white/70 text-sm md:text-base mb-6 leading-relaxed">{caseStudies[active].desc}</p>
+            <p className="text-white/60 text-sm md:text-base mb-6 leading-relaxed">{caseStudies[active].desc}</p>
             <div className="flex gap-8 mb-8">
               {caseStudies[active].stats.map((s) => (
                 <div key={s.label}>
-                  <div className="text-3xl md:text-4xl font-bold text-white">{s.value}</div>
-                  <div className="text-white/50 text-xs mt-1">{s.label}</div>
+                  <div className="text-3xl md:text-4xl font-bold text-white" style={{ fontVariantNumeric: 'tabular-nums' }}>{s.value}</div>
+                  <div className="text-white/40 text-xs mt-1">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -251,15 +251,13 @@ function CaseStudySlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Prev/Next arrows */}
-      <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors" aria-label="Previous case study">
+      <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-200 active:scale-90" aria-label="Previous case study">
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
       </button>
-      <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors" aria-label="Next case study">
+      <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-200 active:scale-90" aria-label="Next case study">
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
       </button>
 
-      {/* Tab navigation */}
       <div className="flex justify-center gap-1 mt-6">
         {caseStudies.map((cs, i) => (
           <button
@@ -268,7 +266,7 @@ function CaseStudySlider() {
             className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-medium transition-all duration-300 ${
               i === active
                 ? 'bg-[#6366f1] text-white'
-                : 'bg-[#111] text-[#666] border border-[#222] hover:text-white hover:border-[#444]'
+                : 'bg-[#121212] text-[#636363] border border-[#2a2a2a] hover:text-white hover:border-[#444]'
             }`}
           >
             <span className={`w-1.5 h-1.5 rounded-full ${i === active ? 'bg-white' : 'bg-[#444]'}`} />
@@ -314,20 +312,20 @@ function InsightsCarousel() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: i * 0.08 }}
-          className="group relative bg-[#111] border border-[#222] rounded-2xl overflow-hidden cursor-pointer h-[420px]"
+          transition={{ duration: 0.5, delay: i * 0.08, ease: [0.32, 0.72, 0, 1] }}
+          className="group relative bg-[#121212] border border-[#2a2a2a] rounded-2xl overflow-hidden cursor-pointer h-[420px] card-lift"
           onMouseEnter={() => setHovered(i)}
           onMouseLeave={() => setHovered(null)}
         >
           <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
           <div className={`absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 ${hovered === i ? 'h-full flex flex-col justify-end' : 'h-[140px]'}`}>
-            <span className="text-[#6366f1] text-xs font-bold uppercase tracking-wider mb-2">{item.tag}</span>
+            <span className="text-[#818cf8] text-xs font-bold uppercase tracking-wider mb-2">{item.tag}</span>
             <h4 className="text-white text-lg font-bold mb-2 leading-snug">{item.title}</h4>
             {hovered === i && (
               <>
-                <p className="text-white/60 text-sm mb-4 leading-relaxed">{item.excerpt}</p>
-                <span className="inline-flex items-center gap-2 text-[#6366f1] text-sm font-semibold">
+                <p className="text-white/50 text-sm mb-4 leading-relaxed">{item.excerpt}</p>
+                <span className="inline-flex items-center gap-2 text-[#818cf8] text-sm font-semibold">
                   Read More
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </span>
@@ -362,7 +360,7 @@ export default function Home() {
     <main id="main-content">
       <Navbar />
 
-      {/* ===== 1. HERO — Full viewport slider ===== */}
+      {/* ===== 1. HERO — Full viewport slider with gradient text ===== */}
       <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden" aria-label="Hero">
         <AnimatePresence mode="wait">
           <motion.div
@@ -379,7 +377,7 @@ export default function Home() {
               className="w-full h-full object-cover"
               fetchPriority="high"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
           </motion.div>
         </AnimatePresence>
 
@@ -401,11 +399,11 @@ export default function Home() {
                   {heroSlides[heroSlide].tag}
                 </span>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
+                <h1 className="text-4xl md:text-5xl lg:text-[3.75rem] font-bold leading-[1.05] mb-6 gradient-text-hero">
                   {heroSlides[heroSlide].headline}
                 </h1>
 
-                <p className="text-white/70 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
+                <p className="text-[#9a9a9a] text-base md:text-lg leading-relaxed mb-8 max-w-xl">
                   {heroSlides[heroSlide].sub}
                 </p>
 
@@ -414,8 +412,8 @@ export default function Home() {
                     href={heroSlides[heroSlide].cta.href}
                     className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 ${
                       heroSlides[heroSlide].cta.variant === 'gradient'
-                        ? 'bg-gradient-to-r from-[#6366f1] to-[#818cf8] text-white hover:shadow-[0_0_30px_rgba(99,102,241,0.4)]'
-                        : 'border border-white/30 text-white hover:bg-white/10'
+                        ? 'bg-[#6366f1] text-white hover:bg-[#5558e6] hover:shadow-[0_0_30px_rgba(99,102,241,0.35)] active:scale-[0.98]'
+                        : 'border border-white/25 text-white hover:bg-white/10 active:scale-[0.98]'
                     }`}
                   >
                     {heroSlides[heroSlide].cta.label}
@@ -429,11 +427,11 @@ export default function Home() {
       </section>
 
       {/* ===== 2. OUR EXPERTISE — Horizontal link row ===== */}
-      <section className="bg-[#0a0a0a] border-b border-[#222] py-6" aria-label="Our expertise">
+      <section className="bg-[#0a0a0a] border-b border-[#1f1f1f] py-6" aria-label="Our expertise">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-3">
             {expertiseItems.map((item) => (
-              <Link key={item.label} href={item.href} className="text-white/70 text-sm font-medium hover:text-white transition-colors duration-200">
+              <Link key={item.label} href={item.href} className="text-[#9a9a9a] text-sm font-medium hover:text-white transition-colors duration-200">
                 {item.label}
               </Link>
             ))}
@@ -442,14 +440,14 @@ export default function Home() {
       </section>
 
       {/* ===== 3. STICKY ANCHOR BAR ===== */}
-      <section className="sticky top-[72px] z-30 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#222] hidden md:block" aria-label="Section navigation">
+      <section className="sticky top-[72px] z-30 bg-black/90 backdrop-blur-xl border-b border-[#1f1f1f] hidden md:block" aria-label="Section navigation">
         <div className="max-w-7xl mx-auto px-6">
           <nav className="flex items-center gap-1 overflow-x-auto py-2" aria-label="Jump to section">
             {anchorLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-[#666] hover:text-white transition-colors whitespace-nowrap rounded-full hover:bg-[#111]"
+                className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-[#636363] hover:text-white transition-colors whitespace-nowrap rounded-full hover:bg-white/5"
               >
                 {link.label}
                 <svg className="w-3 h-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -462,8 +460,8 @@ export default function Home() {
       {/* ===== 4. CLIENT LOGOS ===== */}
       <section id="clients" className="py-20 relative z-10" aria-label="Trusted by leading enterprises">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">Trusted by leading global enterprises</h2>
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-50">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[#e8e8e8]">Trusted by leading global enterprises</h2>
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-40">
             {clientLogos.map((logo) => (
               <img
                 key={logo.name}
@@ -481,12 +479,12 @@ export default function Home() {
       <section id="case-studies" className="py-20 relative z-10" aria-labelledby="cs-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12">
-            <h2 id="cs-heading" className="text-2xl md:text-3xl font-bold mb-3">Proven solutions. Real-world impact.</h2>
-            <p className="text-[#666] text-sm max-w-xl">Explore how our teams solve critical business problems through strategy, engineering, and innovation.</p>
+            <h2 id="cs-heading" className="text-2xl md:text-3xl font-bold mb-3 text-[#e8e8e8]">Proven solutions. Real-world impact.</h2>
+            <p className="text-[#636363] text-sm max-w-xl">Explore how our teams solve critical business problems through strategy, engineering, and innovation.</p>
           </div>
           <CaseStudySlider />
           <div className="text-center mt-8">
-            <Link href="/portfolio" className="inline-flex items-center gap-2 bg-[#6366f1] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200">
+            <Link href="/portfolio" className="inline-flex items-center gap-2 bg-[#6366f1] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 active:scale-[0.98]">
               All Case Studies
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </Link>
@@ -495,13 +493,13 @@ export default function Home() {
       </section>
 
       {/* ===== 6. MID-PAGE CTA BANNER ===== */}
-      <section className="py-16 relative z-10 bg-gradient-to-r from-[rgba(99,102,241,0.08)] to-transparent border-y border-[#222]/40">
+      <section className="py-16 relative z-10 bg-[#6366f1]/5 border-y border-[#1f1f1f]">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">Build custom, AI-native solutions that deliver real business value</h2>
-            <p className="text-[#666] text-sm">From strategy to deployment — we engineer intelligent products that scale.</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-[#e8e8e8]">Build custom, AI-native solutions that deliver real business value</h2>
+            <p className="text-[#636363] text-sm">From strategy to deployment — we engineer intelligent products that scale.</p>
           </div>
-          <Link href="/services" className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition-all duration-200 whitespace-nowrap">
+          <Link href="/services" className="inline-flex items-center gap-2 border border-[#2a2a2a] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/5 hover:border-[#6366f1]/30 transition-all duration-200 whitespace-nowrap active:scale-[0.98]">
             Learn More
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>
@@ -512,22 +510,22 @@ export default function Home() {
       <section id="advantages" className="py-20 relative z-10" aria-labelledby="adv-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12">
-            <h2 id="adv-heading" className="text-2xl md:text-3xl font-bold mb-3">The Inspired Technology difference</h2>
-            <p className="text-[#666] text-sm max-w-xl">We don&apos;t just build software. We provide the strategic depth and technical precision required to dominate your market.</p>
+            <h2 id="adv-heading" className="text-2xl md:text-3xl font-bold mb-3 text-[#e8e8e8]">The Inspired Technology difference</h2>
+            <p className="text-[#636363] text-sm max-w-xl">We don&apos;t just build software. We provide the strategic depth and technical precision required to dominate your market.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {advantages.map((adv, i) => (
               <motion.div
                 key={adv.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
-                className="bg-[#111] border border-[#222] rounded-2xl p-7 hover-glow card-lift"
+                transition={{ duration: 0.5, delay: i * 0.06, ease: [0.32, 0.72, 0, 1] }}
+                className="bg-[#121212] border border-[#2a2a2a] rounded-2xl p-7 hover-glow"
               >
                 <div className="text-3xl mb-4">{adv.icon}</div>
-                <h3 className="text-lg font-bold text-white mb-2">{adv.title}</h3>
-                <p className="text-[#666] text-sm leading-relaxed">{adv.desc}</p>
+                <h3 className="text-lg font-bold text-[#e8e8e8] mb-2">{adv.title}</h3>
+                <p className="text-[#636363] text-sm leading-relaxed">{adv.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -537,24 +535,24 @@ export default function Home() {
       {/* ===== 8. AWARDS ===== */}
       <section id="awards" className="py-20 bg-[#0a0a0a] relative z-10" aria-labelledby="awards-heading">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 id="awards-heading" className="text-2xl md:text-3xl font-bold mb-10">Awards & recognitions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <h2 id="awards-heading" className="text-2xl md:text-3xl font-bold mb-10 text-[#e8e8e8]">Awards & recognitions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {awards.map((award, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="bg-[#111] border border-[#222] rounded-2xl p-6 flex items-start gap-4"
+                transition={{ duration: 0.4, delay: i * 0.06, ease: [0.32, 0.72, 0, 1] }}
+                className="bg-[#121212] border border-[#2a2a2a] rounded-2xl p-6 flex items-start gap-4 hover-glow"
               >
-                <img src={award.logo} alt="Award logo" className="h-8 object-contain filter invert opacity-60 shrink-0 mt-0.5" loading="lazy" />
-                <p className="text-[#a0a0a0] text-sm leading-relaxed">{award.desc}</p>
+                <img src={award.logo} alt="Award logo" className="h-8 object-contain filter invert opacity-50 shrink-0 mt-0.5" loading="lazy" />
+                <p className="text-[#9a9a9a] text-sm leading-relaxed">{award.desc}</p>
               </motion.div>
             ))}
           </div>
           <div className="text-center mt-8">
-            <Link href="/about" className="inline-flex items-center gap-2 text-[#6366f1] text-sm font-semibold hover:text-[#d0d1fb] transition-colors">
+            <Link href="/about" className="inline-flex items-center gap-2 text-[#818cf8] text-sm font-semibold hover:text-white transition-colors duration-200">
               All Awards
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </Link>
@@ -565,35 +563,37 @@ export default function Home() {
       {/* ===== 9. INSIGHTS ===== */}
       <section id="insights" className="py-20 relative z-10" aria-labelledby="insights-heading">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 id="insights-heading" className="text-2xl md:text-3xl font-bold mb-10">Insights</h2>
+          <h2 id="insights-heading" className="text-2xl md:text-3xl font-bold mb-10 text-[#e8e8e8]">Insights</h2>
           <InsightsCarousel />
         </div>
       </section>
 
-      {/* ===== 10. ANIMATED CTA — "Let us accelerate your..." ===== */}
+      {/* ===== 10. TAGLINE REVEAL (landing-page-design B11) ===== */}
+      <TaglineReveal />
+
+      {/* ===== 11. ANIMATED CTA — "Let us accelerate your..." ===== */}
       <section className="py-20 relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-[#e8e8e8]">
             Let us accelerate your{' '}
-            <span className="text-[#6366f1]">
+            <span className="text-[#818cf8]">
               <AnimatedRotatingText />
             </span>
           </h2>
-          <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full text-sm font-bold hover:bg-white/90 transition-all duration-200">
+          <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full text-sm font-bold hover:bg-white/90 transition-all duration-200 active:scale-[0.98]">
             Let&apos;s talk
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>
         </div>
       </section>
 
-      {/* ===== 11. TEAM — Photo scroller + Map + Stats ===== */}
+      {/* ===== 12. TEAM — Photo scroller + Map + Stats ===== */}
       <section id="team" className="py-20 bg-[#0a0a0a] relative z-10 overflow-hidden" aria-labelledby="team-heading">
         <div className="max-w-7xl mx-auto px-6 mb-12">
-          <h2 id="team-heading" className="text-2xl md:text-3xl font-bold mb-3">We&apos;re a global team of innovators</h2>
-          <p className="text-[#666] text-sm max-w-xl">Navigate complex digital initiatives with confidence.</p>
+          <h2 id="team-heading" className="text-2xl md:text-3xl font-bold mb-3 text-[#e8e8e8]">We&apos;re a global team of innovators</h2>
+          <p className="text-[#636363] text-sm max-w-xl">Navigate complex digital initiatives with confidence.</p>
         </div>
 
-        {/* Photo scroller */}
         <div className="relative mb-16 overflow-hidden">
           <div className="flex gap-4 animate-marquee-fast" style={{ width: 'max-content' }}>
             {[...teamPhotos, ...teamPhotos].map((photo, i) => (
@@ -602,64 +602,61 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Map + Stats */}
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative bg-[#111] border border-[#222] rounded-2xl p-8 flex items-center justify-center min-h-[300px]">
-            <svg viewBox="0 0 800 400" className="w-full h-auto opacity-20">
+          <div className="relative bg-[#121212] border border-[#2a2a2a] rounded-2xl p-8 flex items-center justify-center min-h-[300px]">
+            <svg viewBox="0 0 800 400" className="w-full h-auto opacity-15">
               <ellipse cx="400" cy="200" rx="350" ry="150" fill="none" stroke="#6366f1" strokeWidth="0.5" />
               <ellipse cx="400" cy="200" rx="250" ry="100" fill="none" stroke="#6366f1" strokeWidth="0.3" />
               <line x1="50" y1="200" x2="750" y2="200" stroke="#6366f1" strokeWidth="0.3" />
               <line x1="400" y1="50" x2="400" y2="350" stroke="#6366f1" strokeWidth="0.3" />
-              {/* Location dots */}
               {[
                 [180, 180], [350, 160], [420, 150], [550, 190], [600, 170],
                 [250, 220], [480, 230], [650, 200], [150, 200], [300, 250],
               ].map(([x, y], i) => (
-                <circle key={i} cx={x} cy={y} r="4" fill="#6366f1" opacity={0.6 + (i % 3) * 0.15} />
+                <circle key={i} cx={x} cy={y} r="4" fill="#6366f1" opacity={0.5 + (i % 3) * 0.15} />
               ))}
             </svg>
           </div>
           <div className="space-y-8">
             {teamStats.map((stat) => (
               <div key={stat.label}>
-                <div className="text-4xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-[#a0a0a0] text-sm">{stat.label}</div>
-                {stat.sub && <div className="text-[#666] text-xs mt-1">{stat.sub}</div>}
+                <div className="text-4xl font-bold text-white mb-1" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat.value}</div>
+                <div className="text-[#9a9a9a] text-sm">{stat.label}</div>
+                {stat.sub && <div className="text-[#636363] text-xs mt-1">{stat.sub}</div>}
               </div>
             ))}
           </div>
         </div>
 
-        {/* City scroller */}
-        <div className="mt-12 overflow-hidden border-t border-[#222] pt-6">
+        <div className="mt-12 overflow-hidden border-t border-[#1f1f1f] pt-6">
           <div className="flex gap-6 animate-marquee-fast" style={{ width: 'max-content' }}>
             {[...cities, ...cities].map((city, i) => (
-              <span key={i} className="text-[#666] text-sm whitespace-nowrap flex items-center gap-3">
+              <span key={i} className="text-[#636363] text-sm whitespace-nowrap flex items-center gap-3">
                 {city}
-                <span className="w-1.5 h-1.5 bg-[#6366f1] rounded-full opacity-40" />
+                <span className="w-1.5 h-1.5 bg-[#6366f1] rounded-full opacity-30" />
               </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===== 12. CONTACT — 3-step process ===== */}
+      {/* ===== 13. CONTACT — 3-step process ===== */}
       <section className="py-20 relative z-10" aria-labelledby="contact-heading">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold mb-8">Let&apos;s talk</h2>
+            <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold mb-8 text-[#e8e8e8]">Let&apos;s talk</h2>
             <div className="space-y-0">
               {contactSteps.map((step, i) => (
                 <div key={step.title} className="flex gap-5">
                   <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 bg-[#6366f1]/20 border border-[#6366f1]/30 rounded-full flex items-center justify-center shrink-0">
-                      <span className="text-[#6366f1] text-sm font-bold">{i + 1}</span>
+                    <div className="w-10 h-10 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full flex items-center justify-center shrink-0">
+                      <span className="text-[#818cf8] text-sm font-bold">{i + 1}</span>
                     </div>
-                    {i < contactSteps.length - 1 && <div className="w-px h-16 bg-[#222]" />}
+                    {i < contactSteps.length - 1 && <div className="w-px h-16 bg-[#1f1f1f]" />}
                   </div>
                   <div className="pb-8">
-                    <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
-                    <p className="text-[#666] text-sm leading-relaxed">{step.desc}</p>
+                    <h3 className="text-[#e8e8e8] font-bold text-lg mb-1">{step.title}</h3>
+                    <p className="text-[#636363] text-sm leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -679,5 +676,41 @@ export default function Home() {
 
       <Footer />
     </main>
+  );
+}
+
+// ===== TAGLINE REVEAL (landing-page-design B11) =====
+function TaglineReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 0.8', 'end 0.3'],
+  });
+
+  const words = 'We engineer digital products that move industries forward from concept to scale across every continent'.split(' ');
+
+  return (
+    <section ref={ref} className="py-28 md:py-36 relative z-10 overflow-hidden" aria-label="Company tagline">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] max-w-[680px]" style={{ textWrap: 'balance' }}>
+          {words.map((word, i) => (
+            <Word key={i} word={word} index={i} total={words.length} scrollYProgress={scrollYProgress} />
+          ))}
+        </h2>
+      </div>
+    </section>
+  );
+}
+
+function Word({ word, index, total, scrollYProgress }: { word: string; index: number; total: number; scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress'] }) {
+  const start = index / total;
+  const end = start + (1 / total);
+  const opacity = useTransform(scrollYProgress, [start, end], [0.2, 1]);
+  const color = useTransform(scrollYProgress, [start, end], ['#636363', '#e8e8e8']);
+
+  return (
+    <motion.span style={{ opacity, color }} className="inline-block mr-[0.3em]">
+      {word}
+    </motion.span>
   );
 }

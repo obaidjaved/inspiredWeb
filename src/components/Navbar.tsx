@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -21,11 +21,24 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 40);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isMobileMenuOpen]);
 
   return (
     <>
@@ -33,44 +46,48 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-white shadow-md border-b border-gray-100'
-            : 'bg-white'
+            ? 'bg-black/80 backdrop-blur-xl border-b border-[#2a2a2a]/60 shadow-[0_1px_24px_rgba(0,0,0,0.4)]'
+            : 'bg-transparent'
         }`}
         role="banner"
       >
         <nav className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between" aria-label="Main navigation">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2" aria-label="Inspired Technology - Home">
-            <div className="w-9 h-9 bg-[#6366f1] rounded-lg flex items-center justify-center">
+          <Link href="/" className="flex items-center gap-2.5" aria-label="Inspired Technology - Home">
+            <div className="w-9 h-9 bg-[#6366f1] rounded-lg flex items-center justify-center shadow-[0_0_16px_rgba(99,102,241,0.25)]">
               <span className="text-white font-bold text-base">I</span>
             </div>
             <div className="flex items-baseline">
-              <span className="text-lg font-bold tracking-tight text-[#171616]">INSPIRED</span>
-              <span className="text-[#6366f1] text-lg font-semibold">.tech</span>
+              <span className="text-lg font-bold tracking-tight text-white">INSPIRED</span>
+              <span className="text-[#818cf8] text-lg font-semibold">.tech</span>
             </div>
           </Link>
 
           {/* Desktop nav links */}
           <div className="hidden lg:flex items-center gap-1" role="menubar">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                role="menuitem"
-                className={`px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg ${
-                  pathname === link.href
-                    ? 'text-[#6366f1] bg-[rgba(99,102,241,0.06)]'
-                    : 'text-[#313131] hover:text-[#6366f1] hover:bg-[rgba(99,102,241,0.04)]'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  role="menuitem"
+                  className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${
+                    isActive
+                      ? 'text-white bg-white/10'
+                      : 'text-[#9a9a9a] hover:text-white hover:bg-white/5'
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
             <Link
               href="/contact"
-              className="ml-4 bg-[#6366f1] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_4px_16px_rgba(99,102,241,0.3)] active:scale-[0.98]"
+              className="ml-4 bg-[#6366f1] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.3)] active:scale-[0.98]"
             >
               Contact
             </Link>
@@ -78,10 +95,11 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="lg:hidden text-[#171616] p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               {isMobileMenuOpen ? (
@@ -98,49 +116,54 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            id="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
-            className="fixed inset-0 z-40 bg-white lg:hidden pt-[72px]"
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl lg:hidden pt-[72px]"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
           >
-            <div className="flex flex-col p-6 gap-1">
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-                >
-                  <Link
-                    href={link.href}
-                    className={`text-lg font-semibold py-3 block transition-colors ${
-                      pathname === link.href ? 'text-[#6366f1]' : 'text-[#171616] hover:text-[#6366f1]'
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
+            <nav className="flex flex-col p-8 gap-1" aria-label="Mobile navigation">
+              {navLinks.map((link, index) => {
+                const isActive = pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
                   >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={link.href}
+                      className={`text-2xl font-semibold py-3 block transition-colors ${
+                        isActive ? 'text-[#818cf8]' : 'text-white hover:text-[#818cf8]'
+                      }`}
+                      onClick={closeMobileMenu}
+                      aria-current={isActive ? 'page' : undefined}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
               <motion.div
                 initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.3 }}
-                className="mt-6"
+                className="mt-8"
               >
                 <Link
                   href="/contact"
-                  className="block text-center bg-[#6366f1] text-white px-6 py-3 rounded-full text-base font-semibold"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-center bg-[#6366f1] text-white px-6 py-3.5 rounded-full text-base font-semibold hover:bg-[#5558e6] transition-all duration-200"
+                  onClick={closeMobileMenu}
                 >
-                  Contact
+                  Get in touch
                 </Link>
               </motion.div>
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

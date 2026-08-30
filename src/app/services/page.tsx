@@ -90,10 +90,10 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main id="main-content">
+    <main id="main-content" className="bg-[#0a0a0a]">
       <Navbar />
 
-      {/* Dark Hero */}
+      {/* Hero */}
       <section className="pt-28 pb-20 bg-[#0a0a0a] relative overflow-hidden" aria-labelledby="services-hero-heading">
         <div className="absolute inset-0 opacity-10" aria-hidden="true">
           <div className="absolute inset-0" style={{
@@ -111,15 +111,15 @@ export default function ServicesPage() {
             <h1 id="services-hero-heading" className="text-4xl md:text-6xl font-bold mb-5 text-white">
               Our services
             </h1>
-            <p className="text-[#a0a0a0] text-base md:text-lg max-w-2xl leading-relaxed">
+            <p className="text-[#9a9a9a] text-base md:text-lg max-w-2xl leading-relaxed">
               Comprehensive technology solutions tailored to your business needs — from infrastructure to digital transformation.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Light Services List */}
-      <section className="py-20 bg-white" aria-label="Services list">
+      {/* Services List */}
+      <section className="py-20 bg-[#121212]" aria-label="Services list">
         <div className="max-w-7xl mx-auto px-6">
           <div className="space-y-6">
             {services.map((service, index) => (
@@ -130,7 +130,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.04, ease: [0.32, 0.72, 0, 1] }}
-                className="group bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg hover:border-[rgba(99,102,241,0.2)] transition-all duration-300"
+                className="group bg-[#121212] border border-[#2a2a2a] rounded-2xl overflow-hidden hover-glow hover:border-[rgba(99,102,241,0.3)] transition-all duration-300"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
                   <div className="relative h-52 lg:h-auto overflow-hidden">
@@ -140,8 +140,8 @@ export default function ServicesPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gray-50/30 hidden lg:block" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-50 to-transparent lg:hidden" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#121212]/30 hidden lg:block" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent lg:hidden" />
                   </div>
 
                   <div className="lg:col-span-2 p-7 md:p-8">
@@ -150,10 +150,10 @@ export default function ServicesPage() {
                         {service.id}
                       </span>
                       <div>
-                        <h2 className="text-xl md:text-2xl font-bold mb-3 text-[#171616] group-hover:text-[#6366f1] transition-colors">
+                        <h2 className="text-xl md:text-2xl font-bold mb-3 text-[#e8e8e8] group-hover:text-[#6366f1] transition-colors">
                           {service.title}
                         </h2>
-                        <p className="text-[#555] text-sm leading-relaxed">
+                        <p className="text-[#9a9a9a] text-sm leading-relaxed">
                           {service.description}
                         </p>
                       </div>
@@ -163,18 +163,18 @@ export default function ServicesPage() {
                       {service.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[#888] group-hover:border-[rgba(99,102,241,0.3)] group-hover:text-[#6366f1] transition-colors"
+                          className="text-[10px] px-3 py-1.5 bg-[#1a1a1a] border border-[#2a2a2a] rounded-full text-[#9a9a9a] group-hover:border-[rgba(99,102,241,0.3)] group-hover:text-[#818cf8] transition-colors"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <div className="bg-white border border-gray-100 rounded-xl p-5">
+                    <div className="bg-[#0a0a0a] border border-[#1f1f1f] rounded-xl p-5">
                       <h3 className="text-xs font-semibold text-[#6366f1] mb-3 tracking-wider">KEY FEATURES</h3>
                       <div className="grid grid-cols-2 gap-2">
                         {service.features.map((feature) => (
-                          <div key={feature} className="flex items-center gap-2 text-[#555] text-xs">
+                          <div key={feature} className="flex items-center gap-2 text-[#9a9a9a] text-xs">
                             <svg className="w-3.5 h-3.5 text-[#6366f1] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
@@ -191,7 +191,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Dark CTA */}
+      {/* CTA */}
       <section className="py-20 bg-[#0a0a0a]" aria-labelledby="services-cta-heading">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.div
@@ -200,15 +200,15 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
-            <h2 id="services-cta-heading" className="text-3xl md:text-5xl font-bold mb-5 text-white">
+            <h2 id="services-cta-heading" className="text-3xl md:text-5xl font-bold mb-5 text-[#e8e8e8]">
               Need a custom solution?
             </h2>
-            <p className="text-[#a0a0a0] text-base max-w-xl mx-auto mb-8">
+            <p className="text-[#9a9a9a] text-base max-w-xl mx-auto mb-8">
               We tailor our services to meet your specific business requirements. Let&apos;s discuss your project.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-[#6366f1] text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 bg-[#6366f1] text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-[#818cf8] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.35)] active:scale-[0.98]"
             >
               Contact Us
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
