@@ -8,23 +8,12 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { caseStudies } from '@/data/case-studies';
 
-const projectImages: Record<string, string> = {
-  'tapsvs-lms': 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=900&h=500&fit=crop&auto=format',
-  'clineum-medical': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&h=500&fit=crop&auto=format',
-  'dikhatz-shopify': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&h=500&fit=crop&auto=format',
-  'drive-venturous': 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900&h=500&fit=crop&auto=format',
-  'english-evolution': 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&h=500&fit=crop&auto=format',
-  'made-by-throne': 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&h=500&fit=crop&auto=format',
-  'meri-pharmacy': 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=900&h=500&fit=crop&auto=format',
-  'student-portal': 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=900&h=500&fit=crop&auto=format',
-};
-
 export default function CaseStudyPage() {
   const params = useParams();
   const study = caseStudies.find((s) => s.slug === params.slug);
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
+  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   if (!study) {
@@ -35,7 +24,7 @@ export default function CaseStudyPage() {
           <div className="text-center">
             <h1 className="text-3xl font-bold mb-4 text-[#e8e8e8]">Case Study Not Found</h1>
             <Link href="/portfolio" className="text-[#6366f1] hover:text-[#818cf8] transition-colors text-sm">
-              Back to Portfolio
+              ← Back to All Case Studies
             </Link>
           </div>
         </div>
@@ -51,77 +40,50 @@ export default function CaseStudyPage() {
     <main id="main-content">
       <Navbar />
 
-      {/* Hero */}
+      {/* Hero Section (Dark) */}
       <section
         ref={heroRef}
-        className="pt-28 pb-16 relative min-h-[65vh] flex flex-col justify-end overflow-hidden bg-[#0a0a0a]"
+        className="pt-32 pb-20 relative min-h-[60vh] flex flex-col justify-end overflow-hidden bg-[#0a0a0a]"
         aria-labelledby="case-study-hero-heading"
       >
         <div className="absolute inset-0 pointer-events-none">
           <img
-            src={projectImages[study.slug] || `https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&h=500&fit=crop&auto=format`}
+            src={study.featuredImage}
             alt=""
-            className="w-full h-full object-cover opacity-15"
+            className="w-full h-full object-cover opacity-20"
             aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/85 to-[#0a0a0a]/60" />
         </div>
 
         <motion.div
-          className="absolute top-28 right-16 w-20 h-20 border border-white/8 rounded-2xl"
-          animate={{ rotate: 360, y: [0, -8, 0] }}
-          transition={{ rotate: { duration: 35, repeat: Infinity, ease: 'linear' }, y: { duration: 6, repeat: Infinity, ease: 'easeInOut' } }}
-          aria-hidden="true"
-        />
-        <motion.div
-          className="absolute top-1/2 left-12 w-14 h-14 border border-white/8 rounded-full"
-          animate={{ rotate: -360, x: [0, 8, 0] }}
-          transition={{ rotate: { duration: 30, repeat: Infinity, ease: 'linear' }, x: { duration: 5, repeat: Infinity, ease: 'easeInOut' } }}
-          aria-hidden="true"
-        />
-
-        <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="relative z-10 max-w-7xl mx-auto px-6 pb-14"
+          className="relative z-10 max-w-7xl mx-auto px-6"
         >
-          <motion.div
-            initial={{ opacity: 0, x: -8 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
-            className="mb-10"
-          >
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2 text-[#636363] hover:text-[#6366f1] transition-colors text-xs"
-            >
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              All Case Studies
+          <div className="flex flex-wrap items-center gap-2 mb-8">
+            <Link href="/portfolio" className="text-[#636363] hover:text-white text-xs transition-colors">
+              ← Case Studies
             </Link>
-          </motion.div>
+            <span className="text-[#454545] text-xs">/</span>
+            <span className="text-[#818cf8] text-xs font-semibold">{study.client}</span>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-            className="flex flex-wrap items-center gap-3 mb-5"
-          >
+          <div className="flex flex-wrap items-center gap-3 mb-5">
             <span
-              className="text-[10px] font-medium tracking-widest uppercase px-3 py-1.5 rounded-full"
-              style={{ background: `${study.color}12`, color: study.color, border: `1px solid ${study.color}25` }}
+              className="text-[11px] font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full"
+              style={{ background: `${study.color}15`, color: study.color, border: `1px solid ${study.color}35` }}
             >
-              {study.industry}
+              {study.category}
             </span>
-            <span className="text-[#636363] text-xs">{study.url}</span>
-          </motion.div>
+            <span className="text-[#9a9a9a] text-xs font-medium">{study.industry}</span>
+          </div>
 
           <motion.h1
             id="case-study-hero-heading"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
-            className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.08] mb-6 max-w-5xl tracking-tight text-[#e8e8e8]"
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.08] mb-6 max-w-4xl tracking-tight text-[#e8e8e8]"
           >
             {study.title}
           </motion.h1>
@@ -129,228 +91,175 @@ export default function CaseStudyPage() {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.35, ease: [0.32, 0.72, 0, 1] }}
-            className="text-[#9a9a9a] text-sm md:text-base max-w-3xl leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-[#9a9a9a] text-base md:text-lg max-w-3xl leading-relaxed mb-10"
           >
             {study.summary}
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45, ease: [0.32, 0.72, 0, 1] }}
-            className="flex flex-wrap gap-6 mt-8"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-[#1f1f1f]">
             {study.metrics.map((metric) => (
-              <div key={metric.label} className="flex items-baseline gap-2.5">
-                <span className="text-xl md:text-2xl font-bold" style={{ color: study.color, fontVariantNumeric: 'tabular-nums' }}>{metric.value}</span>
-                <span className="text-[#636363] text-xs">{metric.label}</span>
+              <div key={metric.label}>
+                <div className="text-2xl md:text-3xl font-bold text-white mb-1" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                  {metric.value}
+                </div>
+                <div className="text-[#636363] text-xs uppercase tracking-wider font-semibold">{metric.label}</div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </motion.div>
       </section>
 
-      {/* Project Preview + Content */}
-      <section className="py-16 bg-[#0a0a0a] relative z-10" aria-label="Project preview and details">
+      {/* Project Image Banner (Light Section Container) */}
+      <section className="section-light py-16 relative z-10" aria-label="Project visual overview">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55, ease: [0.32, 0.72, 0, 1] }}
-            className="mb-16"
-          >
-            <div className="rounded-2xl overflow-hidden shadow-xl border border-[#2a2a2a] bg-[#121212]">
-              <img
-                src={projectImages[study.slug] || `https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&h=500&fit=crop&auto=format`}
-                alt={`${study.title} project preview`}
-                className="w-full h-64 md:h-96 object-cover"
-                loading="lazy"
-              />
-            </div>
-          </motion.div>
+          <div className="rounded-3xl overflow-hidden shadow-2xl border border-[#e5e7eb] bg-[#0d0d0d] mb-16">
+            <img
+              src={study.featuredImage}
+              alt={`${study.title} full preview`}
+              className="w-full h-80 md:h-[520px] object-cover"
+              loading="lazy"
+            />
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-14">
-            {/* Main content */}
-            <div className="lg:col-span-2 space-y-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {/* Main Details (Challenge, Solution, Outcomes) */}
+            <div className="lg:col-span-8 space-y-16">
               {/* Challenge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-              >
-                <div className="flex items-center gap-3 mb-7">
-                  <span className="text-4xl font-bold opacity-15 text-[#6366f1]">01</span>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#e8e8e8]">The challenge</h2>
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-3xl font-bold text-[#6366f1] opacity-30">01</span>
+                  <h2 className="text-2xl font-bold text-[#0d0d0d]">The Challenge &amp; Constraints</h2>
                 </div>
-                <div className="space-y-3 ml-0 md:ml-16">
+                <div className="space-y-4">
                   {study.challenge.map((item, i) => (
-                    <motion.div
+                    <div
                       key={i}
-                      initial={{ opacity: 0, x: -16 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: i * 0.08, ease: [0.32, 0.72, 0, 1] }}
-                      className="flex items-start gap-3.5 p-4 bg-[#121212] border border-[#2a2a2a] rounded-xl hover:border-[#3a3a3a] transition-colors"
+                      className="p-5 rounded-2xl bg-[#f8f9fa] border border-[#e5e7eb] flex items-start gap-4"
                     >
-                      <div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5 bg-[rgba(99,102,241,0.1)]">
-                        <svg className="w-3.5 h-3.5 text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                        </svg>
+                      <div className="w-8 h-8 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
+                        !
                       </div>
-                      <p className="text-[#9a9a9a] text-sm leading-relaxed">{item}</p>
-                    </motion.div>
+                      <p className="text-[#4b5563] text-sm leading-relaxed">{item}</p>
+                    </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
               {/* Solution */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-              >
-                <div className="flex items-center gap-3 mb-7">
-                  <span className="text-4xl font-bold opacity-15 text-[#6366f1]">02</span>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#e8e8e8]">The solution</h2>
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-3xl font-bold text-[#6366f1] opacity-30">02</span>
+                  <h2 className="text-2xl font-bold text-[#0d0d0d]">Engineered Solution &amp; Architecture</h2>
                 </div>
-                <div className="space-y-3 ml-0 md:ml-16">
+                <div className="space-y-4">
                   {study.solution.map((item, i) => (
-                    <motion.div
+                    <div
                       key={i}
-                      initial={{ opacity: 0, x: -16 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: i * 0.08, ease: [0.32, 0.72, 0, 1] }}
-                      className="flex items-start gap-3.5 p-4 bg-[#121212] border border-[#2a2a2a] rounded-xl hover:border-[#3a3a3a] transition-colors"
+                      className="p-5 rounded-2xl bg-[#f8f9fa] border border-[#e5e7eb] flex items-start gap-4"
                     >
-                      <div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5 bg-[rgba(99,102,241,0.1)]">
-                        <svg className="w-3.5 h-3.5 text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
+                      <div className="w-8 h-8 rounded-lg bg-indigo-50 text-[#6366f1] flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
+                        ⚡
                       </div>
-                      <p className="text-[#9a9a9a] text-sm leading-relaxed">{item}</p>
-                    </motion.div>
+                      <p className="text-[#4b5563] text-sm leading-relaxed">{item}</p>
+                    </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
               {/* Outcomes */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-              >
-                <div className="flex items-center gap-3 mb-7">
-                  <span className="text-4xl font-bold opacity-15 text-[#6366f1]">03</span>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#e8e8e8]">Key outcomes</h2>
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-3xl font-bold text-[#6366f1] opacity-30">03</span>
+                  <h2 className="text-2xl font-bold text-[#0d0d0d]">Key Business Outcomes &amp; Impact</h2>
                 </div>
-                <div className="space-y-3 ml-0 md:ml-16">
+                <div className="space-y-4">
                   {study.outcomes.map((item, i) => (
-                    <motion.div
+                    <div
                       key={i}
-                      initial={{ opacity: 0, x: -16 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: i * 0.08, ease: [0.32, 0.72, 0, 1] }}
-                      className="flex items-start gap-3.5 p-4 bg-[#121212] border border-[#2a2a2a] rounded-xl hover:border-[#3a3a3a] transition-colors"
+                      className="p-5 rounded-2xl bg-[#ecfdf5] border border-[#a7f3d0] flex items-start gap-4"
                     >
-                      <div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5 bg-[rgba(99,102,241,0.1)]">
-                        <svg className="w-3.5 h-3.5 text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
+                      <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
+                        ✓
                       </div>
-                      <p className="text-[#9a9a9a] text-sm leading-relaxed">{item}</p>
-                    </motion.div>
+                      <p className="text-emerald-950 text-sm leading-relaxed font-medium">{item}</p>
+                    </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             </div>
 
-            {/* Sidebar */}
-            <div className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                className="bg-[#0a0a0a] border border-[#2a2a2a] rounded-2xl p-7 sticky top-28"
-              >
-                <h3 className="text-xs font-semibold text-[#6366f1] mb-5 tracking-widest uppercase">Technologies</h3>
-                <div className="flex flex-wrap gap-1.5 mb-7">
+            {/* Sidebar Specifications (Light Sticky Box) */}
+            <div className="lg:col-span-4 space-y-6">
+              <div className="bg-[#f8f9fa] border border-[#e5e7eb] rounded-3xl p-8 sticky top-28 shadow-sm">
+                <h3 className="text-xs font-bold text-[#6366f1] uppercase tracking-wider mb-4">Technologies Used</h3>
+                <div className="flex flex-wrap gap-1.5 mb-8">
                   {study.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="text-[10px] px-2.5 py-1.5 bg-[#1a1a1a] border border-[#2a2a2a] rounded-md text-[#636363] hover:border-[rgba(99,102,241,0.2)] hover:text-[#9a9a9a] transition-colors"
+                      className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white border border-[#e5e7eb] text-[#374151]"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="text-xs font-semibold text-[#6366f1] mb-3 tracking-widest uppercase">Visit Live Site</h3>
-                <a
-                  href={`https://${study.url}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#e8e8e8] hover:text-[#6366f1] transition-colors text-xs"
-                >
-                  {study.url}
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-
-                <div className="border-t border-[#2a2a2a] mt-7 pt-7">
-                  <h3 className="text-xs font-semibold text-[#6366f1] mb-3 tracking-widest uppercase">Industry</h3>
-                  <p className="text-[#9a9a9a] text-xs">{study.industry}</p>
+                <div className="space-y-4 pt-6 border-t border-[#e5e7eb]">
+                  <div>
+                    <span className="text-[11px] font-bold text-[#9ca3af] uppercase tracking-wider block mb-0.5">Client</span>
+                    <span className="text-sm font-bold text-[#0d0d0d]">{study.client}</span>
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-[#9ca3af] uppercase tracking-wider block mb-0.5">Industry</span>
+                    <span className="text-sm font-bold text-[#0d0d0d]">{study.industry}</span>
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-[#9ca3af] uppercase tracking-wider block mb-0.5">Core Practice</span>
+                    <span className="text-sm font-bold text-[#0d0d0d]">{study.category}</span>
+                  </div>
                 </div>
 
-                <div className="border-t border-[#2a2a2a] mt-7 pt-7">
-                  <h3 className="text-xs font-semibold text-[#6366f1] mb-3 tracking-widest uppercase">Client</h3>
-                  <p className="text-[#9a9a9a] text-xs">{study.client}</p>
+                <div className="mt-8 pt-6 border-t border-[#e5e7eb]">
+                  <Link
+                    href="/contact"
+                    className="w-full bg-[#6366f1] text-white py-3.5 px-4 rounded-xl font-bold text-xs hover:bg-[#5558e6] transition-all flex items-center justify-center gap-2 text-center"
+                  >
+                    Build a Similar Solution
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Next Project */}
-      <section className="py-16 bg-[#0a0a0a] relative z-10" aria-label="Next case study">
+      {/* Next Case Study (Dark Section) */}
+      <section className="py-20 bg-[#0a0a0a] border-t border-[#1f1f1f] relative z-10" aria-label="Next case study">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+          <div className="text-xs text-[#636363] uppercase tracking-widest font-bold mb-4">// UP NEXT</div>
+          <Link
+            href={`/portfolio/${nextStudy.slug}`}
+            className="group p-8 rounded-3xl bg-[#121212] border border-[#2a2a2a] hover:border-[#6366f1]/50 transition-all flex flex-col md:flex-row items-center justify-between gap-6"
           >
-            <p className="text-[#636363] text-xs tracking-wider mb-3">NEXT PROJECT</p>
-            <Link
-              href={`/portfolio/${nextStudy.slug}`}
-              className="group block"
-            >
-              <div className="flex items-start gap-5">
-                <div className="text-4xl opacity-25 group-hover:opacity-50 transition-opacity duration-300">
-                  {nextStudy.icon}
-                </div>
-                <div>
-                  <h2 className="text-2xl md:text-4xl font-bold group-hover:text-[#6366f1] transition-colors duration-200 mb-3 text-[#e8e8e8]">
-                    {nextStudy.title}
-                  </h2>
-                  <div className="flex items-center gap-2 text-[#636363] group-hover:text-[#6366f1] transition-colors">
-                    <span className="text-xs">View Case Study</span>
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </div>
-                </div>
+            <div className="flex items-center gap-6">
+              <div className="text-4xl">{nextStudy.icon}</div>
+              <div>
+                <span className="text-xs font-bold text-[#818cf8] uppercase tracking-wider">{nextStudy.category}</span>
+                <h3 className="text-2xl font-bold text-white group-hover:text-[#818cf8] transition-colors mt-1">
+                  {nextStudy.title}
+                </h3>
               </div>
-            </Link>
-          </motion.div>
+            </div>
+            <div className="inline-flex items-center gap-2 text-sm font-bold text-white bg-white/10 px-6 py-3 rounded-full group-hover:bg-[#6366f1] transition-colors shrink-0">
+              <span>View Case Study</span>
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </Link>
         </div>
       </section>
 
