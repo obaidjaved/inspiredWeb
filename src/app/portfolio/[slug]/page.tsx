@@ -7,6 +7,8 @@ import { useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { caseStudies } from '@/data/case-studies';
+import ProjectVisual from '@/components/visuals/ProjectVisual';
+import { MagneticElement, RippleButton } from '@/components/MicroInteractions';
 
 export default function CaseStudyPage() {
   const params = useParams();
@@ -48,17 +50,31 @@ export default function CaseStudyPage() {
       >
         {/* Background gradient */}
         <div
-          className="absolute inset-0 opacity-20 pointer-events-none"
+          className="absolute inset-0 opacity-30 pointer-events-none"
           style={{
-            background: `radial-gradient(ellipse 80% 50% at 50% 0%, ${study.color}20 0%, transparent 70%)`,
+            background: `radial-gradient(ellipse 80% 50% at 50% 0%, ${study.color}30 0%, transparent 70%)`,
           }}
           aria-hidden="true"
         />
 
+        {/* Floating shapes */}
+        <motion.div
+          className="absolute top-32 right-20 w-24 h-24 border border-white/10 rounded-2xl"
+          animate={{ rotate: 360, y: [0, -10, 0] }}
+          transition={{ rotate: { duration: 30, repeat: Infinity, ease: 'linear' }, y: { duration: 5, repeat: Infinity, ease: 'easeInOut' } }}
+          aria-hidden="true"
+        />
+        <motion.div
+          className="absolute top-1/2 left-16 w-16 h-16 border border-white/10 rounded-full"
+          animate={{ rotate: -360, x: [0, 10, 0] }}
+          transition={{ rotate: { duration: 25, repeat: Infinity, ease: 'linear' }, x: { duration: 4, repeat: Infinity, ease: 'easeInOut' } }}
+          aria-hidden="true"
+        />
+
         {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" aria-hidden="true">
           <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            backgroundImage: `linear-gradient(${study.color}15 1px, transparent 1px), linear-gradient(90deg, ${study.color}15 1px, transparent 1px)`,
             backgroundSize: '60px 60px',
           }} />
         </div>
@@ -139,8 +155,26 @@ export default function CaseStudyPage() {
         </motion.div>
       </section>
 
+      {/* Project Visual Banner */}
+      <section className="relative z-10 -mt-10" aria-label="Project preview">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <ProjectVisual
+              gradient={study.gradient}
+              icon={study.icon}
+              title={study.client}
+              index={currentIndex}
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Content Sections */}
-      <section className="pb-20 relative z-10" aria-label="Case study details">
+      <section className="py-20 relative z-10" aria-label="Case study details">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             {/* Main content */}
@@ -150,10 +184,10 @@ export default function CaseStudyPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.7 }}
+                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <div className="flex items-center gap-4 mb-8">
-                  <span className="text-accent text-5xl font-bold opacity-20">01</span>
+                  <span className="text-5xl font-bold opacity-20" style={{ color: study.color }}>01</span>
                   <h2 className="text-3xl md:text-4xl font-bold">The Challenge</h2>
                 </div>
                 <div className="space-y-4 ml-0 md:ml-20">
@@ -164,7 +198,7 @@ export default function CaseStudyPage() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: i * 0.1 }}
-                      className="flex items-start gap-4 p-5 bg-dark-card border border-dark-border rounded-2xl"
+                      className="flex items-start gap-4 p-5 bg-dark-card border border-dark-border rounded-2xl hover-glow card-lift"
                     >
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: `${study.color}15` }}>
                         <svg className="w-4 h-4" style={{ color: study.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -182,10 +216,10 @@ export default function CaseStudyPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.7 }}
+                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <div className="flex items-center gap-4 mb-8">
-                  <span className="text-accent text-5xl font-bold opacity-20">02</span>
+                  <span className="text-5xl font-bold opacity-20" style={{ color: study.color }}>02</span>
                   <h2 className="text-3xl md:text-4xl font-bold">The Solution</h2>
                 </div>
                 <div className="space-y-4 ml-0 md:ml-20">
@@ -196,7 +230,7 @@ export default function CaseStudyPage() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: i * 0.1 }}
-                      className="flex items-start gap-4 p-5 bg-dark-card border border-dark-border rounded-2xl"
+                      className="flex items-start gap-4 p-5 bg-dark-card border border-dark-border rounded-2xl hover-glow card-lift"
                     >
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 bg-accent/10">
                         <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -214,10 +248,10 @@ export default function CaseStudyPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.7 }}
+                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <div className="flex items-center gap-4 mb-8">
-                  <span className="text-accent text-5xl font-bold opacity-20">03</span>
+                  <span className="text-5xl font-bold opacity-20" style={{ color: study.color }}>03</span>
                   <h2 className="text-3xl md:text-4xl font-bold">Key Outcomes</h2>
                 </div>
                 <div className="space-y-4 ml-0 md:ml-20">
@@ -228,7 +262,7 @@ export default function CaseStudyPage() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: i * 0.1 }}
-                      className="flex items-start gap-4 p-5 bg-dark-card border border-dark-border rounded-2xl"
+                      className="flex items-start gap-4 p-5 bg-dark-card border border-dark-border rounded-2xl hover-glow card-lift"
                     >
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 bg-green-500/10">
                         <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -249,7 +283,7 @@ export default function CaseStudyPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="bg-dark-card border border-dark-border rounded-3xl p-8 sticky top-32"
               >
                 <h3 className="text-sm font-semibold text-accent mb-6 tracking-widest uppercase font-mono">Technologies</h3>
@@ -257,7 +291,7 @@ export default function CaseStudyPage() {
                   {study.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs px-3 py-2 bg-dark border border-dark-border rounded-lg text-text-muted"
+                      className="text-xs px-3 py-2 bg-dark border border-dark-border rounded-lg text-text-muted hover:border-accent/30 hover:text-accent/80 transition-colors"
                     >
                       {tech}
                     </span>
@@ -281,6 +315,11 @@ export default function CaseStudyPage() {
                   <h3 className="text-sm font-semibold text-accent mb-4 tracking-widest uppercase font-mono">Industry</h3>
                   <p className="text-text-secondary text-sm">{study.industry}</p>
                 </div>
+
+                <div className="border-t border-dark-border mt-8 pt-8">
+                  <h3 className="text-sm font-semibold text-accent mb-4 tracking-widest uppercase font-mono">Client</h3>
+                  <p className="text-text-secondary text-sm">{study.client}</p>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -294,21 +333,28 @@ export default function CaseStudyPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <p className="text-text-muted text-sm font-mono tracking-wider mb-4">NEXT PROJECT</p>
             <Link
               href={`/portfolio/${nextStudy.slug}`}
               className="group block"
             >
-              <h2 className="text-3xl md:text-5xl font-bold group-hover:text-accent transition-colors duration-200 mb-4">
-                {nextStudy.title}
-              </h2>
-              <div className="flex items-center gap-2 text-text-muted group-hover:text-accent transition-colors">
-                <span className="text-sm">View Case Study</span>
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+              <div className="flex items-start gap-6">
+                <div className="text-5xl opacity-30 group-hover:opacity-60 transition-opacity duration-300">
+                  {nextStudy.icon}
+                </div>
+                <div>
+                  <h2 className="text-3xl md:text-5xl font-bold group-hover:text-accent transition-colors duration-200 mb-4">
+                    {nextStudy.title}
+                  </h2>
+                  <div className="flex items-center gap-2 text-text-muted group-hover:text-accent transition-colors">
+                    <span className="text-sm">View Case Study</span>
+                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
               </div>
             </Link>
           </motion.div>

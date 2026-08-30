@@ -310,3 +310,115 @@ section {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ===== Ripple Effect ===== */
+@keyframes ripple-expand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+  }
+}
+
+/* ===== Shine Effect ===== */
+@keyframes shine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===== Pulse Ring ===== */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+/* ===== Gradient Border Animation ===== */
+.gradient-border {
+  position: relative;
+  background: #12121A;
+  border-radius: 1.5rem;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #00FF88, #00B4FF, #8B5CF6, #FF0080);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* ===== Card Hover Lift ===== */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 255, 136, 0.1);
+}
+
+/* ===== Focus Visible Enhancement ===== */
+*:focus-visible {
+  outline: 2px solid #00FF88;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== High Contrast Mode ===== */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-secondary: #D0D0E0;
+    --color-text-muted: #9090A0;
+    --color-dark-border: #303040;
+  }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+}

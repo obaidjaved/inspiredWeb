@@ -6,23 +6,26 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import HeroVisual from '@/components/visuals/HeroVisual';
+import ServiceVisual from '@/components/visuals/ServiceVisual';
+import { RippleButton, MagneticElement, TextReveal } from '@/components/MicroInteractions';
 
 const Background3DCSS = dynamic(() => import('@/components/Background3DCSS'), { ssr: false });
 
 const services = [
-  { id: '01', title: 'Network Security', description: 'Cisco and multi-vendor installations of any scale. Industry-leading technologies to boost network performance.', tags: ['Cisco', 'Firewall', 'VPN', 'SIEM'] },
-  { id: '02', title: 'Web Development', description: 'Corporate websites, e-commerce, landing pages, CMS, UI/UX design and progressive web apps.', tags: ['Next.js', 'React', 'Shopify', 'WordPress'] },
-  { id: '03', title: 'ERPNext Solutions', description: 'Complete ERPNext implementation — accounting, HR, inventory, CRM, manufacturing and project management.', tags: ['ERPNext', 'Frappe', 'ZATCA', 'Custom'] },
-  { id: '04', title: 'AI Automation', description: 'AI-powered chatbots, intelligent workflow automation, and predictive analytics.', tags: ['Chatbots', 'LLM', 'RPA', 'Analytics'] },
-  { id: '05', title: 'Data Cabling', description: 'Professional structured cabling from single outlets to large multi-pair trunk cables.', tags: ['Fiber', 'Cat6', 'Structured', 'Certified'] },
-  { id: '06', title: 'CCTV Systems', description: 'Complete IP camera network solutions — design, installation, testing and certification.', tags: ['IP Cameras', 'NVR', 'Analytics', 'Cloud'] },
+  { id: '01', title: 'Network Security', description: 'Cisco and multi-vendor installations of any scale. Industry-leading technologies to boost network performance.', tags: ['Cisco', 'Firewall', 'VPN', 'SIEM'], icon: '🔒', color: '#00FF88' },
+  { id: '02', title: 'Web Development', description: 'Corporate websites, e-commerce, landing pages, CMS, UI/UX design and progressive web apps.', tags: ['Next.js', 'React', 'Shopify', 'WordPress'], icon: '🌐', color: '#00B4FF' },
+  { id: '03', title: 'ERPNext Solutions', description: 'Complete ERPNext implementation — accounting, HR, inventory, CRM, manufacturing and project management.', tags: ['ERPNext', 'Frappe', 'ZATCA', 'Custom'], icon: '📊', color: '#8B5CF6' },
+  { id: '04', title: 'AI Automation', description: 'AI-powered chatbots, intelligent workflow automation, and predictive analytics.', tags: ['Chatbots', 'LLM', 'RPA', 'Analytics'], icon: '🤖', color: '#FF0080' },
+  { id: '05', title: 'Data Cabling', description: 'Professional structured cabling from single outlets to large multi-pair trunk cables.', tags: ['Fiber', 'Cat6', 'Structured', 'Certified'], icon: '🔌', color: '#F59E0B' },
+  { id: '06', title: 'CCTV Systems', description: 'Complete IP camera network solutions — design, installation, testing and certification.', tags: ['IP Cameras', 'NVR', 'Analytics', 'Cloud'], icon: '📹', color: '#10B981' },
 ];
 
 const projects = [
-  { id: 1, title: 'Mucho Burrito', category: 'UI/UX & Web Dev', metric: '+310% Revenue', color: 'from-orange-500 to-red-500' },
-  { id: 2, title: 'myZoi Financial', category: 'Full Stack Marketing', metric: '3.4x ROAS', color: 'from-blue-500 to-cyan-500' },
-  { id: 3, title: "Stillman's Beauty", category: 'E-Commerce', metric: '$1.2M Revenue', color: 'from-pink-500 to-purple-500' },
-  { id: 4, title: 'Combaxx Sports', category: 'Web Dev & SEO', metric: '+85% Conversion', color: 'from-green-500 to-emerald-500' },
+  { id: 1, title: 'Mucho Burrito', category: 'UI/UX & Web Dev', metric: '+310% Revenue', gradient: 'from-orange-500 to-red-500', icon: '🌮' },
+  { id: 2, title: 'myZoi Financial', category: 'Full Stack Marketing', metric: '3.4x ROAS', gradient: 'from-blue-500 to-cyan-500', icon: '💳' },
+  { id: 3, title: "Stillman's Beauty", category: 'E-Commerce', metric: '$1.2M Revenue', gradient: 'from-pink-500 to-purple-500', icon: '💄' },
+  { id: 4, title: 'Combaxx Sports', category: 'Web Dev & SEO', metric: '+85% Conversion', gradient: 'from-green-500 to-emerald-500', icon: '⚽' },
 ];
 
 const testimonials = [
@@ -45,9 +48,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden" aria-labelledby="hero-heading">
-        {/* Decorative elements */}
-        <div className="absolute top-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-[100px] pointer-events-none" aria-hidden="true" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent-blue/5 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
+        <HeroVisual variant="default" />
 
         <motion.div style={{ y: heroY, opacity: heroOpacity, scale: heroScale }} className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
           <motion.div
@@ -66,15 +67,15 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.03] mb-8 max-w-5xl tracking-tight"
           >
-            We Build, Design, and Scale{' '}
-            <span className="gradient-text">Digital Experiences</span>{' '}
-            That Deliver.
+            <TextReveal delay={0.5}>
+              We Build, Design, and Scale Digital Experiences That Deliver.
+            </TextReveal>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-text-secondary text-lg md:text-xl max-w-2xl mb-12 leading-relaxed"
           >
             From enterprise networking and cybersecurity to ERP systems and web development — we deliver end-to-end technology solutions that transform businesses.
@@ -83,32 +84,30 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="flex flex-wrap gap-4 mb-20"
           >
-            <Link
-              href="/services"
-              className="bg-accent text-dark px-8 py-4 rounded-full text-base font-semibold inline-flex items-center gap-2 hover:bg-accent/90 transition-all duration-200 hover:shadow-[0_0_30px_rgba(0,255,136,0.4)]"
-            >
-              Explore Services
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-            <Link
-              href="/contact"
-              className="border border-dark-border text-text-primary px-8 py-4 rounded-full text-base font-semibold inline-flex items-center gap-2 hover:border-accent/50 hover:bg-accent/5 transition-all duration-200"
-            >
-              Talk to an Expert
-              <div className="w-2 h-2 bg-accent rounded-full animate-glow-pulse" />
-            </Link>
+            <MagneticElement strength={0.2}>
+              <RippleButton href="/services" variant="primary" className="px-8 py-4 rounded-full text-base">
+                Explore Services
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </RippleButton>
+            </MagneticElement>
+            <MagneticElement strength={0.2}>
+              <RippleButton href="/contact" variant="secondary" className="px-8 py-4 rounded-full text-base">
+                Talk to an Expert
+                <div className="w-2 h-2 bg-accent rounded-full animate-glow-pulse" aria-hidden="true" />
+              </RippleButton>
+            </MagneticElement>
           </motion.div>
 
           {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.8, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
@@ -121,7 +120,7 @@ export default function Home() {
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.2 + index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                transition={{ duration: 0.5, delay: 1.4 + index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="text-center md:text-left"
               >
                 <div className="text-3xl md:text-4xl font-bold text-accent mb-1">{stat.value}</div>
@@ -171,15 +170,14 @@ export default function Home() {
                   <span className="text-text-muted text-sm">Quality Standards</span>
                 </div>
               </div>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors font-semibold"
-              >
-                Learn More About Us
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
+              <MagneticElement strength={0.15}>
+                <RippleButton href="/about" variant="ghost" className="text-accent font-semibold">
+                  Learn More About Us
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </RippleButton>
+              </MagneticElement>
             </motion.div>
 
             <motion.div
@@ -201,7 +199,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  className="bg-dark-card border border-dark-border rounded-2xl p-6 hover-glow"
+                  className="bg-dark-card border border-dark-border rounded-2xl p-6 hover-glow card-lift"
                 >
                   <div className="text-3xl mb-3">{item.icon}</div>
                   <h3 className="font-semibold mb-2">{item.title}</h3>
@@ -237,12 +235,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.6, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="group bg-dark-card border border-dark-border rounded-2xl p-8 hover-glow transition-all duration-300 cursor-pointer"
+                className="group bg-dark-card border border-dark-border rounded-2xl p-8 hover-glow card-lift cursor-pointer"
               >
                 <div className="flex items-start justify-between mb-6">
-                  <span className="text-accent text-4xl font-bold opacity-30 group-hover:opacity-100 transition-opacity">
-                    {service.id}
-                  </span>
+                  <ServiceVisual icon={service.icon} color={service.color} size="md" />
                   <div className="w-10 h-10 border border-dark-border rounded-full flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/5 transition-all duration-200">
                     <svg className="w-5 h-5 text-text-muted group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -250,11 +246,11 @@ export default function Home() {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-semibold mb-4 group-hover:text-accent transition-colors">
+                <h3 className="text-xl font-semibold mb-3 group-hover:text-accent transition-colors">
                   {service.title}
                 </h3>
 
-                <p className="text-text-secondary text-sm mb-6 leading-relaxed">
+                <p className="text-text-secondary text-sm mb-5 leading-relaxed">
                   {service.description}
                 </p>
 
@@ -279,15 +275,14 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="mt-12 text-center"
           >
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors font-semibold"
-            >
-              View All Services
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+            <MagneticElement strength={0.15}>
+              <RippleButton href="/services" variant="ghost" className="text-accent font-semibold">
+                View All Services
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </RippleButton>
+            </MagneticElement>
           </motion.div>
         </div>
       </section>
@@ -316,14 +311,36 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="group relative rounded-2xl overflow-hidden cursor-pointer min-h-[300px]"
+                className="group relative rounded-2xl overflow-hidden cursor-pointer min-h-[320px] card-lift"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />
-                <div className="absolute inset-0 bg-dark/70" />
+                {/* Visual background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-25 group-hover:opacity-40 transition-opacity duration-500`} />
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
+                  backgroundSize: '40px 40px',
+                }} />
+                <div className="absolute inset-0 bg-dark/50" />
+
+                {/* Floating shapes */}
+                <motion.div
+                  className="absolute top-8 right-8 w-16 h-16 border border-white/10 rounded-xl"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                />
+                <motion.div
+                  className="absolute bottom-12 left-12 w-10 h-10 border border-white/10 rounded-full"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                />
+
+                {/* Icon */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-500">
+                  {project.icon}
+                </div>
 
                 <div className="relative z-10 p-8 h-full flex flex-col justify-between">
                   <div>
-                    <div className="w-14 h-14 bg-dark-card border border-dark-border rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 bg-dark-card/80 border border-dark-border rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-accent/50 transition-all duration-300 backdrop-blur-sm">
                       <span className="text-accent text-xl font-bold">{String(project.id).padStart(2, '0')}</span>
                     </div>
                     <h3 className="text-2xl font-bold mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
@@ -331,10 +348,10 @@ export default function Home() {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <div className="bg-accent/10 border border-accent/30 px-4 py-2 rounded-full">
+                    <div className="bg-accent/10 border border-accent/30 px-4 py-2 rounded-full backdrop-blur-sm">
                       <span className="text-accent text-sm font-semibold">{project.metric}</span>
                     </div>
-                    <div className="w-10 h-10 border border-dark-border rounded-full flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/5 transition-all duration-200">
+                    <div className="w-10 h-10 border border-dark-border rounded-full flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/5 transition-all duration-200 backdrop-blur-sm">
                       <svg className="w-5 h-5 text-text-muted group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
@@ -352,15 +369,14 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-12 text-center"
           >
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors font-semibold"
-            >
-              View All Projects
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+            <MagneticElement strength={0.15}>
+              <RippleButton href="/portfolio" variant="ghost" className="text-accent font-semibold">
+                View All Projects
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </RippleButton>
+            </MagneticElement>
           </motion.div>
         </div>
       </section>
@@ -389,8 +405,11 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="bg-dark-card border border-dark-border rounded-2xl p-8 hover-glow"
+                className="bg-dark-card border border-dark-border rounded-2xl p-8 hover-glow card-lift relative overflow-hidden"
               >
+                {/* Decorative gradient */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl pointer-events-none" aria-hidden="true" />
+                
                 <svg className="w-10 h-10 text-accent/30 mb-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
@@ -428,21 +447,19 @@ export default function Home() {
               Let&apos;s talk about how we can transform your digital presence and drive real results for your business.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/contact"
-                className="bg-accent text-dark px-10 py-5 rounded-full text-lg font-semibold inline-flex items-center gap-3 hover:bg-accent/90 transition-all duration-200 hover:shadow-[0_0_40px_rgba(0,255,136,0.4)]"
-              >
-                Start Your Project
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-              <Link
-                href="/services"
-                className="border border-dark-border text-text-primary px-10 py-5 rounded-full text-lg font-semibold inline-flex items-center gap-3 hover:border-accent/50 hover:bg-accent/5 transition-all duration-200"
-              >
-                Explore Services
-              </Link>
+              <MagneticElement strength={0.2}>
+                <RippleButton href="/contact" variant="primary" className="px-10 py-5 rounded-full text-lg">
+                  Start Your Project
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </RippleButton>
+              </MagneticElement>
+              <MagneticElement strength={0.2}>
+                <RippleButton href="/services" variant="secondary" className="px-10 py-5 rounded-full text-lg">
+                  Explore Services
+                </RippleButton>
+              </MagneticElement>
             </div>
           </motion.div>
         </div>
