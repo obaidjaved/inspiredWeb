@@ -103,7 +103,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
             className="max-w-3xl"
           >
-            <span className="inline-flex items-center gap-2 bg-[#6366f1]/15 border border-[#6366f1]/30 text-[#d0d1fb] text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 uppercase tracking-wider">
+            <span className="badge badge-primary badge-lg mb-6 uppercase tracking-wider">
               Let&apos;s Work Together
             </span>
             <h1 id="contact-hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#e8e8e8] leading-[1.08] tracking-tight">
@@ -149,7 +149,7 @@ export default function ContactPage() {
             {/* Form */}
             <div className="lg:col-span-7">
               <div className="mb-8">
-                <span className="badge-light mb-3">Send a Message</span>
+                <span className="badge badge-primary mb-3">Send a Message</span>
                 <h2 id="form-heading" className="text-3xl font-bold text-[#0d0d0d] mt-2">
                   Tell Us About Your Project
                 </h2>
@@ -173,7 +173,7 @@ export default function ContactPage() {
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
-                    className="bg-emerald-600 text-white px-6 py-2.5 rounded-full text-xs font-semibold hover:bg-emerald-700 transition-colors"
+                    className="btn btn-success"
                   >
                     Send Another Inquiry
                   </button>
@@ -181,9 +181,9 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="text-[#374151] text-xs font-bold block mb-1.5 uppercase tracking-wider">
-                        Full Name *
+                    <div className="form-control">
+                      <label htmlFor="name" className="label">
+                        <span className="label-text text-xs font-bold uppercase tracking-wider text-[#374151]">Full Name *</span>
                       </label>
                       <input
                         id="name"
@@ -191,13 +191,13 @@ export default function ContactPage() {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-white border border-[#d1d5db] rounded-xl px-4 py-3.5 text-[#111827] text-sm placeholder:text-[#9ca3af] focus:outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-all"
+                        className="input input-bordered w-full"
                         placeholder="Muhammad Ali"
                       />
                     </div>
-                    <div>
-                      <label htmlFor="email" className="text-[#374151] text-xs font-bold block mb-1.5 uppercase tracking-wider">
-                        Corporate Email *
+                    <div className="form-control">
+                      <label htmlFor="email" className="label">
+                        <span className="label-text text-xs font-bold uppercase tracking-wider text-[#374151]">Corporate Email *</span>
                       </label>
                       <input
                         id="email"
@@ -205,51 +205,51 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-white border border-[#d1d5db] rounded-xl px-4 py-3.5 text-[#111827] text-sm placeholder:text-[#9ca3af] focus:outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-all"
+                        className="input input-bordered w-full"
                         placeholder="ali@company.com"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="phone" className="text-[#374151] text-xs font-bold block mb-1.5 uppercase tracking-wider">
-                        Phone / WhatsApp
+                    <div className="form-control">
+                      <label htmlFor="phone" className="label">
+                        <span className="label-text text-xs font-bold uppercase tracking-wider text-[#374151]">Phone / WhatsApp</span>
                       </label>
                       <input
                         id="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-white border border-[#d1d5db] rounded-xl px-4 py-3.5 text-[#111827] text-sm placeholder:text-[#9ca3af] focus:outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-all"
+                        className="input input-bordered w-full"
                         placeholder="+92 300 1234567"
                       />
                     </div>
-                    <div>
-                      <label htmlFor="company" className="text-[#374151] text-xs font-bold block mb-1.5 uppercase tracking-wider">
-                        Company / Organization
+                    <div className="form-control">
+                      <label htmlFor="company" className="label">
+                        <span className="label-text text-xs font-bold uppercase tracking-wider text-[#374151]">Company / Organization</span>
                       </label>
                       <input
                         id="company"
                         type="text"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full bg-white border border-[#d1d5db] rounded-xl px-4 py-3.5 text-[#111827] text-sm placeholder:text-[#9ca3af] focus:outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-all"
+                        className="input input-bordered w-full"
                         placeholder="Enterprise Corp"
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="service" className="text-[#374151] text-xs font-bold block mb-1.5 uppercase tracking-wider">
-                      Primary Service of Interest *
+                  <div className="form-control">
+                    <label htmlFor="service" className="label">
+                      <span className="label-text text-xs font-bold uppercase tracking-wider text-[#374151]">Primary Service of Interest *</span>
                     </label>
                     <select
                       id="service"
                       required
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full bg-white border border-[#d1d5db] rounded-xl px-4 py-3.5 text-[#111827] text-sm focus:outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-all"
+                      className="select select-bordered w-full"
                     >
                       <option value="">Select a service category</option>
                       <option value="web-development">Web Development &amp; Digital Engineering</option>
@@ -263,9 +263,9 @@ export default function ContactPage() {
                     </select>
                   </div>
 
-                  <div>
-                    <label htmlFor="message" className="text-[#374151] text-xs font-bold block mb-1.5 uppercase tracking-wider">
-                      Project Details &amp; Requirements *
+                  <div className="form-control">
+                    <label htmlFor="message" className="label">
+                      <span className="label-text text-xs font-bold uppercase tracking-wider text-[#374151]">Project Details &amp; Requirements *</span>
                     </label>
                     <textarea
                       id="message"
@@ -273,7 +273,7 @@ export default function ContactPage() {
                       rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white border border-[#d1d5db] rounded-xl px-4 py-3.5 text-[#111827] text-sm placeholder:text-[#9ca3af] focus:outline-none focus:border-[#6366f1] focus:ring-2 focus:ring-[#6366f1]/20 transition-all resize-none"
+                      className="textarea textarea-bordered w-full resize-none"
                       placeholder="Please describe your current systems, objectives, timeline, and key requirements..."
                     />
                   </div>
@@ -281,7 +281,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#6366f1] text-white py-4 rounded-xl text-sm font-bold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_30px_rgba(99,102,241,0.35)] disabled:opacity-50 active:scale-[0.98]"
+                    className="btn btn-primary w-full"
                   >
                     {isSubmitting ? 'Sending Your Message...' : 'Submit Inquiry'}
                   </button>
@@ -331,7 +331,7 @@ export default function ContactPage() {
                   href="https://wa.me/4915755769970"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-white text-[#6366f1] px-5 py-2.5 rounded-full text-xs font-bold hover:bg-white/90 transition-colors"
+                  className="btn btn-sm bg-white text-[#6366f1] hover:bg-white/90"
                 >
                   Direct WhatsApp Hotline
                 </a>

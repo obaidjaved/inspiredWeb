@@ -101,7 +101,7 @@ export default function PortfolioPage() {
               transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
               className="lg:col-span-8"
             >
-              <span className="inline-flex items-center gap-2 bg-[#6366f1]/15 border border-[#6366f1]/30 text-[#d0d1fb] text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 uppercase tracking-wider">
+              <span className="badge badge-primary badge-lg mb-6 uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-[#6366f1] animate-pulse" />
                 Featured Client Portfolio ({caseStudies.length} Real-World Implementations)
               </span>
@@ -361,6 +361,133 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      {/* Device Mockup Showcase — Full Alternating Rows */}
+      <section className="bg-[#0a0a0a] border-t border-[#1f1f1f]" aria-labelledby="showcase-section-heading">
+        <div className="max-w-7xl mx-auto px-6 pt-20">
+          <span className="text-[#818cf8] text-xs font-bold tracking-widest uppercase mb-3 block">// SELECTED WORK</span>
+          <h2 id="showcase-section-heading" className="text-3xl md:text-4xl font-bold text-[#e8e8e8] mb-4">
+            Fourteen builds, one consistent frame.
+          </h2>
+          <p className="text-[#9a9a9a] text-sm max-w-2xl mb-16">
+            Live screenshots from each project, set inside a shared device-mockup system — laptop frame for desktop-led sites, dual-phone frame for mobile-led and Shopify storefronts.
+          </p>
+        </div>
+
+        {caseStudies.map((project, index) => {
+          const isEven = index % 2 === 1;
+          const isMobile = project.mockupType === 'mobile';
+
+          return (
+            <section
+              key={project.slug}
+              className="border-b border-[#1f1f1f] py-20 md:py-24"
+              aria-labelledby={`case-${project.slug}`}
+            >
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                  {/* Copy */}
+                  <motion.div
+                    initial={{ opacity: 0, x: isEven ? 20 : -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+                    className={isEven ? 'lg:order-2' : ''}
+                  >
+                    <p className="text-[#6366f1] text-xs font-bold mb-4 font-mono">
+                      {String(index + 1).padStart(2, '0')}
+                    </p>
+                    <h3
+                      id={`case-${project.slug}`}
+                      className="text-2xl md:text-3xl font-bold mb-3 text-[#e8e8e8] leading-tight"
+                    >
+                      {project.title}
+                    </h3>
+                    <p className="text-[#636363] text-xs font-mono mb-5">{project.url}</p>
+                    <p className="text-[#9a9a9a] text-sm leading-relaxed mb-6 max-w-lg">
+                      {project.summary}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.slice(0, 4).map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[11px] font-medium px-3 py-1.5 rounded-full border border-[#2a2a2a] text-[#9a9a9a] bg-[#121212] hover:border-[#6366f1]/30 hover:text-[#818cf8] transition-colors"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <Link
+                      href={`/portfolio/${project.slug}`}
+                      className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-[#6366f1] hover:text-[#818cf8] transition-colors"
+                    >
+                      View Case Study
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  </motion.div>
+
+                  {/* Device Stage */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
+                    className={`relative flex items-center justify-center min-h-[420px] md:min-h-[520px] ${
+                      isEven ? 'lg:order-1' : ''
+                    }`}
+                  >
+                    {/* Ambient glow */}
+                    <div
+                      className="absolute inset-0 rounded-full opacity-30 blur-3xl"
+                      aria-hidden="true"
+                      style={{
+                        background: `radial-gradient(closest-side, ${project.color}22, transparent 72%)`,
+                      }}
+                    />
+
+                    {isMobile ? (
+                      /* Dual Phone Layout */
+                      <div className="relative w-full max-w-[400px] h-[420px] md:h-[520px] z-10">
+                        <div className="absolute left-[6%] top-[8%] z-20 -rotate-9">
+                          <ProjectMockup
+                            image={project.featuredImage}
+                            title={project.title}
+                            url={project.url}
+                            type="mobile"
+                            accentColor={project.color}
+                          />
+                        </div>
+                        <div className="absolute right-[6%] top-[20%] z-10 rotate-7">
+                          <ProjectMockup
+                            image={project.featuredImage}
+                            title={project.title}
+                            url={project.url}
+                            type="mobile"
+                            accentColor={project.color}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      /* Laptop Layout */
+                      <div className="w-full max-w-[480px] z-10">
+                        <ProjectMockup
+                          image={project.featuredImage}
+                          title={project.title}
+                          url={project.url}
+                          type="desktop"
+                          accentColor={project.color}
+                        />
+                      </div>
+                    )}
+                  </motion.div>
+                </div>
+              </div>
+            </section>
+          );
+        })}
+      </section>
+
       {/* Client Testimonials & Trust (Light Gray Section) */}
       <section className="section-light-gray py-24 relative z-10" aria-labelledby="testimonials-heading">
         <div className="max-w-7xl mx-auto px-6">
@@ -439,13 +566,13 @@ export default function PortfolioPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="bg-[#6366f1] text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] active:scale-[0.98]"
+              className="btn btn-primary btn-lg"
             >
               Start a Project Discussion
             </Link>
             <a
               href="tel:+923009221193"
-              className="border border-[#2a2a2a] text-white px-7 py-4 rounded-full text-sm font-semibold hover:bg-white/5 transition-all"
+              className="btn btn-outline btn-lg"
             >
               Call Us: +92 300 9221193
             </a>

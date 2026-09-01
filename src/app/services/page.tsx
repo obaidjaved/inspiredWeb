@@ -123,7 +123,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
             className="max-w-3xl"
           >
-            <span className="inline-flex items-center gap-2 bg-[#6366f1]/15 border border-[#6366f1]/30 text-[#d0d1fb] text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 uppercase tracking-wider">
+            <span className="badge badge-primary badge-lg mb-6 uppercase tracking-wider">
               Comprehensive Technology Solutions
             </span>
             <h1 id="services-hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#e8e8e8] leading-[1.08] tracking-tight">
@@ -140,7 +140,7 @@ export default function ServicesPage() {
       <section className="section-light py-24 relative z-10" aria-labelledby="featured-services-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="badge-light mb-4">Digital Transformation</span>
+            <span className="badge badge-primary mb-4">Digital Transformation</span>
             <h2 id="featured-services-heading" className="text-3xl md:text-4xl font-bold mt-3 text-[#0d0d0d]">
               Our Core Digital Capabilities
             </h2>
@@ -224,7 +224,7 @@ export default function ServicesPage() {
       <section className="section-light-gray py-24 relative z-10" aria-labelledby="infrastructure-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="badge-light mb-4">Infrastructure &amp; Security</span>
+            <span className="badge badge-primary mb-4">Infrastructure &amp; Security</span>
             <h2 id="infrastructure-heading" className="text-3xl md:text-4xl font-bold mt-3 text-[#0d0d0d]">
               Enterprise Networking &amp; Managed IT Solutions
             </h2>
@@ -292,13 +292,13 @@ export default function ServicesPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="bg-[#6366f1] text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] active:scale-[0.98]"
+              className="btn btn-primary btn-lg"
             >
               Contact Our Solutions Team
             </Link>
             <a
               href="tel:+923009221193"
-              className="border border-[#2a2a2a] text-white px-7 py-4 rounded-full text-sm font-semibold hover:bg-white/5 transition-all"
+              className="btn btn-outline btn-lg"
             >
               Call +92 300 9221193
             </a>

@@ -50,7 +50,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/inspired-technology-pvt-limited/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 border border-[#2a2a2a] rounded-lg flex items-center justify-center text-[#9a9a9a] hover:text-white hover:border-[#6366f1]/40 transition-colors"
+                className="btn btn-circle btn-ghost btn-sm text-[#9a9a9a] hover:text-white"
                 aria-label="LinkedIn"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@ export default function Footer() {
                 href="https://wa.me/4915755769970"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 border border-[#2a2a2a] rounded-lg flex items-center justify-center text-[#9a9a9a] hover:text-emerald-400 hover:border-emerald-500/40 transition-colors"
+                className="btn btn-circle btn-ghost btn-sm text-[#9a9a9a] hover:text-emerald-400"
                 aria-label="WhatsApp"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

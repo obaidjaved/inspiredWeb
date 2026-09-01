@@ -18,12 +18,15 @@
     "three": "^0.185.1"
   },
   "devDependencies": {
+    "@react-three/drei": "^10.7.8",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "autoprefixer": "^10.0.0",
+    "daisyui": "^5.7.24",
     "postcss": "^8.0.0",
     "tailwindcss": "^4.0.0",
+    "three-stdlib": "^2.36.1",
     "typescript": "^5.0.0"
   }
 }

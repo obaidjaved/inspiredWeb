@@ -1,5 +1,37 @@
 @import "tailwindcss";
 
+@plugin "daisyui" {
+  themes: inspired --default;
+}
+
+/* DaisyUI custom theme override */
+[data-theme="inspired"] {
+  --p: 232 98% 66%;
+  --pf: 235 86% 57%;
+  --pc: 0 0% 100%;
+  --s: 250 89% 67%;
+  --sf: 245 75% 58%;
+  --sc: 0 0% 100%;
+  --a: 199 89% 48%;
+  --af: 199 89% 42%;
+  --ac: 0 0% 100%;
+  --n: 0 0% 39%;
+  --nf: 0 0% 14%;
+  --nc: 0 0% 100%;
+  --b1: 0 0% 4%;
+  --b2: 0 0% 7%;
+  --b3: 0 0% 10%;
+  --bc: 0 0% 91%;
+  --in: 217 91% 60%;
+  --inc: 217 91% 60%;
+  --su: 142 71% 45%;
+  --suc: 142 71% 45%;
+  --wa: 38 92% 50%;
+  --wac: 38 92% 50%;
+  --er: 0 84% 60%;
+  --erc: 0 84% 60%;
+}
+
 @theme {
   /* Dark mode surface hierarchy */
   --color-dark-base: #000000;

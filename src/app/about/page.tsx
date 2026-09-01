@@ -104,7 +104,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
             className="max-w-3xl"
           >
-            <span className="inline-flex items-center gap-2 bg-[#6366f1]/15 border border-[#6366f1]/30 text-[#d0d1fb] text-xs font-bold px-3.5 py-1.5 rounded-full mb-6 uppercase tracking-wider">
+            <span className="badge badge-primary badge-lg mb-6 uppercase tracking-wider">
               About Inspired Technology
             </span>
             <h1 id="about-hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#e8e8e8] leading-[1.08] tracking-tight">
@@ -145,7 +145,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
             <div className="lg:col-span-6">
-              <span className="badge-light mb-4">Our Heritage</span>
+              <span className="badge badge-primary mb-4">Our Heritage</span>
               <h2 id="story-heading" className="text-3xl md:text-4xl font-bold mt-3 text-[#0d0d0d] leading-tight">
                 15+ Years of Proven Technical Leadership &amp; Innovation
               </h2>
@@ -188,7 +188,7 @@ export default function AboutPage() {
       <section className="section-light py-20 border-t border-[#f0f0f0]" aria-label="Trusted by leading organizations">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
-            <span className="badge-light mb-4">Trusted By</span>
+            <span className="badge badge-primary mb-4">Trusted By</span>
             <h2 className="text-2xl md:text-3xl font-bold mt-3 text-[#0d0d0d]">Our Best Clients</h2>
             <p className="text-[#6b7280] text-sm mt-2 max-w-md mx-auto">
               Proud to deliver mission-critical solutions to leading corporate institutions.
@@ -214,7 +214,7 @@ export default function AboutPage() {
       <section className="section-light-gray py-24 relative z-10" aria-labelledby="values-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="badge-light mb-4">Our Principles</span>
+            <span className="badge badge-primary mb-4">Our Principles</span>
             <h2 id="values-heading" className="text-3xl md:text-4xl font-bold mt-3 text-[#0d0d0d]">
               What Sets Us Apart
             </h2>
@@ -246,7 +246,7 @@ export default function AboutPage() {
       <section className="section-light py-24 relative z-10" aria-labelledby="leadership-heading">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="badge-light mb-4">Leadership</span>
+            <span className="badge badge-primary mb-4">Leadership</span>
             <h2 id="leadership-heading" className="text-3xl md:text-4xl font-bold mt-3 text-[#0d0d0d]">
               Executive Team
             </h2>
@@ -319,13 +319,13 @@ export default function AboutPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="bg-[#6366f1] text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] active:scale-[0.98]"
+              className="btn btn-primary btn-lg"
             >
               Get in Touch Today
             </Link>
             <Link
               href="/services"
-              className="border border-[#2a2a2a] text-white px-7 py-4 rounded-full text-sm font-semibold hover:bg-white/5 transition-all"
+              className="btn btn-outline btn-lg"
             >
               Explore Our Services
             </Link>

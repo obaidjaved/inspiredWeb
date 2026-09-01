@@ -194,7 +194,7 @@ export default function Navbar() {
 
             <Link
               href="/contact"
-              className="ml-4 bg-[#6366f1] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#5558e6] transition-all duration-200 hover:shadow-[0_0_24px_rgba(99,102,241,0.3)] active:scale-[0.98]"
+              className="ml-4 btn btn-primary btn-sm"
             >
               Contact Us
             </Link>
@@ -287,7 +287,7 @@ export default function Navbar() {
               <div className="mt-8">
                 <Link
                   href="/contact"
-                  className="block text-center bg-[#6366f1] text-white px-6 py-4 rounded-full text-base font-semibold hover:bg-[#5558e6] transition-all"
+                  className="btn btn-primary w-full"
                   onClick={closeMobileMenu}
                 >
                   Contact Us
