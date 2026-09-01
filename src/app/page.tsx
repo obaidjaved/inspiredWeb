@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ParticleSwarm from '@/components/ParticleSwarm';
 
 // ===== DATA =====
 const heroSlides = [
@@ -416,8 +415,6 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
           </motion.div>
         </AnimatePresence>
-
-        <ParticleSwarm />
 
         <HeroSlideCounter current={heroSlide} total={heroSlides.length} onPrev={heroPrev} onNext={heroNext} />
 

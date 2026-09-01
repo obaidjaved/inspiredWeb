@@ -571,10 +571,12 @@ export default function PortfolioPage() {
               Start a Project Discussion
             </Link>
             <a
-              href="tel:+923009221193"
+              href="/portfolio-mockup-template.html"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-outline btn-lg"
             >
-              Call Us: +92 300 9221193
+              View Device Mockups
             </a>
           </div>
         </div>
