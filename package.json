@@ -13,6 +13,7 @@
     "@types/three": "^0.185.4",
     "framer-motion": "^12.0.0",
     "next": "^15.0.0",
+    "nodemailer": "^9.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "three": "^0.185.1"
@@ -21,6 +22,7 @@
     "@react-three/drei": "^10.7.8",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^22.0.0",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "^19.0.0",
     "autoprefixer": "^10.0.0",
     "daisyui": "^5.7.24",

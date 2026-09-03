@@ -5,36 +5,6 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-const timeline = [
-  { year: '2009', title: 'Foundation in Karachi', description: 'Established as an enterprise networking and infrastructure solutions provider.' },
-  { year: '2013', title: 'Cisco Partnership & ISO Certification', description: 'Earned certified partnership and ISO quality recognition for enterprise corporate clients.' },
-  { year: '2017', title: 'Middle East & US Expansion', description: 'Opened offices in New Jersey (USA) and Saudi Arabia to deliver international IT support.' },
-  { year: '2021', title: 'ERPNext & Digital Engineering Division', description: 'Launched dedicated practice for ZATCA-compliant ERPNext and custom Next.js full-stack software.' },
-  { year: '2024', title: 'AI Automation & Cognitive Workflows', description: 'Pioneered enterprise autonomous AI agents, private RAG knowledge bases, and document OCR.' },
-  { year: '2026', title: '500+ Enterprise Clients Worldwide', description: 'Serving over 500 organizations across North America, the GCC region, and South Asia.' },
-];
-
-const leaders = [
-  {
-    name: 'Muhammad J. Khan',
-    role: 'Director & Chief Executive Officer',
-    description: 'Visionary technology entrepreneur with 15+ years spearheading enterprise IT infrastructure, digital transformation, and global corporate expansion.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&auto=format',
-  },
-  {
-    name: 'Junaid Saleem',
-    role: 'Head of Enterprise Networking & SLAs',
-    description: 'Cisco-certified principal network architect managing multi-building data cabling, structured fiber backbones, and 24/7 resident engineers.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&auto=format',
-  },
-  {
-    name: 'Jawad Khan',
-    role: 'Director of Digital Platforms & ERP',
-    description: 'Enterprise solutions leader specializing in ZATCA e-Invoicing compliance, Frappe framework custom modules, and cloud integrations.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&auto=format',
-  },
-];
-
 const clientLogos = [
   { name: 'National Medical Centre', url: '/clients/clients_img1.jpg' },
   { name: 'Benztech Solutions', url: '/clients/clients_img2.jpg' },
@@ -236,70 +206,6 @@ export default function AboutPage() {
                   <h3 className="text-lg font-bold text-[#0d0d0d] mb-2">{val.title}</h3>
                   <p className="text-[#6b7280] text-xs leading-relaxed">{val.desc}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Leadership Team (Light Section) */}
-      <section className="section-light py-24 relative z-10" aria-labelledby="leadership-heading">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="badge badge-primary mb-4">Leadership</span>
-            <h2 id="leadership-heading" className="text-3xl md:text-4xl font-bold mt-3 text-[#0d0d0d]">
-              Executive Team
-            </h2>
-            <p className="text-[#6b7280] text-sm mt-3 max-w-xl mx-auto">
-              Experienced technology leaders dedicated to engineering excellence and client success.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {leaders.map((leader) => (
-              <div
-                key={leader.name}
-                className="bg-[#f8f9fa] border border-[#e5e7eb] rounded-2xl overflow-hidden hover:border-[#6366f1]/40 transition-all shadow-sm"
-              >
-                <div className="h-64 overflow-hidden">
-                  <img
-                    src={leader.image}
-                    alt={leader.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-7">
-                  <h3 className="text-lg font-bold text-[#0d0d0d] mb-1">{leader.name}</h3>
-                  <div className="text-xs font-semibold text-[#6366f1] mb-3">{leader.role}</div>
-                  <p className="text-[#6b7280] text-xs leading-relaxed">{leader.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Journey Timeline (Dark Section) */}
-      <section className="py-24 bg-[#0a0a0a] relative z-10" aria-labelledby="timeline-heading">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-[#818cf8] text-xs font-bold tracking-widest uppercase mb-3 block">// OUR JOURNEY</span>
-            <h2 id="timeline-heading" className="text-3xl md:text-4xl font-bold text-[#e8e8e8]">
-              Milestones of Growth &amp; Innovation
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {timeline.map((item) => (
-              <div
-                key={item.year}
-                className="bg-[#121212] border border-[#2a2a2a] rounded-2xl p-7 hover:border-[#6366f1]/40 transition-colors"
-              >
-                <span className="text-3xl font-bold text-[#6366f1] mb-3 block" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                  {item.year}
-                </span>
-                <h3 className="text-base font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-[#9a9a9a] text-xs leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>

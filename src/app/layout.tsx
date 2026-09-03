@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'Inspired Technology — Enterprise IT Solutions & Digital Transformation',
   description: 'Pakistan\'s most trusted IT solutions provider. Networking, cybersecurity, ERP systems, web development, and AI automation across Pakistan, USA & Middle East.',
   keywords: 'IT solutions, networking, cybersecurity, ERPNext, web development, AI automation, Pakistan, USA, Middle East, Cisco, structured cabling',
+  icons: {
+    icon: '/favicon.png',
+  },
   openGraph: {
     title: 'Inspired Technology — Enterprise IT Solutions',
     description: 'Networking, cybersecurity, ERP systems, web development, and AI automation.',

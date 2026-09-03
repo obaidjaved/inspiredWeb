@@ -167,11 +167,11 @@ const services = [
 ];
 
 const awards = [
-  { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Inc._Magazine_logo.svg/200px-Inc._Magazine_logo.svg.png', desc: 'Inc. 5000 — Fastest Growing Companies in America' },
-  { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Twitter_logo_2012.svg/200px-Twitter_logo_2012.svg.png', desc: 'BuiltIn — Best Places to Work in Tech' },
-  { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Washington_Post_logo.svg/200px-Washington_Post_logo.svg.png', desc: 'Washington Business Journal — Top IT Consulting Firms' },
-  { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Forbes_logo.svg/200px-Forbes_logo.svg.png', desc: 'Forbes — America\'s Best Professional Services Firms' },
-  { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Gartner_logo_%282022%29.svg/200px-Gartner_logo_%282022%29.svg.png', desc: 'Gartner — Cool Vendor in AI and Emerging Technologies' },
+  { icon: '🎓', desc: 'Cisco CCNA — Validates ability to install, configure, operate and troubleshoot medium-size routed and switched networks' },
+  { icon: '🏆', desc: 'Cisco CCNP — Advanced certification for designing, implementing and troubleshooting enterprise networks' },
+  { icon: '📡', desc: 'CCNA Wireless — Covers wireless network fundamentals, security considerations, and client access implementation' },
+  { icon: '🔒', desc: 'CCNA Security — Confirms associate-level skills to secure Cisco networks and threat recognition' },
+  { icon: '✅', desc: 'ISO 9001:2015 Certified — International standard for quality management systems' },
 ];
 
 const insights = [
@@ -610,10 +610,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 8. AWARDS ===== */}
+      {/* ===== 8. CERTIFICATIONS ===== */}
       <section id="awards" className="py-20 bg-[#0a0a0a] relative z-10" aria-labelledby="awards-heading">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 id="awards-heading" className="text-2xl md:text-3xl font-bold mb-10 text-[#e8e8e8]">Awards & recognitions</h2>
+          <h2 id="awards-heading" className="text-2xl md:text-3xl font-bold mb-10 text-[#e8e8e8]">Professional Cisco Training</h2>
+          <p className="text-[#9a9a9a] text-sm mb-8 max-w-xl">Industry-recognized Cisco certifications to advance your networking career and skills.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {awards.map((award, i) => (
               <motion.div
@@ -624,7 +625,7 @@ export default function Home() {
                 transition={{ duration: 0.4, delay: i * 0.06, ease: [0.32, 0.72, 0, 1] }}
                 className="bg-[#121212] border border-[#2a2a2a] rounded-2xl p-6 flex items-start gap-4 hover-glow"
               >
-                <img src={award.logo} alt="Award logo" className="h-8 object-contain filter invert opacity-50 shrink-0 mt-0.5" loading="lazy" />
+                <div className="w-10 h-10 bg-[#6366f1]/10 rounded-xl flex items-center justify-center shrink-0 text-xl">{award.icon}</div>
                 <p className="text-[#9a9a9a] text-sm leading-relaxed">{award.desc}</p>
               </motion.div>
             ))}

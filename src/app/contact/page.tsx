@@ -10,7 +10,7 @@ const offices = [
   {
     city: 'Karachi, Pakistan (Head Office)',
     address: 'Office A9, Lateefi Society, Main Shahrah-e-Faisal / Gulistan-e-Johar, Karachi 75400',
-    phones: ['+92 300 9221193', '+92 320 8280254', '+92 21 3258 0106'],
+    phones: ['+92 300 9221193', '+92 320 8280254', '+92 333 233 8340'],
     email: 'contact@inspired.com.pk',
     hours: 'Mon – Fri, 9:00 AM – 6:00 PM PKT',
     badge: 'Global HQ',
@@ -22,14 +22,6 @@ const offices = [
     email: 'usa@inspired.com.pk',
     hours: 'Mon – Fri, 9:00 AM – 5:00 PM EST',
     badge: 'Americas',
-  },
-  {
-    city: 'Riyadh, Saudi Arabia',
-    address: 'Business District, King Fahd Road, Riyadh',
-    phones: ['+966 54 661 7467'],
-    email: 'ksa@inspired.com.pk',
-    hours: 'Sun – Thu, 9:00 AM – 5:00 PM AST',
-    badge: 'GCC / Middle East',
   },
   {
     city: 'Germany & International',
@@ -64,14 +56,25 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
-    }, 1200);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' });
+      } else {
+        alert('Something went wrong. Please try again or email us directly at contact@inspired.com.pk');
+      }
+    } catch {
+      alert('Something went wrong. Please try again or email us directly at contact@inspired.com.pk');
+    }
+    setIsSubmitting(false);
   };
 
   return (
@@ -322,9 +325,9 @@ export default function ContactPage() {
               <div className="bg-[#6366f1] text-white rounded-2xl p-6 shadow-lg">
                 <div className="flex items-center gap-3 mb-2">
                   <span className="w-3 h-3 rounded-full bg-emerald-300 animate-ping" />
-                  <h4 className="font-bold text-base">24/7 Critical Network Support</h4>
+                    <h4 className="font-bold text-base" style={{ color: '#ffffff' }}>24/7 Critical Network Support</h4>
                 </div>
-                <p className="text-white/80 text-xs leading-relaxed mb-4">
+                <p className="text-xs leading-relaxed mb-4" style={{ color: '#ffffff' }}>
                   For active SLA corporate clients experiencing emergency network or server downtime, our on-call resident engineers are available 24/7.
                 </p>
                 <a
@@ -335,6 +338,19 @@ export default function ContactPage() {
                 >
                   Direct WhatsApp Hotline
                 </a>
+              </div>
+
+              {/* Email Contacts */}
+              <div className="bg-[#f8f9fa] border border-[#e5e7eb] rounded-2xl p-6">
+                <h4 className="font-bold text-sm text-[#0d0d0d] mb-3">Email Us</h4>
+                <div className="space-y-2 text-sm">
+                  <a href="mailto:contact@inspired.com.pk" className="flex items-center gap-2 text-[#6366f1] font-semibold hover:underline">
+                    contact@inspired.com.pk
+                  </a>
+                  <a href="mailto:fatima@inspired.com.pk" className="flex items-center gap-2 text-[#6366f1] font-semibold hover:underline">
+                    fatima@inspired.com.pk
+                  </a>
+                </div>
               </div>
             </div>
           </div>

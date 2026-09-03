@@ -23,7 +23,6 @@ const companyLinks = [
 const globalLocations = [
   { region: 'Pakistan HQ', contact: '+92 300 9221193', address: 'Main Shahrah-e-Faisal, Karachi' },
   { region: 'United States', contact: '+1 (973) 626-0873', address: '80 Addison Ave, Rockaway, NJ' },
-  { region: 'Saudi Arabia', contact: '+966 54 661 7467', address: 'King Fahd Rd, Riyadh' },
   { region: 'International', contact: '+49 1575 5769970', address: 'European Representation' },
 ];
 
@@ -43,11 +42,11 @@ export default function Footer() {
               />
             </Link>
             <p className="text-[#636363] text-sm leading-relaxed max-w-sm mb-6">
-              Pakistan&apos;s most trusted IT solutions provider and global digital engineering partner — delivering excellence in networking, security, ERPNext, and AI automation since 2009.
+              Pakistan&apos;s most trusted IT solutions provider and global digital engineering partner — delivering excellence in networking, security, ERPNext, and AI automation since 2016.
             </p>
             <div className="flex items-center gap-3">
               <a
-                href="https://www.linkedin.com/company/inspired-technology-pvt-limited/"
+                href="https://www.linkedin.com/company/www.inspired.com.pk/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-circle btn-ghost btn-sm text-[#9a9a9a] hover:text-white"
